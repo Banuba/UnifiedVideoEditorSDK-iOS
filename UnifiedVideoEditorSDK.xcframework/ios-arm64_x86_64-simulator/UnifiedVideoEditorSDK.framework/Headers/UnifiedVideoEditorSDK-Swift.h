@@ -507,13 +507,6 @@ SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK26AudioBrowserTrackApplyable_")
 @property (nonatomic, strong) AudioBrowserTrack * _Nonnull track;
 @end
 
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK14AudioCapturing_")
-@protocol AudioCapturing
-- (void)startAudioCapturing;
-- (void)stopAudioCapturing;
-@end
-
 @class UIScrollView;
 
 SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK22AudioPartSelectionView")
@@ -668,20 +661,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK18BanubaCameraModule")
 @end
 
 
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK24BanubaSdkManagerDelegate_")
-@protocol BanubaSdkManagerDelegate
-- (void)willPresentWithChangedPixelBuffer:(CVPixelBufferRef _Nullable)changedPixelBuffer;
-- (void)willOutputWithPixelBuffer:(CVPixelBufferRef _Nonnull)pixelBuffer;
-- (void)didReceiveFPSInfo:(float)cameraFPS recognizerFPS:(float)recognizerFPS renderFPS:(float)renderFPS;
-@end
-
-
-@interface BanubaCameraModule (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <BanubaSdkManagerDelegate>
-- (void)willOutputWithPixelBuffer:(CVPixelBufferRef _Nonnull)pixelBuffer;
-- (void)willPresentWithChangedPixelBuffer:(CVPixelBufferRef _Nullable)changedPixelBuffer;
-- (void)didReceiveFPSInfo:(float)cameraFPS recognizerFPS:(float)recognizerFPS renderFPS:(float)renderFPS;
-@end
-
 @class ExternalAudioConfiguration;
 @class NSValue;
 
@@ -743,6 +722,41 @@ SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK26SDKEffectsTextureServicing_")
 - (void)unloadEffectTexture;
 @end
 
+enum CameraModuleSessionType : NSInteger;
+
+SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK17SDKInputServicing_")
+@protocol SDKInputServicing
+@property (nonatomic, readonly) BOOL isFrontCamera;
+@property (nonatomic, readonly) float zoomFactor;
+@property (nonatomic, readonly) enum CameraModuleSessionType currentCameraSessionType;
+@property (nonatomic, strong) id <SDKInputServicingDelegate> _Nullable inputDelegate;
+- (void)focusAt:(CGPoint)point useContinuousDetection:(BOOL)useContinuousDetection;
+- (float)setZoomFactor:(float)zoomFactor SWIFT_WARN_UNUSED_RESULT;
+- (void)toggleCameraWithCompletion:(void (^ _Nonnull)(void))completion;
+- (void)startCamera;
+- (void)startAudioCapturing;
+- (void)stopAudioCapturing;
+- (void)setCameraSessionType:(enum CameraModuleSessionType)type;
+- (AVCaptureTorchMode)setTorchWithMode:(AVCaptureTorchMode)mode;
+- (AVCaptureTorchMode)toggleTorch SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface BanubaCameraModule (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <SDKInputServicing>
+@property (nonatomic, readonly) float zoomFactor;
+@property (nonatomic, readonly) BOOL isFrontCamera;
+@property (nonatomic, readonly) enum CameraModuleSessionType currentCameraSessionType;
+- (void)focusAt:(CGPoint)point useContinuousDetection:(BOOL)useContinuousDetection;
+- (float)setZoomFactor:(float)zoomFactor SWIFT_WARN_UNUSED_RESULT;
+- (void)toggleCameraWithCompletion:(void (^ _Nonnull)(void))completion;
+- (void)startCamera;
+- (void)startAudioCapturing;
+- (void)stopAudioCapturing;
+- (void)setCameraSessionType:(enum CameraModuleSessionType)type;
+- (AVCaptureTorchMode)setTorchWithMode:(AVCaptureTorchMode)mode SWIFT_WARN_UNUSED_RESULT;
+- (AVCaptureTorchMode)toggleTorch SWIFT_WARN_UNUSED_RESULT;
+@end
+
 @protocol RenderEffect;
 @protocol EffectSubtypeModificationsEventListener;
 
@@ -778,41 +792,6 @@ SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK19SDKEffectsServicing_")
 - (void)effectDidEndApplying;
 - (void)effectDidResetApplying;
 - (void)effectDidChangeState;
-@end
-
-enum CameraModuleSessionType : NSInteger;
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK17SDKInputServicing_")
-@protocol SDKInputServicing
-@property (nonatomic, readonly) BOOL isFrontCamera;
-@property (nonatomic, readonly) float zoomFactor;
-@property (nonatomic, readonly) enum CameraModuleSessionType currentCameraSessionType;
-@property (nonatomic, strong) id <SDKInputServicingDelegate> _Nullable inputDelegate;
-- (void)focusAt:(CGPoint)point useContinuousDetection:(BOOL)useContinuousDetection;
-- (float)setZoomFactor:(float)zoomFactor SWIFT_WARN_UNUSED_RESULT;
-- (void)toggleCameraWithCompletion:(void (^ _Nonnull)(void))completion;
-- (void)startCamera;
-- (void)startAudioCapturing;
-- (void)stopAudioCapturing;
-- (void)setCameraSessionType:(enum CameraModuleSessionType)type;
-- (AVCaptureTorchMode)setTorchWithMode:(AVCaptureTorchMode)mode;
-- (AVCaptureTorchMode)toggleTorch SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface BanubaCameraModule (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <SDKInputServicing>
-@property (nonatomic, readonly) float zoomFactor;
-@property (nonatomic, readonly) BOOL isFrontCamera;
-@property (nonatomic, readonly) enum CameraModuleSessionType currentCameraSessionType;
-- (void)focusAt:(CGPoint)point useContinuousDetection:(BOOL)useContinuousDetection;
-- (float)setZoomFactor:(float)zoomFactor SWIFT_WARN_UNUSED_RESULT;
-- (void)toggleCameraWithCompletion:(void (^ _Nonnull)(void))completion;
-- (void)startCamera;
-- (void)startAudioCapturing;
-- (void)stopAudioCapturing;
-- (void)setCameraSessionType:(enum CameraModuleSessionType)type;
-- (AVCaptureTorchMode)setTorchWithMode:(AVCaptureTorchMode)mode SWIFT_WARN_UNUSED_RESULT;
-- (AVCaptureTorchMode)toggleTorch SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -934,175 +913,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK17BanubaGalleryItem")
 - (BOOL)isEqual:(id _Nullable)object SWIFT_WARN_UNUSED_RESULT;
 @end
 
-@class BNBEffectPlayer;
-@class BNBEffectManager;
-@class BNBEffect;
-@protocol InputServicing;
-@protocol OutputServicing;
-@class RenderTarget;
-@class EffectPlayerConfiguration;
-@class EffectPlayerView;
-@class CAMetalLayer;
-enum EffectPlayerRenderMode : NSInteger;
-enum RenderContentMode : NSInteger;
-@class NSThread;
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK16BanubaSdkManager")
-@interface BanubaSdkManager : NSObject
-@property (nonatomic, weak) id <BanubaSdkManagerDelegate> _Nullable delegate;
-/// Access to current instance of BNBEffectPlayer
-@property (nonatomic, readonly, strong) BNBEffectPlayer * _Nullable effectPlayer;
-/// Face orintation in frame (degrees).
-@property (nonatomic) NSInteger faceOrientation;
-/// Setup the camera if needed.
-@property (nonatomic) BOOL isCameraEnabled;
-- (BNBEffectManager * _Nullable)effectManager SWIFT_WARN_UNUSED_RESULT;
-/// Enable autorotation mode. Camera orientation and render size should change along with UI orientation
-@property (nonatomic) BOOL autoRotationEnabled;
-/// \param effectUrl path to effect relative to resource paths passed to <code>initialize</code>.
-///
-/// \param synchronous block the call until effect is loaded.
-///
-- (BNBEffect * _Nullable)loadEffect:(NSString * _Nonnull)effectUrl synchronous:(BOOL)synchronous SWIFT_WARN_UNUSED_RESULT;
-- (BNBEffect * _Nullable)currentEffect SWIFT_WARN_UNUSED_RESULT;
-/// Maximum number of faces to trace simultaneously
-- (void)setMaxFaces:(int32_t)maxFaces;
-@property (nonatomic, strong) id <InputServicing> _Nonnull input;
-@property (nonatomic, readonly, strong) id <OutputServicing> _Nullable output;
-@property (nonatomic, strong) RenderTarget * _Nullable renderTarget;
-@property (nonatomic, readonly, strong) EffectPlayerConfiguration * _Nullable playerConfiguration;
-- (void)setRenderTargetWithView:(EffectPlayerView * _Nonnull)view playerConfiguration:(EffectPlayerConfiguration * _Nullable)playerConfiguration;
-- (void)setRenderTargetWithLayer:(CAMetalLayer * _Nonnull)layer renderMode:(enum EffectPlayerRenderMode)renderMode contentMode:(enum RenderContentMode)contentMode;
-- (void)setRenderTargetWithLayer:(CAMetalLayer * _Nonnull)layer contentMode:(enum RenderContentMode)contentMode playerConfiguration:(EffectPlayerConfiguration * _Nullable)playerConfiguration;
-- (void)removeRenderTarget;
-@property (nonatomic, readonly, strong) NSThread * _Nullable renderThread;
-@property (nonatomic) BOOL shouldAutoStartOnEnterForeground;
-@property (nonatomic, readonly) BOOL isLoaded;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-/// Intialize common banuba SDK resources. This must be called before <code>BanubaSdkManger</code> instance
-/// creation. Counterpart <code>deinitialize</code> exists.
-/// \param resourcePath paths to cutom resources folders
-///
-/// \param clientTokenString client token
-///
-/// \param logLevel log level
-///
-+ (void)initializeWithResourcePath:(NSArray<NSString *> * _Nonnull)resourcePath clientTokenString:(NSString * _Nonnull)clientTokenString logLevel:(BNBSeverityLevel)logLevel;
-/// Release common Banuba SDK resources
-+ (void)deinitialize;
-- (void)setupWithConfiguration:(EffectPlayerConfiguration * _Nonnull)configuration;
-- (void)destroy;
-/// BNBEffectPlayer may crash on certain devices. So, we downscale the input image before processing.
-+ (CVPixelBufferRef _Nullable)scaleBeforeProcessing:(CVPixelBufferRef _Nullable)buffer SWIFT_WARN_UNUSED_RESULT;
-@property (nonatomic, readonly) BOOL isDrawOnDemandMode;
-@property (nonatomic, readonly) BOOL frameOnDemandRendered;
-- (void)setDrawOnDemandMode:(BOOL)mode;
-- (void)requestFrameDraw;
-@end
-
-
-
-
-
-@interface BanubaSdkManager (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <BNBCameraPoiListener>
-- (void)onCameraPoiChanged:(float)x y:(float)y;
-@end
-
-
-@interface BanubaSdkManager (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <BNBFaceNumberListener>
-- (void)onFaceNumberChanged:(int32_t)faceNumber;
-@end
-
-
-@class BanubaVisualClipVideo;
-
-@interface BanubaSdkManager (SWIFT_EXTENSION(UnifiedVideoEditorSDK))
-+ (NSArray<NSString *> * _Nullable)createAutoCutVideosWith:(NSString * _Nonnull)musicDbPath visualEffects:(NSArray<NSString *> * _Nonnull)visualEffects transitionEffects:(NSArray<NSString *> * _Nonnull)transitionEffects videos:(NSArray<BanubaVisualClipVideo *> * _Nonnull)videos numFrames:(int32_t)numFrames resultSize:(int32_t)resultSize cancellation:(BOOL (^ _Nonnull)(double))cancellation SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-SWIFT_CLASS("_TtCC21UnifiedVideoEditorSDK16BanubaSdkManager21BanubaVisualClipVideo")
-@interface BanubaVisualClipVideo : NSObject
-- (nonnull instancetype)initWithPath:(NSString * _Nonnull)path startPosition:(float)startPosition duration:(float)duration OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK20InputServiceDelegate_")
-@protocol InputServiceDelegate
-- (void)pushWithCvBuffer:(CVPixelBufferRef _Nonnull)cvBuffer;
-- (void)pushWithCmBuffer:(CMSampleBufferRef _Nonnull)cmBuffer;
-@end
-
-
-@interface BanubaSdkManager (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <InputServiceDelegate>
-- (void)pushWithCmBuffer:(CMSampleBufferRef _Nonnull)cmBuffer;
-- (void)pushWithCvBuffer:(CVPixelBufferRef _Nonnull)cvBuffer;
-@end
-
-
-
-
-@interface BanubaSdkManager (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <AppStateObserverDelegate>
-- (void)applicationWillResignActive:(AppStateObserver * _Nonnull)appStateObserver;
-- (void)applicationDidBecomeActive:(AppStateObserver * _Nonnull)appStateObserver;
-- (void)applicationDidEnterBackgroundNotification:(AppStateObserver * _Nonnull)appStateObserver;
-- (void)applicationWillEnterForeground:(AppStateObserver * _Nonnull)appStateObserver;
-- (void)applicationWillTerminateNotification:(AppStateObserver * _Nonnull)appStateObserver;
-@end
-
-
-@class NSNumber;
-@class CameraPhotoSettings;
-@class WatermarkInfo;
-
-@interface BanubaSdkManager (SWIFT_EXTENSION(UnifiedVideoEditorSDK))
-- (void)startEffectPlayer;
-- (void)stopEffectPlayer;
-- (void)destroyEffectPlayer;
-/// Image editing mode - renders effect on single frame prepared from image, applies effect on image in full resolution.
-/// Workflow to use editing:
-/// <ul>
-///   <li>
-///     Configure effect player with correct render target and render size to match aspect ratio of edited image (could be done with setRenderTarget call), load needed effect.
-///     Pay attention that render size could be less than original image size (moreover, bigger resolution could cause performance issues), the only restriction is to preserve aspect ratio.
-///   </li>
-///   <li>
-///     Call startEditingImage. Completion block returns is any face found or not. From that moment image with applied effect is rendered on provided render target.
-///   </li>
-///   <li>
-///     Call captureEditedImage to get edited image with applied effect in fullsize resolution.
-///   </li>
-///   <li>
-///     Call stopEditingImage. After that moment user can switch to other render target and restore previous logic (push frames from camera), if needed.
-///   </li>
-/// </ul>
-- (void)startEditingImage:(UIImage * _Nonnull)image recognizerIterations:(NSNumber * _Nullable)recognizerIterations imageOrientation:(BNBCameraOrientation)imageOrientation requireMirroring:(BOOL)requireMirroring faceOrientation:(NSInteger)faceOrientation fieldOfView:(float)fieldOfView resetEffect:(BOOL)resetEffect completion:(void (^ _Nullable)(NSInteger, CGRect))completion;
-/// Helper method to fast image update during editing mode, when image is changed without modifying facial features,
-/// so framedata from previous image will be correct for new one.
-- (void)updateEditingFrameWithImage:(UIImage * _Nonnull)image imageOrientation:(BNBCameraOrientation)imageOrientation requireMirroring:(BOOL)requireMirroring faceOrientation:(NSInteger)faceOrientation fieldOfView:(float)fieldOfView completion:(void (^ _Nullable)(BOOL))completion;
-- (void)captureEditedImageWithImageOrientation:(BNBCameraOrientation)imageOrientation resetEffect:(BOOL)resetEffect completion:(void (^ _Nonnull)(UIImage * _Nullable))completion;
-- (void)stopEditingImageWithStartCameraInput:(BOOL)startCameraInput;
-- (void)makeCameraPhotoWithCameraSettings:(CameraPhotoSettings * _Nonnull)cameraSettings flipFrontCamera:(BOOL)flipFrontCamera srcImageHandler:(void (^ _Nullable)(CVPixelBufferRef _Nonnull))srcImageHandler completion:(void (^ _Nonnull)(UIImage * _Nullable))completion;
-- (void)processImageData:(CVImageBufferRef _Nonnull)inputData orientation:(BNBCameraOrientation)orientation faceOrientation:(NSInteger)faceOrientation fieldOfView:(float)fieldOfView isMirrored:(BOOL)isMirrored completion:(void (^ _Nonnull)(UIImage * _Nullable))completion;
-- (void)processImageData:(UIImage * _Nonnull)imputImage orientation:(BNBCameraOrientation)orientation fieldOfView:(float)fieldOfView isMirrored:(BOOL)isMirrored completion:(void (^ _Nonnull)(UIImage * _Nullable))completion;
-- (void)configureWatermark:(WatermarkInfo * _Nonnull)watermarkInfo;
-- (void)removeWatermark;
-- (void)startVideoProcessingWithWidth:(NSUInteger)width height:(NSUInteger)height orientation:(BNBCameraOrientation)orientation resetEffect:(BOOL)resetEffect;
-- (void)stopVideoProcessingWithResetEffect:(BOOL)resetEffect;
-- (void)processVideoFrameFrom:(CVPixelBufferRef _Nonnull)from to:(CVPixelBufferRef _Nonnull)to timeNs:(int64_t)timeNs iterations:(NSNumber * _Nullable)iterations cameraOrientation:(BNBCameraOrientation)cameraOrientation requireMirroring:(BOOL)requireMirroring faceOrientation:(NSInteger)faceOrientation fieldOfView:(float)fieldOfView;
-@property (nonatomic, readonly) BNBCameraOrientation imageOrientationForCameraPhoto;
-@end
-
-
-@interface BanubaSdkManager (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <BNBFrameDurationListener>
-- (void)onRecognizerFrameDurationChanged:(float)instant averaged:(float)averaged;
-- (void)onCameraFrameDurationChanged:(float)instant averaged:(float)averaged;
-- (void)onRenderFrameDurationChanged:(float)instant averaged:(float)averaged;
-@end
-
-
 
 SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK32BaseTrackSelectionViewController")
 @interface BaseTrackSelectionViewController : UINavigationController
@@ -1149,66 +959,6 @@ typedef SWIFT_ENUM(NSInteger, CameraModuleSessionType, open) {
   CameraModuleSessionTypeFrontPhoto = 2,
   CameraModuleSessionTypeBackPhoto = 3,
 };
-
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK19CameraPhotoSettings")
-@interface CameraPhotoSettings : NSObject
-@property (nonatomic, readonly) AVCapturePhotoQualityPrioritization photoQualityPrioritization;
-@property (nonatomic, readonly) AVCaptureFlashMode flashMode;
-/// CameraPhotoSettings constructor
-/// \param photoQualityPrioritization setup photo quality
-///
-/// \param flashMode setup  flash mode
-///
-- (nonnull instancetype)initWithPhotoQualityPrioritization:(AVCapturePhotoQualityPrioritization)photoQualityPrioritization flashMode:(AVCaptureFlashMode)flashMode OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-enum CameraSessionType : NSInteger;
-@class AVCaptureVideoDataOutput;
-@class BNBFrameData;
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK15CameraServicing_")
-@protocol CameraServicing
-@property (nonatomic, strong) id <InputServiceDelegate> _Nullable delegate;
-@property (nonatomic, readonly) BOOL isFrontCamera;
-@property (nonatomic, readonly) BOOL isPhotoCameraSession;
-@property (nonatomic, readonly) enum CameraSessionType currentCameraSessionType;
-@property (nonatomic, readonly) CGPoint exposurePointOfInterest;
-@property (nonatomic) BOOL flipCamera;
-@property (nonatomic, readonly, strong) AVCaptureVideoDataOutput * _Nullable cameraVideoOutput;
-- (void)setupCamera;
-- (void)startCamera;
-- (void)stopCamera;
-- (void)releaseAudioCaptureSession;
-- (void)setCameraSessionType:(enum CameraSessionType)type;
-- (void)setCameraSessionType:(enum CameraSessionType)type completion:(void (^ _Nonnull)(void))completion;
-- (void)setCameraSessionType:(enum CameraSessionType)type zoomFactor:(float)zoomFactor completion:(void (^ _Nonnull)(void))completion;
-- (void)focusAt:(CGPoint)point useContinuousDetection:(BOOL)useContinuousDetection;
-- (AVCaptureTorchMode)setTorchWithMode:(AVCaptureTorchMode)mode SWIFT_WARN_UNUSED_RESULT;
-- (AVCaptureTorchMode)toggleTorch SWIFT_WARN_UNUSED_RESULT;
-- (void)initiatePhotoCaptureWithCameraSettings:(CameraPhotoSettings * _Nonnull)cameraSettings completion:(void (^ _Nonnull)(CVImageBufferRef _Nullable, BNBFrameData * _Nullable))completion;
-- (void)switchCameraTo:(enum CameraSessionType)type completion:(void (^ _Nonnull)(void))completion;
-@end
-
-typedef SWIFT_ENUM(NSInteger, CameraSessionType, open) {
-  CameraSessionTypeFrontCameraVideoSession = 0,
-  CameraSessionTypeBackCameraVideoSession = 1,
-  CameraSessionTypeFrontCameraPhotoSession = 2,
-  CameraSessionTypeBackCameraPhotoSession = 3,
-};
-
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK14CameraZoomable_")
-@protocol CameraZoomable
-@property (nonatomic, readonly) float currentFieldOfView;
-@property (nonatomic, readonly) BOOL isZoomFactorAdjustable;
-@property (nonatomic, readonly) float minZoomFactor;
-@property (nonatomic, readonly) float maxZoomFactor;
-@property (nonatomic, readonly) float zoomFactor;
-- (float)setZoomFactor:(float)zoomFactor SWIFT_WARN_UNUSED_RESULT;
-@end
 
 @class CALayer;
 
@@ -1268,115 +1018,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK11EffectModel")
 @end
 
 
-
-@class NSNotificationCenter;
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK25EffectPlayerConfiguration")
-@interface EffectPlayerConfiguration : NSObject
-@property (nonatomic, readonly) enum CameraSessionType cameraMode;
-@property (nonatomic) enum RenderContentMode renderContentMode;
-@property (nonatomic) CGSize renderSize;
-/// Preset for quality of photo or video and audio output.
-@property (nonatomic) AVCaptureSessionPreset _Nonnull captureSessionPreset;
-@property (nonatomic) NSInteger preferredRenderFrameRate;
-@property (nonatomic) BOOL shouldAutoStartOnEnterForeground;
-@property (nonatomic) BOOL isMirrored;
-@property (nonatomic) BOOL flipVertically;
-@property (nonatomic) BOOL delayedCameraInitialization;
-@property (nonatomic) BNBCameraOrientation orientation;
-@property (nonatomic, strong) NSNotificationCenter * _Nonnull notificationCenter;
-- (nonnull instancetype)init;
-/// CameraLutStage constructor
-/// \param renderMode effect player render mode
-///
-/// \param renderContentMode render content mode
-///
-/// \param orientation camera orientation
-///
-/// \param preferredRenderFrameRate preferred render frame rate
-///
-/// \param shouldAutoStartOnEnterForeground should auto start on enter foreground
-///
-/// \param isMirrored camera is mirrored
-///
-/// \param fpsLimit setup fps limit
-///
-/// \param delayedCameraInitialization delayed сamera initialization
-///
-/// \param notificationCenter setup notification center
-///
-- (nonnull instancetype)initWithRenderMode:(enum EffectPlayerRenderMode)renderMode renderContentMode:(enum RenderContentMode)renderContentMode orientation:(BNBCameraOrientation)orientation preferredRenderFrameRate:(NSInteger)preferredRenderFrameRate shouldAutoStartOnEnterForeground:(BOOL)shouldAutoStartOnEnterForeground isMirrored:(BOOL)isMirrored delayedCameraInitialization:(BOOL)delayedCameraInitialization notificationCenter:(NSNotificationCenter * _Nonnull)notificationCenter;
-/// CameraLutStage constructor
-/// \param cameraMode camera mode
-///
-/// \param renderContentMode render content mode
-///
-/// \param renderSize setup render size
-///
-/// \param captureSessionPreset capture session preset
-///
-/// \param orientation camera orientation
-///
-/// \param preferredRenderFrameRate preferred render frame rate
-///
-/// \param shouldAutoStartOnEnterForeground should auto start on enter foreground
-///
-/// \param isMirrored camera is mirrored
-///
-/// \param flipVertically setup flip vertically
-///
-/// \param delayedCameraInitialization delayed сamera initialization
-///
-/// \param notificationCenter setup notification center
-///
-- (nonnull instancetype)initWithCameraMode:(enum CameraSessionType)cameraMode renderContentMode:(enum RenderContentMode)renderContentMode renderSize:(CGSize)renderSize captureSessionPreset:(AVCaptureSessionPreset _Nonnull)captureSessionPreset orientation:(BNBCameraOrientation)orientation preferredRenderFrameRate:(NSInteger)preferredRenderFrameRate shouldAutoStartOnEnterForeground:(BOOL)shouldAutoStartOnEnterForeground isMirrored:(BOOL)isMirrored flipVertically:(BOOL)flipVertically delayedCameraInitialization:(BOOL)delayedCameraInitialization notificationCenter:(NSNotificationCenter * _Nonnull)notificationCenter OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS("_TtCC21UnifiedVideoEditorSDK25EffectPlayerConfiguration8Defaults")
-@interface Defaults : NSObject
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) AVCaptureSessionPreset _Nonnull videoSessionPreset;)
-+ (AVCaptureSessionPreset _Nonnull)videoSessionPreset SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) AVCaptureSessionPreset _Nonnull photoSessionPreset;)
-+ (AVCaptureSessionPreset _Nonnull)photoSessionPreset SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) CGSize photoRenderSize;)
-+ (CGSize)photoRenderSize SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) CGSize videoRenderSize;)
-+ (CGSize)videoRenderSize SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) NSInteger defaultFrameRate;)
-+ (NSInteger)defaultFrameRate SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-typedef SWIFT_ENUM(NSInteger, EffectPlayerRenderMode, open) {
-  EffectPlayerRenderModePhoto = 0,
-  EffectPlayerRenderModeVideo = 1,
-};
-
-@class UITouch;
-@class UIEvent;
-@class UITapGestureRecognizer;
-@class UIPinchGestureRecognizer;
-@class UIRotationGestureRecognizer;
-@class UISwipeGestureRecognizer;
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK16EffectPlayerView")
-@interface EffectPlayerView : UIView
-- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder SWIFT_UNAVAILABLE;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) Class _Nonnull layerClass;)
-+ (Class _Nonnull)layerClass SWIFT_WARN_UNUSED_RESULT;
-- (void)touchesBegan:(NSSet<UITouch *> * _Nonnull)touches withEvent:(UIEvent * _Nullable)event;
-- (void)touchesMoved:(NSSet<UITouch *> * _Nonnull)touches withEvent:(UIEvent * _Nullable)event;
-- (void)touchesEnded:(NSSet<UITouch *> * _Nonnull)touches withEvent:(UIEvent * _Nullable)event;
-- (void)touchesCancelled:(NSSet<UITouch *> * _Nonnull)touches withEvent:(UIEvent * _Nullable)event;
-- (void)onLongTapGestureWithGesture:(UITapGestureRecognizer * _Nonnull)gesture;
-- (void)onDoubleTapGestureWithGesture:(UITapGestureRecognizer * _Nonnull)gesture;
-- (void)onScaleGestureWithGesture:(UIPinchGestureRecognizer * _Nonnull)gesture;
-- (void)onRotationGestureWithGesture:(UIRotationGestureRecognizer * _Nonnull)gesture;
-- (void)onSwipeGestureWithGesture:(UISwipeGestureRecognizer * _Nonnull)gesture;
-@end
 
 
 SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK39EffectSubtypeModificationsEventListener_")
@@ -1555,12 +1196,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK18ImageConfiguration")
 
 
 
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK14InputServicing_")
-@protocol InputServicing <AudioCapturing, CameraServicing, CameraZoomable>
-@end
-
-
 SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK19KeyboardLayoutGuide")
 @interface KeyboardLayoutGuide : UILayoutGuide
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER SWIFT_UNAVAILABLE;
@@ -1716,38 +1351,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK7NibView")
 @end
 
 
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK19OutputConfiguration")
-@interface OutputConfiguration : NSObject
-@property (nonatomic, readonly) BOOL applyWatermark;
-@property (nonatomic, readonly) BOOL adjustDeviceOrientation;
-@property (nonatomic, readonly) BOOL mirrorFrontCamera;
-@property (nonatomic, readonly) BOOL useHEVCCodecIfPossible;
-- (nonnull instancetype)initWithApplyWatermark:(BOOL)applyWatermark adjustDeviceOrientation:(BOOL)adjustDeviceOrientation mirrorFrontCamera:(BOOL)mirrorFrontCamera useHEVCCodecIfPossible:(BOOL)useHEVCCodecIfPossible OBJC_DESIGNATED_INITIALIZER;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) OutputConfiguration * _Nonnull defaultConfiguration;)
-+ (OutputConfiguration * _Nonnull)defaultConfiguration SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK15OutputServicing_")
-@protocol OutputServicing
-- (void)configureWatermark:(WatermarkInfo * _Nonnull)watermarkInfo;
-- (void)takeSnapshotWithHandler:(void (^ _Nonnull)(UIImage * _Nullable))handler;
-- (void)takeSnapshotWithConfiguration:(OutputConfiguration * _Nonnull)configuration handler:(void (^ _Nonnull)(UIImage * _Nullable))handler;
-- (void)removeWatermark;
-- (void)startVideoCapturingWithFileURL:(NSURL * _Nullable)fileURL externalAudioConfiguration:(ExternalAudioConfiguration * _Nullable)externalAudioConfiguration progress:(void (^ _Nullable)(CMTime))progress didStart:(void (^ _Nullable)(void))didStart shouldSkipFrame:(BOOL (^ _Nullable)(void))shouldSkipFrame isFirstRun:(BOOL)isFirstRun periodicProgressTimeInterval:(NSTimeInterval)periodicProgressTimeInterval boundaryTimes:(NSArray<NSValue *> * _Nullable)boundaryTimes boundaryHandler:(void (^ _Nullable)(CMTime))boundaryHandler totalDuration:(NSTimeInterval)totalDuration configuration:(OutputConfiguration * _Nonnull)configuration completion:(void (^ _Nonnull)(BOOL, NSError * _Nullable))completion;
-- (void)stopVideoCapturingWithCancel:(BOOL)cancel;
-- (void)reset;
-- (BOOL)hasDiskCapacityForRecording SWIFT_WARN_UNUSED_RESULT;
-- (void)startMuteEffectSoundIfNeeded;
-- (void)stopMuteEffectSound;
-@property (nonatomic, readonly) BOOL isRecording;
-@property (nonatomic) CGSize videoSize;
-@property (nonatomic) NSInteger cropOffsetY;
-@end
-
-
 enum PIPCameraLayoutSettings : NSInteger;
 
 SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK22PIPCameraLayoutSetting")
@@ -1895,6 +1498,7 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK26PopoverAlertViewController")
 @end
 
 @class UIGestureRecognizer;
+@class UITouch;
 
 @interface PopoverAlertViewController (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <UIGestureRecognizerDelegate>
 - (BOOL)gestureRecognizer:(UIGestureRecognizer * _Nonnull)gestureRecognizer shouldReceiveTouch:(UITouch * _Nonnull)touch SWIFT_WARN_UNUSED_RESULT;
@@ -1932,26 +1536,6 @@ typedef SWIFT_ENUM(NSInteger, RenderBehaviorAdapter, open) {
   RenderBehaviorAdapterPip = 5,
 };
 
-/// Options how to resize the result of effect player to display it on a target layer.
-typedef SWIFT_ENUM(NSInteger, RenderContentMode, open) {
-/// Fits the content into a target layer by keeping its aspect ratio.
-  RenderContentModeResizeAspect = 0,
-/// Fills a target layer with the content and maintains content’s aspect ratio.
-  RenderContentModeResizeAspectFill = 1,
-/// Makes the content the same size as a target layer by changing content’s aspect ratio.
-  RenderContentModeResize = 2,
-};
-
-
-@class VEOutputSettings;
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK12RenderTarget")
-@interface RenderTarget : PIPShapeDrawer
-- (CVPixelBufferRef _Nullable)makeVideoPixelBuffer SWIFT_WARN_UNUSED_RESULT;
-- (UIImage * _Nullable)makeSnapshotWithSettings:(VEOutputSettings * _Nonnull)settings watermarkPixelBuffer:(CVPixelBufferRef _Nullable)watermarkPixelBuffer SWIFT_WARN_UNUSED_RESULT;
-- (void)activate;
-- (void)present:(void (^ _Nullable)(CVPixelBufferRef _Nullable))willPresentHandler;
-@end
 
 
 
@@ -2228,13 +1812,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK34VideoTimeLineCollectionViewHandler")
 @end
 
 
-
-@interface VideoTimeLineCollectionViewHandler (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <TimeLineDataSourceDelegate>
-- (void)timelineDataSource:(id <TimeLineDataSource> _Nonnull)timelineDataSource didPreloadPreview:(UIImage * _Nonnull)preview;
-- (void)timelineDataSource:(id <TimeLineDataSource> _Nonnull)timelineDataSource didLoadImage:(UIImage * _Nonnull)image at:(NSInteger)index;
-- (void)timelineDataSourceDidFinishThumbnailFetch:(id <TimeLineDataSource> _Nonnull)timelineDataSource;
-@end
-
 @class UICollectionView;
 @class UICollectionViewLayout;
 @class NSIndexPath;
@@ -2245,42 +1822,19 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK34VideoTimeLineCollectionViewHandler")
 - (CGFloat)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 @end
 
+
+@interface VideoTimeLineCollectionViewHandler (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <TimeLineDataSourceDelegate>
+- (void)timelineDataSource:(id <TimeLineDataSource> _Nonnull)timelineDataSource didPreloadPreview:(UIImage * _Nonnull)preview;
+- (void)timelineDataSource:(id <TimeLineDataSource> _Nonnull)timelineDataSource didLoadImage:(UIImage * _Nonnull)image at:(NSInteger)index;
+- (void)timelineDataSourceDidFinishThumbnailFetch:(id <TimeLineDataSource> _Nonnull)timelineDataSource;
+@end
+
 @class UICollectionViewCell;
 
 @interface VideoTimeLineCollectionViewHandler (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <UICollectionViewDataSource, UICollectionViewDelegate>
 - (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 - (void)collectionView:(UICollectionView * _Nonnull)collectionView willDisplayCell:(UICollectionViewCell * _Nonnull)cell forItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
-@end
-
-typedef SWIFT_ENUM(NSInteger, WatermarkCornerPosition, open) {
-  WatermarkCornerPositionTopLeft = 0,
-  WatermarkCornerPositionTopRight = 1,
-  WatermarkCornerPositionBottomRight = 2,
-  WatermarkCornerPositionBottomLeft = 3,
-};
-
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK21WatermarkDrawSettings")
-@interface WatermarkDrawSettings : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-/// Watermark placement coulb be configured by normalized position (0..1 for x, y based on final pixel buffer size),
-/// or by specifying corner and fixed pixel offset from it.
-/// Size could be configured by specifying fixed pixel width, or by normalized value (0..1 from final pixel buffer width),
-/// height is always calculated using aspect ratio of provided watermark image.
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK13WatermarkInfo")
-@interface WatermarkInfo : NSObject
-- (nonnull instancetype)initWithImage:(UIImage * _Nonnull)image corner:(enum WatermarkCornerPosition)corner offset:(CGPoint)offset targetWidth:(CGFloat)targetWidth OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithImage:(UIImage * _Nonnull)image corner:(enum WatermarkCornerPosition)corner offset:(CGPoint)offset targetNormalizedWidth:(CGFloat)targetNormalizedWidth OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithImage:(UIImage * _Nonnull)image normalizedPosition:(CGPoint)normalizedPosition targetWidth:(CGFloat)targetWidth OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithImage:(UIImage * _Nonnull)image normalizedPosition:(CGPoint)normalizedPosition targetNormalizedWidth:(CGFloat)targetNormalizedWidth OBJC_DESIGNATED_INITIALIZER;
-- (WatermarkDrawSettings * _Nonnull)drawSettingsWithBoundsSize:(CGSize)boundsSize outputSettings:(VEOutputSettings * _Nonnull)outputSettings SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
@@ -2806,13 +2360,6 @@ SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK26AudioBrowserTrackApplyable_")
 @property (nonatomic, strong) AudioBrowserTrack * _Nonnull track;
 @end
 
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK14AudioCapturing_")
-@protocol AudioCapturing
-- (void)startAudioCapturing;
-- (void)stopAudioCapturing;
-@end
-
 @class UIScrollView;
 
 SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK22AudioPartSelectionView")
@@ -2967,20 +2514,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK18BanubaCameraModule")
 @end
 
 
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK24BanubaSdkManagerDelegate_")
-@protocol BanubaSdkManagerDelegate
-- (void)willPresentWithChangedPixelBuffer:(CVPixelBufferRef _Nullable)changedPixelBuffer;
-- (void)willOutputWithPixelBuffer:(CVPixelBufferRef _Nonnull)pixelBuffer;
-- (void)didReceiveFPSInfo:(float)cameraFPS recognizerFPS:(float)recognizerFPS renderFPS:(float)renderFPS;
-@end
-
-
-@interface BanubaCameraModule (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <BanubaSdkManagerDelegate>
-- (void)willOutputWithPixelBuffer:(CVPixelBufferRef _Nonnull)pixelBuffer;
-- (void)willPresentWithChangedPixelBuffer:(CVPixelBufferRef _Nullable)changedPixelBuffer;
-- (void)didReceiveFPSInfo:(float)cameraFPS recognizerFPS:(float)recognizerFPS renderFPS:(float)renderFPS;
-@end
-
 @class ExternalAudioConfiguration;
 @class NSValue;
 
@@ -3042,6 +2575,41 @@ SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK26SDKEffectsTextureServicing_")
 - (void)unloadEffectTexture;
 @end
 
+enum CameraModuleSessionType : NSInteger;
+
+SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK17SDKInputServicing_")
+@protocol SDKInputServicing
+@property (nonatomic, readonly) BOOL isFrontCamera;
+@property (nonatomic, readonly) float zoomFactor;
+@property (nonatomic, readonly) enum CameraModuleSessionType currentCameraSessionType;
+@property (nonatomic, strong) id <SDKInputServicingDelegate> _Nullable inputDelegate;
+- (void)focusAt:(CGPoint)point useContinuousDetection:(BOOL)useContinuousDetection;
+- (float)setZoomFactor:(float)zoomFactor SWIFT_WARN_UNUSED_RESULT;
+- (void)toggleCameraWithCompletion:(void (^ _Nonnull)(void))completion;
+- (void)startCamera;
+- (void)startAudioCapturing;
+- (void)stopAudioCapturing;
+- (void)setCameraSessionType:(enum CameraModuleSessionType)type;
+- (AVCaptureTorchMode)setTorchWithMode:(AVCaptureTorchMode)mode;
+- (AVCaptureTorchMode)toggleTorch SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface BanubaCameraModule (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <SDKInputServicing>
+@property (nonatomic, readonly) float zoomFactor;
+@property (nonatomic, readonly) BOOL isFrontCamera;
+@property (nonatomic, readonly) enum CameraModuleSessionType currentCameraSessionType;
+- (void)focusAt:(CGPoint)point useContinuousDetection:(BOOL)useContinuousDetection;
+- (float)setZoomFactor:(float)zoomFactor SWIFT_WARN_UNUSED_RESULT;
+- (void)toggleCameraWithCompletion:(void (^ _Nonnull)(void))completion;
+- (void)startCamera;
+- (void)startAudioCapturing;
+- (void)stopAudioCapturing;
+- (void)setCameraSessionType:(enum CameraModuleSessionType)type;
+- (AVCaptureTorchMode)setTorchWithMode:(AVCaptureTorchMode)mode SWIFT_WARN_UNUSED_RESULT;
+- (AVCaptureTorchMode)toggleTorch SWIFT_WARN_UNUSED_RESULT;
+@end
+
 @protocol RenderEffect;
 @protocol EffectSubtypeModificationsEventListener;
 
@@ -3077,41 +2645,6 @@ SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK19SDKEffectsServicing_")
 - (void)effectDidEndApplying;
 - (void)effectDidResetApplying;
 - (void)effectDidChangeState;
-@end
-
-enum CameraModuleSessionType : NSInteger;
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK17SDKInputServicing_")
-@protocol SDKInputServicing
-@property (nonatomic, readonly) BOOL isFrontCamera;
-@property (nonatomic, readonly) float zoomFactor;
-@property (nonatomic, readonly) enum CameraModuleSessionType currentCameraSessionType;
-@property (nonatomic, strong) id <SDKInputServicingDelegate> _Nullable inputDelegate;
-- (void)focusAt:(CGPoint)point useContinuousDetection:(BOOL)useContinuousDetection;
-- (float)setZoomFactor:(float)zoomFactor SWIFT_WARN_UNUSED_RESULT;
-- (void)toggleCameraWithCompletion:(void (^ _Nonnull)(void))completion;
-- (void)startCamera;
-- (void)startAudioCapturing;
-- (void)stopAudioCapturing;
-- (void)setCameraSessionType:(enum CameraModuleSessionType)type;
-- (AVCaptureTorchMode)setTorchWithMode:(AVCaptureTorchMode)mode;
-- (AVCaptureTorchMode)toggleTorch SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface BanubaCameraModule (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <SDKInputServicing>
-@property (nonatomic, readonly) float zoomFactor;
-@property (nonatomic, readonly) BOOL isFrontCamera;
-@property (nonatomic, readonly) enum CameraModuleSessionType currentCameraSessionType;
-- (void)focusAt:(CGPoint)point useContinuousDetection:(BOOL)useContinuousDetection;
-- (float)setZoomFactor:(float)zoomFactor SWIFT_WARN_UNUSED_RESULT;
-- (void)toggleCameraWithCompletion:(void (^ _Nonnull)(void))completion;
-- (void)startCamera;
-- (void)startAudioCapturing;
-- (void)stopAudioCapturing;
-- (void)setCameraSessionType:(enum CameraModuleSessionType)type;
-- (AVCaptureTorchMode)setTorchWithMode:(AVCaptureTorchMode)mode SWIFT_WARN_UNUSED_RESULT;
-- (AVCaptureTorchMode)toggleTorch SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -3233,175 +2766,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK17BanubaGalleryItem")
 - (BOOL)isEqual:(id _Nullable)object SWIFT_WARN_UNUSED_RESULT;
 @end
 
-@class BNBEffectPlayer;
-@class BNBEffectManager;
-@class BNBEffect;
-@protocol InputServicing;
-@protocol OutputServicing;
-@class RenderTarget;
-@class EffectPlayerConfiguration;
-@class EffectPlayerView;
-@class CAMetalLayer;
-enum EffectPlayerRenderMode : NSInteger;
-enum RenderContentMode : NSInteger;
-@class NSThread;
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK16BanubaSdkManager")
-@interface BanubaSdkManager : NSObject
-@property (nonatomic, weak) id <BanubaSdkManagerDelegate> _Nullable delegate;
-/// Access to current instance of BNBEffectPlayer
-@property (nonatomic, readonly, strong) BNBEffectPlayer * _Nullable effectPlayer;
-/// Face orintation in frame (degrees).
-@property (nonatomic) NSInteger faceOrientation;
-/// Setup the camera if needed.
-@property (nonatomic) BOOL isCameraEnabled;
-- (BNBEffectManager * _Nullable)effectManager SWIFT_WARN_UNUSED_RESULT;
-/// Enable autorotation mode. Camera orientation and render size should change along with UI orientation
-@property (nonatomic) BOOL autoRotationEnabled;
-/// \param effectUrl path to effect relative to resource paths passed to <code>initialize</code>.
-///
-/// \param synchronous block the call until effect is loaded.
-///
-- (BNBEffect * _Nullable)loadEffect:(NSString * _Nonnull)effectUrl synchronous:(BOOL)synchronous SWIFT_WARN_UNUSED_RESULT;
-- (BNBEffect * _Nullable)currentEffect SWIFT_WARN_UNUSED_RESULT;
-/// Maximum number of faces to trace simultaneously
-- (void)setMaxFaces:(int32_t)maxFaces;
-@property (nonatomic, strong) id <InputServicing> _Nonnull input;
-@property (nonatomic, readonly, strong) id <OutputServicing> _Nullable output;
-@property (nonatomic, strong) RenderTarget * _Nullable renderTarget;
-@property (nonatomic, readonly, strong) EffectPlayerConfiguration * _Nullable playerConfiguration;
-- (void)setRenderTargetWithView:(EffectPlayerView * _Nonnull)view playerConfiguration:(EffectPlayerConfiguration * _Nullable)playerConfiguration;
-- (void)setRenderTargetWithLayer:(CAMetalLayer * _Nonnull)layer renderMode:(enum EffectPlayerRenderMode)renderMode contentMode:(enum RenderContentMode)contentMode;
-- (void)setRenderTargetWithLayer:(CAMetalLayer * _Nonnull)layer contentMode:(enum RenderContentMode)contentMode playerConfiguration:(EffectPlayerConfiguration * _Nullable)playerConfiguration;
-- (void)removeRenderTarget;
-@property (nonatomic, readonly, strong) NSThread * _Nullable renderThread;
-@property (nonatomic) BOOL shouldAutoStartOnEnterForeground;
-@property (nonatomic, readonly) BOOL isLoaded;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-/// Intialize common banuba SDK resources. This must be called before <code>BanubaSdkManger</code> instance
-/// creation. Counterpart <code>deinitialize</code> exists.
-/// \param resourcePath paths to cutom resources folders
-///
-/// \param clientTokenString client token
-///
-/// \param logLevel log level
-///
-+ (void)initializeWithResourcePath:(NSArray<NSString *> * _Nonnull)resourcePath clientTokenString:(NSString * _Nonnull)clientTokenString logLevel:(BNBSeverityLevel)logLevel;
-/// Release common Banuba SDK resources
-+ (void)deinitialize;
-- (void)setupWithConfiguration:(EffectPlayerConfiguration * _Nonnull)configuration;
-- (void)destroy;
-/// BNBEffectPlayer may crash on certain devices. So, we downscale the input image before processing.
-+ (CVPixelBufferRef _Nullable)scaleBeforeProcessing:(CVPixelBufferRef _Nullable)buffer SWIFT_WARN_UNUSED_RESULT;
-@property (nonatomic, readonly) BOOL isDrawOnDemandMode;
-@property (nonatomic, readonly) BOOL frameOnDemandRendered;
-- (void)setDrawOnDemandMode:(BOOL)mode;
-- (void)requestFrameDraw;
-@end
-
-
-
-
-
-@interface BanubaSdkManager (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <BNBCameraPoiListener>
-- (void)onCameraPoiChanged:(float)x y:(float)y;
-@end
-
-
-@interface BanubaSdkManager (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <BNBFaceNumberListener>
-- (void)onFaceNumberChanged:(int32_t)faceNumber;
-@end
-
-
-@class BanubaVisualClipVideo;
-
-@interface BanubaSdkManager (SWIFT_EXTENSION(UnifiedVideoEditorSDK))
-+ (NSArray<NSString *> * _Nullable)createAutoCutVideosWith:(NSString * _Nonnull)musicDbPath visualEffects:(NSArray<NSString *> * _Nonnull)visualEffects transitionEffects:(NSArray<NSString *> * _Nonnull)transitionEffects videos:(NSArray<BanubaVisualClipVideo *> * _Nonnull)videos numFrames:(int32_t)numFrames resultSize:(int32_t)resultSize cancellation:(BOOL (^ _Nonnull)(double))cancellation SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-SWIFT_CLASS("_TtCC21UnifiedVideoEditorSDK16BanubaSdkManager21BanubaVisualClipVideo")
-@interface BanubaVisualClipVideo : NSObject
-- (nonnull instancetype)initWithPath:(NSString * _Nonnull)path startPosition:(float)startPosition duration:(float)duration OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK20InputServiceDelegate_")
-@protocol InputServiceDelegate
-- (void)pushWithCvBuffer:(CVPixelBufferRef _Nonnull)cvBuffer;
-- (void)pushWithCmBuffer:(CMSampleBufferRef _Nonnull)cmBuffer;
-@end
-
-
-@interface BanubaSdkManager (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <InputServiceDelegate>
-- (void)pushWithCmBuffer:(CMSampleBufferRef _Nonnull)cmBuffer;
-- (void)pushWithCvBuffer:(CVPixelBufferRef _Nonnull)cvBuffer;
-@end
-
-
-
-
-@interface BanubaSdkManager (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <AppStateObserverDelegate>
-- (void)applicationWillResignActive:(AppStateObserver * _Nonnull)appStateObserver;
-- (void)applicationDidBecomeActive:(AppStateObserver * _Nonnull)appStateObserver;
-- (void)applicationDidEnterBackgroundNotification:(AppStateObserver * _Nonnull)appStateObserver;
-- (void)applicationWillEnterForeground:(AppStateObserver * _Nonnull)appStateObserver;
-- (void)applicationWillTerminateNotification:(AppStateObserver * _Nonnull)appStateObserver;
-@end
-
-
-@class NSNumber;
-@class CameraPhotoSettings;
-@class WatermarkInfo;
-
-@interface BanubaSdkManager (SWIFT_EXTENSION(UnifiedVideoEditorSDK))
-- (void)startEffectPlayer;
-- (void)stopEffectPlayer;
-- (void)destroyEffectPlayer;
-/// Image editing mode - renders effect on single frame prepared from image, applies effect on image in full resolution.
-/// Workflow to use editing:
-/// <ul>
-///   <li>
-///     Configure effect player with correct render target and render size to match aspect ratio of edited image (could be done with setRenderTarget call), load needed effect.
-///     Pay attention that render size could be less than original image size (moreover, bigger resolution could cause performance issues), the only restriction is to preserve aspect ratio.
-///   </li>
-///   <li>
-///     Call startEditingImage. Completion block returns is any face found or not. From that moment image with applied effect is rendered on provided render target.
-///   </li>
-///   <li>
-///     Call captureEditedImage to get edited image with applied effect in fullsize resolution.
-///   </li>
-///   <li>
-///     Call stopEditingImage. After that moment user can switch to other render target and restore previous logic (push frames from camera), if needed.
-///   </li>
-/// </ul>
-- (void)startEditingImage:(UIImage * _Nonnull)image recognizerIterations:(NSNumber * _Nullable)recognizerIterations imageOrientation:(BNBCameraOrientation)imageOrientation requireMirroring:(BOOL)requireMirroring faceOrientation:(NSInteger)faceOrientation fieldOfView:(float)fieldOfView resetEffect:(BOOL)resetEffect completion:(void (^ _Nullable)(NSInteger, CGRect))completion;
-/// Helper method to fast image update during editing mode, when image is changed without modifying facial features,
-/// so framedata from previous image will be correct for new one.
-- (void)updateEditingFrameWithImage:(UIImage * _Nonnull)image imageOrientation:(BNBCameraOrientation)imageOrientation requireMirroring:(BOOL)requireMirroring faceOrientation:(NSInteger)faceOrientation fieldOfView:(float)fieldOfView completion:(void (^ _Nullable)(BOOL))completion;
-- (void)captureEditedImageWithImageOrientation:(BNBCameraOrientation)imageOrientation resetEffect:(BOOL)resetEffect completion:(void (^ _Nonnull)(UIImage * _Nullable))completion;
-- (void)stopEditingImageWithStartCameraInput:(BOOL)startCameraInput;
-- (void)makeCameraPhotoWithCameraSettings:(CameraPhotoSettings * _Nonnull)cameraSettings flipFrontCamera:(BOOL)flipFrontCamera srcImageHandler:(void (^ _Nullable)(CVPixelBufferRef _Nonnull))srcImageHandler completion:(void (^ _Nonnull)(UIImage * _Nullable))completion;
-- (void)processImageData:(CVImageBufferRef _Nonnull)inputData orientation:(BNBCameraOrientation)orientation faceOrientation:(NSInteger)faceOrientation fieldOfView:(float)fieldOfView isMirrored:(BOOL)isMirrored completion:(void (^ _Nonnull)(UIImage * _Nullable))completion;
-- (void)processImageData:(UIImage * _Nonnull)imputImage orientation:(BNBCameraOrientation)orientation fieldOfView:(float)fieldOfView isMirrored:(BOOL)isMirrored completion:(void (^ _Nonnull)(UIImage * _Nullable))completion;
-- (void)configureWatermark:(WatermarkInfo * _Nonnull)watermarkInfo;
-- (void)removeWatermark;
-- (void)startVideoProcessingWithWidth:(NSUInteger)width height:(NSUInteger)height orientation:(BNBCameraOrientation)orientation resetEffect:(BOOL)resetEffect;
-- (void)stopVideoProcessingWithResetEffect:(BOOL)resetEffect;
-- (void)processVideoFrameFrom:(CVPixelBufferRef _Nonnull)from to:(CVPixelBufferRef _Nonnull)to timeNs:(int64_t)timeNs iterations:(NSNumber * _Nullable)iterations cameraOrientation:(BNBCameraOrientation)cameraOrientation requireMirroring:(BOOL)requireMirroring faceOrientation:(NSInteger)faceOrientation fieldOfView:(float)fieldOfView;
-@property (nonatomic, readonly) BNBCameraOrientation imageOrientationForCameraPhoto;
-@end
-
-
-@interface BanubaSdkManager (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <BNBFrameDurationListener>
-- (void)onRecognizerFrameDurationChanged:(float)instant averaged:(float)averaged;
-- (void)onCameraFrameDurationChanged:(float)instant averaged:(float)averaged;
-- (void)onRenderFrameDurationChanged:(float)instant averaged:(float)averaged;
-@end
-
-
 
 SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK32BaseTrackSelectionViewController")
 @interface BaseTrackSelectionViewController : UINavigationController
@@ -3448,66 +2812,6 @@ typedef SWIFT_ENUM(NSInteger, CameraModuleSessionType, open) {
   CameraModuleSessionTypeFrontPhoto = 2,
   CameraModuleSessionTypeBackPhoto = 3,
 };
-
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK19CameraPhotoSettings")
-@interface CameraPhotoSettings : NSObject
-@property (nonatomic, readonly) AVCapturePhotoQualityPrioritization photoQualityPrioritization;
-@property (nonatomic, readonly) AVCaptureFlashMode flashMode;
-/// CameraPhotoSettings constructor
-/// \param photoQualityPrioritization setup photo quality
-///
-/// \param flashMode setup  flash mode
-///
-- (nonnull instancetype)initWithPhotoQualityPrioritization:(AVCapturePhotoQualityPrioritization)photoQualityPrioritization flashMode:(AVCaptureFlashMode)flashMode OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-enum CameraSessionType : NSInteger;
-@class AVCaptureVideoDataOutput;
-@class BNBFrameData;
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK15CameraServicing_")
-@protocol CameraServicing
-@property (nonatomic, strong) id <InputServiceDelegate> _Nullable delegate;
-@property (nonatomic, readonly) BOOL isFrontCamera;
-@property (nonatomic, readonly) BOOL isPhotoCameraSession;
-@property (nonatomic, readonly) enum CameraSessionType currentCameraSessionType;
-@property (nonatomic, readonly) CGPoint exposurePointOfInterest;
-@property (nonatomic) BOOL flipCamera;
-@property (nonatomic, readonly, strong) AVCaptureVideoDataOutput * _Nullable cameraVideoOutput;
-- (void)setupCamera;
-- (void)startCamera;
-- (void)stopCamera;
-- (void)releaseAudioCaptureSession;
-- (void)setCameraSessionType:(enum CameraSessionType)type;
-- (void)setCameraSessionType:(enum CameraSessionType)type completion:(void (^ _Nonnull)(void))completion;
-- (void)setCameraSessionType:(enum CameraSessionType)type zoomFactor:(float)zoomFactor completion:(void (^ _Nonnull)(void))completion;
-- (void)focusAt:(CGPoint)point useContinuousDetection:(BOOL)useContinuousDetection;
-- (AVCaptureTorchMode)setTorchWithMode:(AVCaptureTorchMode)mode SWIFT_WARN_UNUSED_RESULT;
-- (AVCaptureTorchMode)toggleTorch SWIFT_WARN_UNUSED_RESULT;
-- (void)initiatePhotoCaptureWithCameraSettings:(CameraPhotoSettings * _Nonnull)cameraSettings completion:(void (^ _Nonnull)(CVImageBufferRef _Nullable, BNBFrameData * _Nullable))completion;
-- (void)switchCameraTo:(enum CameraSessionType)type completion:(void (^ _Nonnull)(void))completion;
-@end
-
-typedef SWIFT_ENUM(NSInteger, CameraSessionType, open) {
-  CameraSessionTypeFrontCameraVideoSession = 0,
-  CameraSessionTypeBackCameraVideoSession = 1,
-  CameraSessionTypeFrontCameraPhotoSession = 2,
-  CameraSessionTypeBackCameraPhotoSession = 3,
-};
-
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK14CameraZoomable_")
-@protocol CameraZoomable
-@property (nonatomic, readonly) float currentFieldOfView;
-@property (nonatomic, readonly) BOOL isZoomFactorAdjustable;
-@property (nonatomic, readonly) float minZoomFactor;
-@property (nonatomic, readonly) float maxZoomFactor;
-@property (nonatomic, readonly) float zoomFactor;
-- (float)setZoomFactor:(float)zoomFactor SWIFT_WARN_UNUSED_RESULT;
-@end
 
 @class CALayer;
 
@@ -3567,115 +2871,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK11EffectModel")
 @end
 
 
-
-@class NSNotificationCenter;
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK25EffectPlayerConfiguration")
-@interface EffectPlayerConfiguration : NSObject
-@property (nonatomic, readonly) enum CameraSessionType cameraMode;
-@property (nonatomic) enum RenderContentMode renderContentMode;
-@property (nonatomic) CGSize renderSize;
-/// Preset for quality of photo or video and audio output.
-@property (nonatomic) AVCaptureSessionPreset _Nonnull captureSessionPreset;
-@property (nonatomic) NSInteger preferredRenderFrameRate;
-@property (nonatomic) BOOL shouldAutoStartOnEnterForeground;
-@property (nonatomic) BOOL isMirrored;
-@property (nonatomic) BOOL flipVertically;
-@property (nonatomic) BOOL delayedCameraInitialization;
-@property (nonatomic) BNBCameraOrientation orientation;
-@property (nonatomic, strong) NSNotificationCenter * _Nonnull notificationCenter;
-- (nonnull instancetype)init;
-/// CameraLutStage constructor
-/// \param renderMode effect player render mode
-///
-/// \param renderContentMode render content mode
-///
-/// \param orientation camera orientation
-///
-/// \param preferredRenderFrameRate preferred render frame rate
-///
-/// \param shouldAutoStartOnEnterForeground should auto start on enter foreground
-///
-/// \param isMirrored camera is mirrored
-///
-/// \param fpsLimit setup fps limit
-///
-/// \param delayedCameraInitialization delayed сamera initialization
-///
-/// \param notificationCenter setup notification center
-///
-- (nonnull instancetype)initWithRenderMode:(enum EffectPlayerRenderMode)renderMode renderContentMode:(enum RenderContentMode)renderContentMode orientation:(BNBCameraOrientation)orientation preferredRenderFrameRate:(NSInteger)preferredRenderFrameRate shouldAutoStartOnEnterForeground:(BOOL)shouldAutoStartOnEnterForeground isMirrored:(BOOL)isMirrored delayedCameraInitialization:(BOOL)delayedCameraInitialization notificationCenter:(NSNotificationCenter * _Nonnull)notificationCenter;
-/// CameraLutStage constructor
-/// \param cameraMode camera mode
-///
-/// \param renderContentMode render content mode
-///
-/// \param renderSize setup render size
-///
-/// \param captureSessionPreset capture session preset
-///
-/// \param orientation camera orientation
-///
-/// \param preferredRenderFrameRate preferred render frame rate
-///
-/// \param shouldAutoStartOnEnterForeground should auto start on enter foreground
-///
-/// \param isMirrored camera is mirrored
-///
-/// \param flipVertically setup flip vertically
-///
-/// \param delayedCameraInitialization delayed сamera initialization
-///
-/// \param notificationCenter setup notification center
-///
-- (nonnull instancetype)initWithCameraMode:(enum CameraSessionType)cameraMode renderContentMode:(enum RenderContentMode)renderContentMode renderSize:(CGSize)renderSize captureSessionPreset:(AVCaptureSessionPreset _Nonnull)captureSessionPreset orientation:(BNBCameraOrientation)orientation preferredRenderFrameRate:(NSInteger)preferredRenderFrameRate shouldAutoStartOnEnterForeground:(BOOL)shouldAutoStartOnEnterForeground isMirrored:(BOOL)isMirrored flipVertically:(BOOL)flipVertically delayedCameraInitialization:(BOOL)delayedCameraInitialization notificationCenter:(NSNotificationCenter * _Nonnull)notificationCenter OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS("_TtCC21UnifiedVideoEditorSDK25EffectPlayerConfiguration8Defaults")
-@interface Defaults : NSObject
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) AVCaptureSessionPreset _Nonnull videoSessionPreset;)
-+ (AVCaptureSessionPreset _Nonnull)videoSessionPreset SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) AVCaptureSessionPreset _Nonnull photoSessionPreset;)
-+ (AVCaptureSessionPreset _Nonnull)photoSessionPreset SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) CGSize photoRenderSize;)
-+ (CGSize)photoRenderSize SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) CGSize videoRenderSize;)
-+ (CGSize)videoRenderSize SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) NSInteger defaultFrameRate;)
-+ (NSInteger)defaultFrameRate SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-typedef SWIFT_ENUM(NSInteger, EffectPlayerRenderMode, open) {
-  EffectPlayerRenderModePhoto = 0,
-  EffectPlayerRenderModeVideo = 1,
-};
-
-@class UITouch;
-@class UIEvent;
-@class UITapGestureRecognizer;
-@class UIPinchGestureRecognizer;
-@class UIRotationGestureRecognizer;
-@class UISwipeGestureRecognizer;
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK16EffectPlayerView")
-@interface EffectPlayerView : UIView
-- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder SWIFT_UNAVAILABLE;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) Class _Nonnull layerClass;)
-+ (Class _Nonnull)layerClass SWIFT_WARN_UNUSED_RESULT;
-- (void)touchesBegan:(NSSet<UITouch *> * _Nonnull)touches withEvent:(UIEvent * _Nullable)event;
-- (void)touchesMoved:(NSSet<UITouch *> * _Nonnull)touches withEvent:(UIEvent * _Nullable)event;
-- (void)touchesEnded:(NSSet<UITouch *> * _Nonnull)touches withEvent:(UIEvent * _Nullable)event;
-- (void)touchesCancelled:(NSSet<UITouch *> * _Nonnull)touches withEvent:(UIEvent * _Nullable)event;
-- (void)onLongTapGestureWithGesture:(UITapGestureRecognizer * _Nonnull)gesture;
-- (void)onDoubleTapGestureWithGesture:(UITapGestureRecognizer * _Nonnull)gesture;
-- (void)onScaleGestureWithGesture:(UIPinchGestureRecognizer * _Nonnull)gesture;
-- (void)onRotationGestureWithGesture:(UIRotationGestureRecognizer * _Nonnull)gesture;
-- (void)onSwipeGestureWithGesture:(UISwipeGestureRecognizer * _Nonnull)gesture;
-@end
 
 
 SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK39EffectSubtypeModificationsEventListener_")
@@ -3854,12 +3049,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK18ImageConfiguration")
 
 
 
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK14InputServicing_")
-@protocol InputServicing <AudioCapturing, CameraServicing, CameraZoomable>
-@end
-
-
 SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK19KeyboardLayoutGuide")
 @interface KeyboardLayoutGuide : UILayoutGuide
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER SWIFT_UNAVAILABLE;
@@ -4015,38 +3204,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK7NibView")
 @end
 
 
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK19OutputConfiguration")
-@interface OutputConfiguration : NSObject
-@property (nonatomic, readonly) BOOL applyWatermark;
-@property (nonatomic, readonly) BOOL adjustDeviceOrientation;
-@property (nonatomic, readonly) BOOL mirrorFrontCamera;
-@property (nonatomic, readonly) BOOL useHEVCCodecIfPossible;
-- (nonnull instancetype)initWithApplyWatermark:(BOOL)applyWatermark adjustDeviceOrientation:(BOOL)adjustDeviceOrientation mirrorFrontCamera:(BOOL)mirrorFrontCamera useHEVCCodecIfPossible:(BOOL)useHEVCCodecIfPossible OBJC_DESIGNATED_INITIALIZER;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) OutputConfiguration * _Nonnull defaultConfiguration;)
-+ (OutputConfiguration * _Nonnull)defaultConfiguration SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK15OutputServicing_")
-@protocol OutputServicing
-- (void)configureWatermark:(WatermarkInfo * _Nonnull)watermarkInfo;
-- (void)takeSnapshotWithHandler:(void (^ _Nonnull)(UIImage * _Nullable))handler;
-- (void)takeSnapshotWithConfiguration:(OutputConfiguration * _Nonnull)configuration handler:(void (^ _Nonnull)(UIImage * _Nullable))handler;
-- (void)removeWatermark;
-- (void)startVideoCapturingWithFileURL:(NSURL * _Nullable)fileURL externalAudioConfiguration:(ExternalAudioConfiguration * _Nullable)externalAudioConfiguration progress:(void (^ _Nullable)(CMTime))progress didStart:(void (^ _Nullable)(void))didStart shouldSkipFrame:(BOOL (^ _Nullable)(void))shouldSkipFrame isFirstRun:(BOOL)isFirstRun periodicProgressTimeInterval:(NSTimeInterval)periodicProgressTimeInterval boundaryTimes:(NSArray<NSValue *> * _Nullable)boundaryTimes boundaryHandler:(void (^ _Nullable)(CMTime))boundaryHandler totalDuration:(NSTimeInterval)totalDuration configuration:(OutputConfiguration * _Nonnull)configuration completion:(void (^ _Nonnull)(BOOL, NSError * _Nullable))completion;
-- (void)stopVideoCapturingWithCancel:(BOOL)cancel;
-- (void)reset;
-- (BOOL)hasDiskCapacityForRecording SWIFT_WARN_UNUSED_RESULT;
-- (void)startMuteEffectSoundIfNeeded;
-- (void)stopMuteEffectSound;
-@property (nonatomic, readonly) BOOL isRecording;
-@property (nonatomic) CGSize videoSize;
-@property (nonatomic) NSInteger cropOffsetY;
-@end
-
-
 enum PIPCameraLayoutSettings : NSInteger;
 
 SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK22PIPCameraLayoutSetting")
@@ -4194,6 +3351,7 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK26PopoverAlertViewController")
 @end
 
 @class UIGestureRecognizer;
+@class UITouch;
 
 @interface PopoverAlertViewController (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <UIGestureRecognizerDelegate>
 - (BOOL)gestureRecognizer:(UIGestureRecognizer * _Nonnull)gestureRecognizer shouldReceiveTouch:(UITouch * _Nonnull)touch SWIFT_WARN_UNUSED_RESULT;
@@ -4231,26 +3389,6 @@ typedef SWIFT_ENUM(NSInteger, RenderBehaviorAdapter, open) {
   RenderBehaviorAdapterPip = 5,
 };
 
-/// Options how to resize the result of effect player to display it on a target layer.
-typedef SWIFT_ENUM(NSInteger, RenderContentMode, open) {
-/// Fits the content into a target layer by keeping its aspect ratio.
-  RenderContentModeResizeAspect = 0,
-/// Fills a target layer with the content and maintains content’s aspect ratio.
-  RenderContentModeResizeAspectFill = 1,
-/// Makes the content the same size as a target layer by changing content’s aspect ratio.
-  RenderContentModeResize = 2,
-};
-
-
-@class VEOutputSettings;
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK12RenderTarget")
-@interface RenderTarget : PIPShapeDrawer
-- (CVPixelBufferRef _Nullable)makeVideoPixelBuffer SWIFT_WARN_UNUSED_RESULT;
-- (UIImage * _Nullable)makeSnapshotWithSettings:(VEOutputSettings * _Nonnull)settings watermarkPixelBuffer:(CVPixelBufferRef _Nullable)watermarkPixelBuffer SWIFT_WARN_UNUSED_RESULT;
-- (void)activate;
-- (void)present:(void (^ _Nullable)(CVPixelBufferRef _Nullable))willPresentHandler;
-@end
 
 
 
@@ -4527,13 +3665,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK34VideoTimeLineCollectionViewHandler")
 @end
 
 
-
-@interface VideoTimeLineCollectionViewHandler (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <TimeLineDataSourceDelegate>
-- (void)timelineDataSource:(id <TimeLineDataSource> _Nonnull)timelineDataSource didPreloadPreview:(UIImage * _Nonnull)preview;
-- (void)timelineDataSource:(id <TimeLineDataSource> _Nonnull)timelineDataSource didLoadImage:(UIImage * _Nonnull)image at:(NSInteger)index;
-- (void)timelineDataSourceDidFinishThumbnailFetch:(id <TimeLineDataSource> _Nonnull)timelineDataSource;
-@end
-
 @class UICollectionView;
 @class UICollectionViewLayout;
 @class NSIndexPath;
@@ -4544,42 +3675,19 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK34VideoTimeLineCollectionViewHandler")
 - (CGFloat)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 @end
 
+
+@interface VideoTimeLineCollectionViewHandler (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <TimeLineDataSourceDelegate>
+- (void)timelineDataSource:(id <TimeLineDataSource> _Nonnull)timelineDataSource didPreloadPreview:(UIImage * _Nonnull)preview;
+- (void)timelineDataSource:(id <TimeLineDataSource> _Nonnull)timelineDataSource didLoadImage:(UIImage * _Nonnull)image at:(NSInteger)index;
+- (void)timelineDataSourceDidFinishThumbnailFetch:(id <TimeLineDataSource> _Nonnull)timelineDataSource;
+@end
+
 @class UICollectionViewCell;
 
 @interface VideoTimeLineCollectionViewHandler (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <UICollectionViewDataSource, UICollectionViewDelegate>
 - (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 - (void)collectionView:(UICollectionView * _Nonnull)collectionView willDisplayCell:(UICollectionViewCell * _Nonnull)cell forItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
-@end
-
-typedef SWIFT_ENUM(NSInteger, WatermarkCornerPosition, open) {
-  WatermarkCornerPositionTopLeft = 0,
-  WatermarkCornerPositionTopRight = 1,
-  WatermarkCornerPositionBottomRight = 2,
-  WatermarkCornerPositionBottomLeft = 3,
-};
-
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK21WatermarkDrawSettings")
-@interface WatermarkDrawSettings : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-/// Watermark placement coulb be configured by normalized position (0..1 for x, y based on final pixel buffer size),
-/// or by specifying corner and fixed pixel offset from it.
-/// Size could be configured by specifying fixed pixel width, or by normalized value (0..1 from final pixel buffer width),
-/// height is always calculated using aspect ratio of provided watermark image.
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK13WatermarkInfo")
-@interface WatermarkInfo : NSObject
-- (nonnull instancetype)initWithImage:(UIImage * _Nonnull)image corner:(enum WatermarkCornerPosition)corner offset:(CGPoint)offset targetWidth:(CGFloat)targetWidth OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithImage:(UIImage * _Nonnull)image corner:(enum WatermarkCornerPosition)corner offset:(CGPoint)offset targetNormalizedWidth:(CGFloat)targetNormalizedWidth OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithImage:(UIImage * _Nonnull)image normalizedPosition:(CGPoint)normalizedPosition targetWidth:(CGFloat)targetWidth OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithImage:(UIImage * _Nonnull)image normalizedPosition:(CGPoint)normalizedPosition targetNormalizedWidth:(CGFloat)targetNormalizedWidth OBJC_DESIGNATED_INITIALIZER;
-- (WatermarkDrawSettings * _Nonnull)drawSettingsWithBoundsSize:(CGSize)boundsSize outputSettings:(VEOutputSettings * _Nonnull)outputSettings SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 

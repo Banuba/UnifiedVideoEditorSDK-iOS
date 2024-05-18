@@ -156,41 +156,6 @@ public enum TransitionType : Swift.String, Swift.Codable, Swift.CaseIterable {
     get
   }
 }
-@objc public enum EffectPlayerRenderMode : Swift.Int {
-  case photo
-  case video
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
-}
-@_inheritsConvenienceInitializers @objc public class EffectPlayerConfiguration : ObjectiveC.NSObject {
-  @_inheritsConvenienceInitializers @objc public class Defaults : ObjectiveC.NSObject {
-    @objc public static let videoSessionPreset: AVFoundation.AVCaptureSession.Preset
-    @objc public static let photoSessionPreset: AVFoundation.AVCaptureSession.Preset
-    @objc public static let photoRenderSize: CoreFoundation.CGSize
-    @objc public static let videoRenderSize: CoreFoundation.CGSize
-    @objc public static let defaultFrameRate: Swift.Int
-    @objc override dynamic public init()
-    @objc deinit
-  }
-  @objc final public let cameraMode: UnifiedVideoEditorSDK.CameraSessionType
-  @objc public var renderContentMode: UnifiedVideoEditorSDK.RenderContentMode
-  @objc public var renderSize: CoreFoundation.CGSize
-  @objc public var captureSessionPreset: AVFoundation.AVCaptureSession.Preset
-  @objc public var preferredRenderFrameRate: Swift.Int
-  @objc public var shouldAutoStartOnEnterForeground: Swift.Bool
-  @objc public var isMirrored: Swift.Bool
-  @objc public var flipVertically: Swift.Bool
-  @objc public var delayedCameraInitialization: Swift.Bool
-  @objc public var orientation: BNBSdkCore.BNBCameraOrientation
-  @objc public var notificationCenter: Foundation.NotificationCenter
-  @objc override convenience dynamic public init()
-  @objc convenience public init(renderMode: UnifiedVideoEditorSDK.EffectPlayerRenderMode, renderContentMode: UnifiedVideoEditorSDK.RenderContentMode = .resizeAspect, orientation: BNBSdkCore.BNBCameraOrientation = .deg90, preferredRenderFrameRate: Swift.Int = EffectPlayerConfiguration.Defaults.defaultFrameRate, shouldAutoStartOnEnterForeground: Swift.Bool = true, isMirrored: Swift.Bool = false, delayedCameraInitialization: Swift.Bool = false, notificationCenter: Foundation.NotificationCenter = NotificationCenter.default)
-  @objc public init(cameraMode: UnifiedVideoEditorSDK.CameraSessionType, renderContentMode: UnifiedVideoEditorSDK.RenderContentMode = .resizeAspect, renderSize: CoreFoundation.CGSize, captureSessionPreset: AVFoundation.AVCaptureSession.Preset, orientation: BNBSdkCore.BNBCameraOrientation = .deg90, preferredRenderFrameRate: Swift.Int = EffectPlayerConfiguration.Defaults.defaultFrameRate, shouldAutoStartOnEnterForeground: Swift.Bool = true, isMirrored: Swift.Bool = false, flipVertically: Swift.Bool = true, delayedCameraInitialization: Swift.Bool = false, notificationCenter: Foundation.NotificationCenter = NotificationCenter.default)
-  @objc deinit
-}
 extension CoreFoundation.CGSize {
   public func swap() -> CoreFoundation.CGSize
 }
@@ -772,32 +737,6 @@ public protocol EffectsSDKServicing : UnifiedVideoEditorSDK.TransformEffectsSDKS
   var watermarkApplicator: any UnifiedVideoEditorSDK.WatermarkApplicatorServicing { get }
   var effectsConfigHolder: any UnifiedVideoEditorSDK.EffectsHolderServicing { get }
 }
-@objc public protocol OutputServicing {
-  @objc func configureWatermark(_ watermarkInfo: UnifiedVideoEditorSDK.WatermarkInfo)
-  @objc func takeSnapshot(handler: @escaping (UIKit.UIImage?) -> Swift.Void)
-  @objc func takeSnapshot(configuration: UnifiedVideoEditorSDK.OutputConfiguration, handler: @escaping (UIKit.UIImage?) -> Swift.Void)
-  @objc func removeWatermark()
-  @objc func startVideoCapturing(fileURL: Foundation.URL?, externalAudioConfiguration: UnifiedVideoEditorSDK.ExternalAudioConfiguration?, progress: ((CoreMedia.CMTime) -> Swift.Void)?, didStart: (() -> Swift.Void)?, shouldSkipFrame: (() -> Swift.Bool)?, isFirstRun: Swift.Bool, periodicProgressTimeInterval: Foundation.TimeInterval, boundaryTimes: [Foundation.NSValue]?, boundaryHandler: ((CoreMedia.CMTime) -> Swift.Void)?, totalDuration: Foundation.TimeInterval, configuration: UnifiedVideoEditorSDK.OutputConfiguration, completion: @escaping (Swift.Bool, (any Swift.Error)?) -> Swift.Void)
-  @objc func stopVideoCapturing(cancel: Swift.Bool)
-  @objc func reset()
-  @objc func hasDiskCapacityForRecording() -> Swift.Bool
-  @objc func startMuteEffectSoundIfNeeded()
-  @objc func stopMuteEffectSound()
-  @objc var isRecording: Swift.Bool { get }
-  @objc var videoSize: CoreFoundation.CGSize { get set }
-  @objc var cropOffsetY: Swift.Int { get set }
-}
-@objc public class OutputConfiguration : ObjectiveC.NSObject {
-  @objc final public let applyWatermark: Swift.Bool
-  @objc final public let adjustDeviceOrientation: Swift.Bool
-  @objc final public let mirrorFrontCamera: Swift.Bool
-  @objc final public let useHEVCCodecIfPossible: Swift.Bool
-  @objc public init(applyWatermark: Swift.Bool, adjustDeviceOrientation: Swift.Bool, mirrorFrontCamera: Swift.Bool, useHEVCCodecIfPossible: Swift.Bool)
-  @objc public static var defaultConfiguration: UnifiedVideoEditorSDK.OutputConfiguration {
-    @objc get
-  }
-  @objc deinit
-}
 public struct VESettings {
   public static var audio: [Swift.String : Any] {
     get
@@ -1131,142 +1070,6 @@ public struct ImageProgressive {
   public init()
   public init(isBlur: Swift.Bool, isFastestScan: Swift.Bool, scanInterval: Foundation.TimeInterval)
 }
-@objc public protocol BanubaSdkManagerDelegate {
-  @objc func willPresent(changedPixelBuffer: CoreVideo.CVPixelBuffer?)
-  @objc func willOutput(pixelBuffer: CoreVideo.CVPixelBuffer)
-  @objc func didReceiveFPSInfo(_ cameraFPS: Swift.Float, recognizerFPS: Swift.Float, renderFPS: Swift.Float)
-}
-@_inheritsConvenienceInitializers @objc public class BanubaSdkManager : ObjectiveC.NSObject {
-  @objc weak public var delegate: (any UnifiedVideoEditorSDK.BanubaSdkManagerDelegate)?
-  @objc public var effectPlayer: BNBSdkCore.BNBEffectPlayer? {
-    get
-  }
-  @objc public var faceOrientation: Swift.Int
-  @objc public var isCameraEnabled: Swift.Bool
-  @objc public func effectManager() -> BNBSdkCore.BNBEffectManager?
-  @objc public var autoRotationEnabled: Swift.Bool {
-    @objc get
-    @objc set
-  }
-  @objc public func loadEffect(_ effectUrl: Swift.String, synchronous: Swift.Bool = false) -> BNBSdkCore.BNBEffect?
-  @objc public func currentEffect() -> BNBSdkCore.BNBEffect?
-  @objc public func setMaxFaces(_ maxFaces: Swift.Int32)
-  public var voiceChanger: (any UnifiedVideoEditorSDK.VoiceChangeable)? {
-    get
-  }
-  @objc public var input: any UnifiedVideoEditorSDK.InputServicing {
-    @objc get
-    @objc set
-  }
-  @objc public var output: (any UnifiedVideoEditorSDK.OutputServicing)? {
-    @objc get
-  }
-  @objc public var renderTarget: UnifiedVideoEditorSDK.RenderTarget?
-  @objc public var playerConfiguration: UnifiedVideoEditorSDK.EffectPlayerConfiguration? {
-    @objc get
-  }
-  @objc public func setRenderTarget(view: UnifiedVideoEditorSDK.EffectPlayerView, playerConfiguration: UnifiedVideoEditorSDK.EffectPlayerConfiguration?)
-  @objc public func setRenderTarget(layer: QuartzCore.CAMetalLayer, renderMode: UnifiedVideoEditorSDK.EffectPlayerRenderMode, contentMode: UnifiedVideoEditorSDK.RenderContentMode = .resizeAspectFill)
-  @objc public func setRenderTarget(layer: QuartzCore.CAMetalLayer, contentMode: UnifiedVideoEditorSDK.RenderContentMode = .resizeAspectFill, playerConfiguration: UnifiedVideoEditorSDK.EffectPlayerConfiguration?)
-  @objc public func removeRenderTarget()
-  public var editingImageFrameData: BNBSdkCore.BNBFrameData? {
-    get
-  }
-  @objc public var renderThread: Foundation.Thread? {
-    @objc get
-  }
-  @objc public var shouldAutoStartOnEnterForeground: Swift.Bool
-  @objc public var isLoaded: Swift.Bool {
-    get
-  }
-  @objc override dynamic public init()
-  @objc public class func initialize(resourcePath: [Swift.String] = [], clientTokenString: Swift.String, logLevel: BNBSdkCore.BNBSeverityLevel = .info)
-  @objc public class func deinitialize()
-  @objc deinit
-  @objc public func setup(configuration: UnifiedVideoEditorSDK.EffectPlayerConfiguration)
-  @objc public func destroy()
-  @objc public static func scaleBeforeProcessing(_ buffer: CoreVideo.CVPixelBuffer?) -> CoreVideo.CVPixelBuffer?
-  @objc public var isDrawOnDemandMode: Swift.Bool {
-    get
-  }
-  @objc public var frameOnDemandRendered: Swift.Bool {
-    get
-  }
-  @objc public func setDrawOnDemandMode(_ mode: Swift.Bool)
-  @objc public func requestFrameDraw()
-}
-@objc extension UnifiedVideoEditorSDK.BanubaSdkManager : UnifiedVideoEditorSDK.InputServiceDelegate {
-  @objc dynamic public func push(cmBuffer: CoreMedia.CMSampleBuffer)
-  @objc dynamic public func push(cvBuffer: CoreVideo.CVPixelBuffer)
-}
-@objc extension UnifiedVideoEditorSDK.BanubaSdkManager {
-  @objc dynamic public func startEffectPlayer()
-  @objc dynamic public func stopEffectPlayer()
-  @objc dynamic public func destroyEffectPlayer()
-  @objc dynamic public func startEditingImage(_ image: UIKit.UIImage, recognizerIterations: Foundation.NSNumber? = nil, imageOrientation: BNBSdkCore.BNBCameraOrientation = .deg0, requireMirroring: Swift.Bool = false, faceOrientation: Swift.Int = 0, fieldOfView: Swift.Float = 60, resetEffect: Swift.Bool = false, completion: ((Swift.Int, CoreFoundation.CGRect) -> Swift.Void)? = nil)
-  @objc dynamic public func updateEditingFrameWithImage(_ image: UIKit.UIImage, imageOrientation: BNBSdkCore.BNBCameraOrientation = .deg0, requireMirroring: Swift.Bool = false, faceOrientation: Swift.Int = 0, fieldOfView: Swift.Float = 60, completion: ((Swift.Bool) -> Swift.Void)? = nil)
-  @objc dynamic public func captureEditedImage(imageOrientation: BNBSdkCore.BNBCameraOrientation = .deg0, resetEffect: Swift.Bool = false, completion: @escaping (UIKit.UIImage?) -> Swift.Void)
-  @objc dynamic public func stopEditingImage(startCameraInput: Swift.Bool = false)
-  @objc dynamic public func makeCameraPhoto(cameraSettings: UnifiedVideoEditorSDK.CameraPhotoSettings, flipFrontCamera: Swift.Bool = false, srcImageHandler: ((CoreVideo.CVPixelBuffer) -> Swift.Void)? = nil, completion: @escaping (UIKit.UIImage?) -> Swift.Void)
-  @objc dynamic public func processImageData(_ inputData: CoreVideo.CVImageBuffer, orientation: BNBSdkCore.BNBCameraOrientation = .deg0, faceOrientation: Swift.Int = 0, fieldOfView: Swift.Float = 60, isMirrored: Swift.Bool = false, completion: @escaping (UIKit.UIImage?) -> Swift.Void)
-  @objc dynamic public func processImageData(_ imputImage: UIKit.UIImage, orientation: BNBSdkCore.BNBCameraOrientation = .deg0, fieldOfView: Swift.Float = 60, isMirrored: Swift.Bool = false, completion: @escaping (UIKit.UIImage?) -> Swift.Void)
-  @objc dynamic public func configureWatermark(_ watermarkInfo: UnifiedVideoEditorSDK.WatermarkInfo)
-  @objc dynamic public func removeWatermark()
-  @objc dynamic public func startVideoProcessing(width: Swift.UInt, height: Swift.UInt, orientation: BNBSdkCore.BNBCameraOrientation = .deg0, resetEffect: Swift.Bool = false)
-  @objc dynamic public func stopVideoProcessing(resetEffect: Swift.Bool = false)
-  @objc dynamic public func processVideoFrame(from: CoreVideo.CVPixelBuffer, to: CoreVideo.CVPixelBuffer, timeNs: Swift.Int64, iterations: Foundation.NSNumber? = nil, cameraOrientation: BNBSdkCore.BNBCameraOrientation = .deg0, requireMirroring: Swift.Bool = false, faceOrientation: Swift.Int = 0, fieldOfView: Swift.Float = 60)
-  @objc dynamic public var imageOrientationForCameraPhoto: BNBSdkCore.BNBCameraOrientation {
-    @objc get
-  }
-}
-extension UnifiedVideoEditorSDK.BanubaSdkManager : BNBSdkCore.BNBCameraPoiListener {
-  @objc dynamic public func onCameraPoiChanged(_ x: Swift.Float, y: Swift.Float)
-}
-extension UnifiedVideoEditorSDK.BanubaSdkManager : BNBSdkCore.BNBFaceNumberListener {
-  @objc dynamic public func onFaceNumberChanged(_ faceNumber: Swift.Int32)
-}
-extension UnifiedVideoEditorSDK.BanubaSdkManager : BNBSdkCore.BNBFrameDurationListener {
-  public func listenFrameDuration()
-  @objc dynamic public func onRecognizerFrameDurationChanged(_ instant: Swift.Float, averaged: Swift.Float)
-  @objc dynamic public func onCameraFrameDurationChanged(_ instant: Swift.Float, averaged: Swift.Float)
-  @objc dynamic public func onRenderFrameDurationChanged(_ instant: Swift.Float, averaged: Swift.Float)
-}
-extension UnifiedVideoEditorSDK.BanubaSdkManager {
-  public var isPiPPlayerLandscapeOrientation: Swift.Bool? {
-    get
-  }
-  public var isPIPPlayerReadyToProvideData: Swift.Bool? {
-    get
-  }
-  public func createPIPPlayer(withVideoURL url: Foundation.URL, completion: (() -> Swift.Void)?)
-  public func startPIPPlayer()
-  public func stopPIPPlayer()
-  public func setPIPPlayerVolume(_ volume: Swift.Float)
-  public func seekPIPPlayer(to time: Foundation.TimeInterval)
-  public func setPIPPlayer(renderBehaviour: UnifiedVideoEditorSDK.RenderBehavior)
-  public func setPIPPlayer(shapeType type: UnifiedVideoEditorSDK.PIPShapeBuilder.PIPShapeType)
-  public func setRenderTarget(shapeType type: UnifiedVideoEditorSDK.PIPShapeBuilder.PIPShapeType)
-  public func setPIPPlayer(centerPoint point: CoreFoundation.CGPoint)
-  public func resetSplitRender()
-  public func setSplitRender()
-}
-extension UnifiedVideoEditorSDK.BanubaSdkManager {
-  @objc public class BanubaVisualClipVideo : ObjectiveC.NSObject {
-    final public let path: Swift.String
-    final public let startPosition: Swift.Float
-    final public let duration: Swift.Float
-    @objc public init(path: Swift.String, startPosition: Swift.Float, duration: Swift.Float)
-    @objc deinit
-  }
-  @objc public static func createAutoCutVideos(with musicDbPath: Swift.String, visualEffects: [Swift.String], transitionEffects: [Swift.String], videos: [UnifiedVideoEditorSDK.BanubaSdkManager.BanubaVisualClipVideo], numFrames: Swift.Int32, resultSize: Swift.Int32, cancellation: @escaping ((Swift.Double) -> Swift.Bool)) -> [Swift.String]?
-}
-extension UnifiedVideoEditorSDK.BanubaSdkManager : UnifiedVideoEditorSDK.AppStateObserverDelegate {
-  @objc dynamic public func applicationWillResignActive(_ appStateObserver: UnifiedVideoEditorSDK.AppStateObserver)
-  @objc dynamic public func applicationDidBecomeActive(_ appStateObserver: UnifiedVideoEditorSDK.AppStateObserver)
-  @objc dynamic public func applicationDidEnterBackgroundNotification(_ appStateObserver: UnifiedVideoEditorSDK.AppStateObserver)
-  @objc dynamic public func applicationWillEnterForeground(_ appStateObserver: UnifiedVideoEditorSDK.AppStateObserver)
-  @objc dynamic public func applicationWillTerminateNotification(_ appStateObserver: UnifiedVideoEditorSDK.AppStateObserver)
-}
 extension ObjectiveC.NSObject {
   public func performSync(onThread: Foundation.Thread?, block: @escaping @convention(block) () -> Swift.Void)
   public func performAsync(onThread: Foundation.Thread?, block: @escaping @convention(block) () -> Swift.Void)
@@ -1281,40 +1084,11 @@ public protocol ImageSlideshow {
 extension UnifiedVideoEditorSDK.ImageSlideshow {
   public func exportSlideshowImages(_ images: [any UnifiedVideoEditorSDK.VideoEditorImageAssetProtocol], to fileUrl: Foundation.URL? = nil, videoResolution: UnifiedVideoEditorSDK.VideoResolution, completion: ((Foundation.URL, (any Swift.Error)?) -> Swift.Void)?) -> UnifiedVideoEditorSDK.CancelExportHandler
 }
-@objc public enum RenderContentMode : Swift.Int {
-  case resizeAspect
-  case resizeAspectFill
-  case resize
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
-}
 public protocol SnapshotProvider {
   func makeSnapshotWithSettings(_ settings: UnifiedVideoEditorSDK.VEOutputSettings, watermarkPixelBuffer: CoreVideo.CVPixelBuffer?) -> UIKit.UIImage?
 }
 public protocol PixelBufferProvider {
   func makeVideoPixelBuffer() -> CoreVideo.CVPixelBuffer?
-}
-@_hasMissingDesignatedInitializers @objc public class RenderTarget : UnifiedVideoEditorSDK.PIPShapeDrawer, UnifiedVideoEditorSDK.SnapshotProvider, UnifiedVideoEditorSDK.PixelBufferProvider {
-  public var renderBehaviour: UnifiedVideoEditorSDK.RenderBehavior
-  public var pipPlayer: UnifiedVideoEditorSDK.PIPPlayer?
-  public var pipPlayerRelativeLeftTopPoint: CoreFoundation.CGPoint
-  public var splitRenderOffset: CoreFoundation.CGPoint
-  public var playerRect: CoreFoundation.CGRect {
-    get
-  }
-  public var pipRect: CoreFoundation.CGRect? {
-    get
-  }
-  public var shouldZoomPipImage: Swift.Bool
-  public func setSplitRender(rect: CoreFoundation.CGRect, offset: CoreFoundation.CGPoint)
-  @objc deinit
-  @objc public func makeVideoPixelBuffer() -> CoreVideo.CVPixelBuffer?
-  @objc public func makeSnapshotWithSettings(_ settings: UnifiedVideoEditorSDK.VEOutputSettings, watermarkPixelBuffer: CoreVideo.CVPixelBuffer?) -> UIKit.UIImage?
-  @objc public func activate()
-  @objc public func present(_ willPresentHandler: ((CoreVideo.CVPixelBuffer?) -> Swift.Void)?)
 }
 public enum OutputServiceError : Swift.Error {
   case notEnoughSpace
@@ -1593,10 +1367,10 @@ extension UnifiedVideoEditorSDK.BanubaCameraModule : UnifiedVideoEditorSDK.SDKBe
   @objc dynamic public func toggleBeautification() -> Swift.Bool
   @objc dynamic public func resetIntensity()
 }
-extension UnifiedVideoEditorSDK.BanubaCameraModule : UnifiedVideoEditorSDK.BanubaSdkManagerDelegate {
-  @objc dynamic public func willOutput(pixelBuffer: CoreVideo.CVPixelBuffer)
-  @objc dynamic public func willPresent(changedPixelBuffer: CoreVideo.CVPixelBuffer?)
-  @objc dynamic public func didReceiveFPSInfo(_ cameraFPS: Swift.Float, recognizerFPS: Swift.Float, renderFPS: Swift.Float)
+extension UnifiedVideoEditorSDK.BanubaCameraModule {
+  public func willOutput(pixelBuffer: CoreVideo.CVPixelBuffer)
+  public func willPresent(changedPixelBuffer: CoreVideo.CVPixelBuffer?)
+  public func didReceiveFPSInfo(_ cameraFPS: Swift.Float, recognizerFPS: Swift.Float, renderFPS: Swift.Float)
 }
 extension UnifiedVideoEditorSDK.BanubaCameraModule : BNBSdkCore.BNBEffectEventListener {
   @objc dynamic public func onEffectEvent(_ name: Swift.String, params: [Swift.String : Swift.String])
@@ -2007,22 +1781,6 @@ extension UnifiedVideoEditorSDK.VideoEditorAssetTrackInfo {
 }
 extension UnifiedVideoEditorSDK.VideoEditorAssetTrackInfo {
   public func isTimeInGlobalTimeRange(_ time: CoreMedia.CMTime) -> Swift.Bool
-}
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc @_Concurrency.MainActor(unsafe) public class EffectPlayerView : UIKit.UIView {
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public class var layerClass: Swift.AnyClass {
-    @objc get
-  }
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func touchesBegan(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func touchesMoved(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func touchesEnded(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func touchesCancelled(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
-  @objc @_Concurrency.MainActor(unsafe) public func onLongTapGesture(gesture: UIKit.UITapGestureRecognizer)
-  @objc @_Concurrency.MainActor(unsafe) public func onDoubleTapGesture(gesture: UIKit.UITapGestureRecognizer)
-  @objc @_Concurrency.MainActor(unsafe) public func onScaleGesture(gesture: UIKit.UIPinchGestureRecognizer)
-  @objc @_Concurrency.MainActor(unsafe) public func onRotationGesture(gesture: UIKit.UIRotationGestureRecognizer)
-  @objc @_Concurrency.MainActor(unsafe) public func onSwipeGesture(gesture: UIKit.UISwipeGestureRecognizer)
-  @objc deinit
 }
 @objc public protocol TimeLineDataSourceDelegate {
   @objc optional func timelineDataSource(_ timelineDataSource: any UnifiedVideoEditorSDK.TimeLineDataSource, didPreloadPreview preview: UIKit.UIImage)
@@ -2769,74 +2527,7 @@ public protocol VideoPlayableView : UIKit.UIImageView {
   public init(style: UnifiedVideoEditorSDK.TextConfiguration, text: Swift.String? = nil)
   @objc deinit
 }
-@objc public protocol InputServicing : UnifiedVideoEditorSDK.AudioCapturing, UnifiedVideoEditorSDK.CameraServicing, UnifiedVideoEditorSDK.CameraZoomable {
-}
 public typealias RotateCameraCallBack = () -> ()
-@objc public protocol CameraServicing {
-  @objc var delegate: (any UnifiedVideoEditorSDK.InputServiceDelegate)? { get set }
-  @objc var isFrontCamera: Swift.Bool { get }
-  @objc var isPhotoCameraSession: Swift.Bool { get }
-  @objc var currentCameraSessionType: UnifiedVideoEditorSDK.CameraSessionType { get }
-  @objc var exposurePointOfInterest: CoreFoundation.CGPoint { get }
-  @objc var flipCamera: Swift.Bool { get set }
-  @objc var cameraVideoOutput: AVFoundation.AVCaptureVideoDataOutput? { get }
-  @objc func setupCamera()
-  @objc func startCamera()
-  @objc func stopCamera()
-  @objc func releaseAudioCaptureSession()
-  @objc func setCameraSessionType(_ type: UnifiedVideoEditorSDK.CameraSessionType)
-  @objc func setCameraSessionType(_ type: UnifiedVideoEditorSDK.CameraSessionType, completion: @escaping UnifiedVideoEditorSDK.RotateCameraCallBack)
-  @objc func setCameraSessionType(_ type: UnifiedVideoEditorSDK.CameraSessionType, zoomFactor: Swift.Float, completion: @escaping UnifiedVideoEditorSDK.RotateCameraCallBack)
-  @objc func focus(at point: CoreFoundation.CGPoint, useContinuousDetection: Swift.Bool)
-  @objc func setTorch(mode: AVFoundation.AVCaptureDevice.TorchMode) -> AVFoundation.AVCaptureDevice.TorchMode
-  @objc func toggleTorch() -> AVFoundation.AVCaptureDevice.TorchMode
-  @objc func initiatePhotoCapture(cameraSettings: UnifiedVideoEditorSDK.CameraPhotoSettings, completion: @escaping (CoreVideo.CVImageBuffer?, BNBSdkCore.BNBFrameData?) -> Swift.Void)
-  @objc func switchCamera(to type: UnifiedVideoEditorSDK.CameraSessionType, completion: @escaping UnifiedVideoEditorSDK.RotateCameraCallBack)
-}
-@objc public protocol AudioCapturing {
-  @objc func startAudioCapturing()
-  @objc func stopAudioCapturing()
-}
-@objc public protocol CameraZoomable {
-  @objc var currentFieldOfView: Swift.Float { get }
-  @objc var isZoomFactorAdjustable: Swift.Bool { get }
-  @objc var minZoomFactor: Swift.Float { get }
-  @objc var maxZoomFactor: Swift.Float { get }
-  @objc var zoomFactor: Swift.Float { get }
-  @objc func setZoomFactor(_ zoomFactor: Swift.Float) -> Swift.Float
-}
-@objc public protocol InputServiceDelegate {
-  @objc func push(cvBuffer: CoreVideo.CVPixelBuffer)
-  @objc func push(cmBuffer: CoreMedia.CMSampleBuffer)
-}
-@objc public enum CameraSessionType : Swift.Int {
-  case FrontCameraVideoSession = 0
-  case BackCameraVideoSession = 1
-  case FrontCameraPhotoSession = 2
-  case BackCameraPhotoSession = 3
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
-}
-@objc public class CameraPhotoSettings : ObjectiveC.NSObject {
-  @objc final public let photoQualityPrioritization: AVFoundation.AVCapturePhotoOutput.QualityPrioritization
-  @objc final public let flashMode: AVFoundation.AVCaptureDevice.FlashMode
-  @objc public init(photoQualityPrioritization: AVFoundation.AVCapturePhotoOutput.QualityPrioritization, flashMode: AVFoundation.AVCaptureDevice.FlashMode)
-  @objc deinit
-}
-extension UnifiedVideoEditorSDK.CameraSessionType {
-  public var isFrontCamera: Swift.Bool {
-    get
-  }
-  public var isPhotoMode: Swift.Bool {
-    get
-  }
-}
-extension UnifiedVideoEditorSDK.CameraServicing {
-  public func toggleCamera(completion: @escaping UnifiedVideoEditorSDK.RotateCameraCallBack)
-}
 public typealias IndicatorView = UIKit.UIView
 public enum IndicatorType {
   case none
@@ -7142,31 +6833,6 @@ public class KingfisherManager {
   @_Concurrency.MainActor(unsafe) @objc public func interactionControllerForDismissal(using animator: any UIKit.UIViewControllerAnimatedTransitioning) -> (any UIKit.UIViewControllerInteractiveTransitioning)?
   @objc deinit
 }
-@_hasMissingDesignatedInitializers @objc public class WatermarkDrawSettings : ObjectiveC.NSObject {
-  final public let translatePos: CoreFoundation.CGPoint
-  final public let rotationAngle: CoreFoundation.CGFloat
-  final public let drawRect: CoreFoundation.CGRect
-  @objc deinit
-}
-@objc public enum WatermarkCornerPosition : Swift.Int {
-  case topLeft
-  case topRight
-  case bottomRight
-  case bottomLeft
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
-}
-@objc public class WatermarkInfo : ObjectiveC.NSObject {
-  @objc public init(image: UIKit.UIImage, corner: UnifiedVideoEditorSDK.WatermarkCornerPosition, offset: CoreFoundation.CGPoint, targetWidth: CoreFoundation.CGFloat)
-  @objc public init(image: UIKit.UIImage, corner: UnifiedVideoEditorSDK.WatermarkCornerPosition, offset: CoreFoundation.CGPoint, targetNormalizedWidth: CoreFoundation.CGFloat)
-  @objc public init(image: UIKit.UIImage, normalizedPosition: CoreFoundation.CGPoint, targetWidth: CoreFoundation.CGFloat)
-  @objc public init(image: UIKit.UIImage, normalizedPosition: CoreFoundation.CGPoint, targetNormalizedWidth: CoreFoundation.CGFloat)
-  @objc public func drawSettingsWithBoundsSize(_ boundsSize: CoreFoundation.CGSize, outputSettings: UnifiedVideoEditorSDK.VEOutputSettings) -> UnifiedVideoEditorSDK.WatermarkDrawSettings
-  @objc deinit
-}
 public protocol ProgressAnimatableViewFactory {
   func makeProgressAnimatableView() -> any UnifiedVideoEditorSDK.ProgressAnimatableView
 }
@@ -7528,9 +7194,6 @@ extension UnifiedVideoEditorSDK.GalleryItemType : Swift.RawRepresentable {}
 extension UnifiedVideoEditorSDK.TransitionType : Swift.Equatable {}
 extension UnifiedVideoEditorSDK.TransitionType : Swift.Hashable {}
 extension UnifiedVideoEditorSDK.TransitionType : Swift.RawRepresentable {}
-extension UnifiedVideoEditorSDK.EffectPlayerRenderMode : Swift.Equatable {}
-extension UnifiedVideoEditorSDK.EffectPlayerRenderMode : Swift.Hashable {}
-extension UnifiedVideoEditorSDK.EffectPlayerRenderMode : Swift.RawRepresentable {}
 extension UnifiedVideoEditorSDK.AudioTrackLinePosition : Swift.Equatable {}
 extension UnifiedVideoEditorSDK.AudioTrackLinePosition : Swift.Hashable {}
 extension UnifiedVideoEditorSDK.AudioTrackLinePosition : Swift.RawRepresentable {}
@@ -7564,9 +7227,6 @@ extension UnifiedVideoEditorSDK.SharingServiceModel.SharingType : Swift.Hashable
 extension UnifiedVideoEditorSDK.VisualEffectApplicatorType : Swift.Equatable {}
 extension UnifiedVideoEditorSDK.VisualEffectApplicatorType : Swift.Hashable {}
 extension UnifiedVideoEditorSDK.VisualEffectApplicatorType : Swift.RawRepresentable {}
-extension UnifiedVideoEditorSDK.RenderContentMode : Swift.Equatable {}
-extension UnifiedVideoEditorSDK.RenderContentMode : Swift.Hashable {}
-extension UnifiedVideoEditorSDK.RenderContentMode : Swift.RawRepresentable {}
 extension UnifiedVideoEditorSDK.OutputServiceError : Swift.Equatable {}
 extension UnifiedVideoEditorSDK.OutputServiceError : Swift.Hashable {}
 extension UnifiedVideoEditorSDK.SDKEventScreen : Swift.Equatable {}
@@ -7619,9 +7279,6 @@ extension UnifiedVideoEditorSDK.SpeedEffectType : Swift.RawRepresentable {}
 extension UnifiedVideoEditorSDK.TransitionEffectType : Swift.Equatable {}
 extension UnifiedVideoEditorSDK.TransitionEffectType : Swift.Hashable {}
 extension UnifiedVideoEditorSDK.TransitionEffectType : Swift.RawRepresentable {}
-extension UnifiedVideoEditorSDK.CameraSessionType : Swift.Equatable {}
-extension UnifiedVideoEditorSDK.CameraSessionType : Swift.Hashable {}
-extension UnifiedVideoEditorSDK.CameraSessionType : Swift.RawRepresentable {}
 extension UnifiedVideoEditorSDK.Connection : Swift.Equatable {}
 extension UnifiedVideoEditorSDK.Connection : Swift.Hashable {}
 extension UnifiedVideoEditorSDK.RecorderPreviewScalingMode : Swift.Equatable {}
@@ -7718,9 +7375,6 @@ extension UnifiedVideoEditorSDK.PIPShapeAdapter : Swift.Hashable {}
 extension UnifiedVideoEditorSDK.PIPShapeAdapter : Swift.RawRepresentable {}
 extension UnifiedVideoEditorSDK.WatermarkConfiguration.WatermarkPosition : Swift.Equatable {}
 extension UnifiedVideoEditorSDK.WatermarkConfiguration.WatermarkPosition : Swift.Hashable {}
-extension UnifiedVideoEditorSDK.WatermarkCornerPosition : Swift.Equatable {}
-extension UnifiedVideoEditorSDK.WatermarkCornerPosition : Swift.Hashable {}
-extension UnifiedVideoEditorSDK.WatermarkCornerPosition : Swift.RawRepresentable {}
 extension UnifiedVideoEditorSDK.GiphyResolution : Swift.Equatable {}
 extension UnifiedVideoEditorSDK.GiphyResolution : Swift.Hashable {}
 extension UnifiedVideoEditorSDK.ContentLocationType : Swift.Equatable {}

@@ -20,5 +20,5 @@ FOUNDATION_EXPORT const unsigned char BanubaVideoEditorSDKVersionString[];
 #import <UnifiedVideoEditorSDK/BNBAsyncOperation.h>
 #import <UnifiedVideoEditorSDK/SSZipCommon.h>
 #import <UnifiedVideoEditorSDK/SSZipArchive.h>
-#import <UnifiedVideoEditorSDK/XBNBLicenseManager+SafeInstantiation.h>
+#import <UnifiedVideoEditorSDK/BNBLicenseManager+SafeInstantiation.h>
 #import <UnifiedVideoEditorSDK/SBVideoWriter.h>

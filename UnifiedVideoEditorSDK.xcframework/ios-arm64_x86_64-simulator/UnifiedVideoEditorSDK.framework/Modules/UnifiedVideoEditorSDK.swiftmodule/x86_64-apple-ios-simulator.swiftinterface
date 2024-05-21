@@ -5,7 +5,9 @@
 import AVFoundation
 import AVKit
 import Accelerate
-import BNBLicenseUtils
+import BNBSdkCore.BNBInformer
+import BNBSdkCore.BNBLicenseManager
+import BNBSdkCore.BNBLicenseStatus
 import BNBSdkApi
 import BNBSdkCore
 import CloudKit
@@ -4777,7 +4779,7 @@ public enum EffectType {
   }
   @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
   @objc public static func getLicense(fromToken token: Swift.String) -> UnifiedVideoEditorSDK.License?
-  public func getLicenseState(completion: @escaping ((BNBLicenseUtils.XBNBLicenseStatus) -> Swift.Void))
+  public func getLicenseState(completion: @escaping ((BNBSdkCore.BNBLicenseStatus) -> Swift.Void))
   @objc deinit
 }
 @objc public protocol AudioBrowserConfigApplyable {

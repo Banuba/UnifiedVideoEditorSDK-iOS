@@ -30,19 +30,7 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		FjdgXSJbs8yFNDhaSpNDWaOsSqw=
-		</data>
-		<key>AudioBrowserViewController.storyboardc/Cwr-uE-sFK-view-lWM-bB-Bwz.nib</key>
-		<data>
-		dmc0ZDp312rnkXG4y7axMK8/6aE=
-		</data>
-		<key>AudioBrowserViewController.storyboardc/Info.plist</key>
-		<data>
-		KXywql05nueRKfEH7vutQMVFlqQ=
-		</data>
-		<key>AudioBrowserViewController.storyboardc/UIViewController-Cwr-uE-sFK.nib</key>
-		<data>
-		VCmwggaqysS40KGoYUt+GtnbALk=
+		4GOz9w+y4O4J2yRzMEIlL3Hf8T8=
 		</data>
 		<key>AudioEditingView.nib</key>
 		<data>
@@ -111,10 +99,6 @@
 		<key>CategoryCell.nib</key>
 		<data>
 		+26qmXFBnqSm59WvUJ15mo14sxM=
-		</data>
-		<key>CategorySelectionTableViewCell.nib</key>
-		<data>
-		AcSbMfO88FajID1Oi9xm5+bC3S0=
 		</data>
 		<key>CollectionCell.nib</key>
 		<data>
@@ -270,7 +254,7 @@
 		</data>
 		<key>FrameworkVersion.plist</key>
 		<data>
-		9ddS+86MkDelJKeWOrN9uZGf7U8=
+		x1QHi3u1+zMGhAlmLxA9YCHPlUY=
 		</data>
 		<key>FullscreenActivityView.nib</key>
 		<data>
@@ -378,7 +362,7 @@
 		</data>
 		<key>Headers/UnifiedVideoEditorSDK-Swift.h</key>
 		<data>
-		TSXOw2lFPvjefc9A0zsoAlBm3R4=
+		IjFaUsJ0SXQ5YY2hjzW56e0JgZc=
 		</data>
 		<key>Headers/UnifiedVideoEditorSDK.h</key>
 		<data>
@@ -390,7 +374,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		YLIxKI+OJKGPOfNpiJDMRLzJqbI=
+		aHprmTY4FHkijnCFvcN/iEpyvsM=
 		</data>
 		<key>InfoView.nib</key>
 		<data>
@@ -426,43 +410,43 @@
 		</data>
 		<key>Modules/UnifiedVideoEditorSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		lWFrHJyjRgRJMlR1673wp4kFojw=
+		LL/PN4qEEKb6v2+yrL6hKgoGT6A=
 		</data>
 		<key>Modules/UnifiedVideoEditorSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		RVVYSYDoFebHJKrmJ3F06SpI21Y=
+		X/HD7CfmBaIsUFQd21yM1N42BGg=
 		</data>
 		<key>Modules/UnifiedVideoEditorSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		+ehmHPUopoYXaG4vzrWgBPwG7/c=
+		6U4dBB10HYdDy6me5Bh9oTgofAQ=
 		</data>
 		<key>Modules/UnifiedVideoEditorSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		RVVYSYDoFebHJKrmJ3F06SpI21Y=
+		X/HD7CfmBaIsUFQd21yM1N42BGg=
 		</data>
 		<key>Modules/UnifiedVideoEditorSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		lB2ttpB9uotkCgkc94wMgD+4qsc=
+		A/piuXM68oHuh30CVuQvQCaFsO4=
 		</data>
 		<key>Modules/UnifiedVideoEditorSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		lWFrHJyjRgRJMlR1673wp4kFojw=
+		LL/PN4qEEKb6v2+yrL6hKgoGT6A=
 		</data>
 		<key>Modules/UnifiedVideoEditorSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		mVlqv9R0i6c5zlO9eWYKca2Fsvc=
+		eYFU25VlRZ75Wwa9qAcPUxKaZwY=
 		</data>
 		<key>Modules/UnifiedVideoEditorSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		Q78thDOcjZfei/X0gWfFUiYRIUg=
+		PoG3nRvExrqSQhAlwrx7cnHVzeg=
 		</data>
 		<key>Modules/UnifiedVideoEditorSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		mVlqv9R0i6c5zlO9eWYKca2Fsvc=
+		eYFU25VlRZ75Wwa9qAcPUxKaZwY=
 		</data>
 		<key>Modules/UnifiedVideoEditorSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		3+P3+eMCeMmlepo0uYOxMPYmzA4=
+		tdR2Tqh0beBLGTqFDpXicfdWbww=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -544,10 +528,6 @@
 		<data>
 		Xouc5wV1IMtR+vh99c5Az2HiH7k=
 		</data>
-		<key>PreCategorySelectionTableViewCell.nib</key>
-		<data>
-		QPEDkHNSzlkkMIFcH38nM31Q8/Y=
-		</data>
 		<key>PredefinedTextStyleCollectionViewCell.nib</key>
 		<data>
 		HhmJ6PNvXlZkBUeZT7CwxSoT1Co=
@@ -600,10 +580,6 @@
 		<data>
 		crKHdfriDSOM4qemgpa52c/Uqvk=
 		</data>
-		<key>ShowMoreTrackView.nib</key>
-		<data>
-		ekXnWj83lW1dxoE/ikE8+XDdfAg=
-		</data>
 		<key>SoundstripeSearchViewController.storyboardc/Info.plist</key>
 		<data>
 		VNNQJdsLVO2kuw18GCUYKn9cqRk=
@@ -655,10 +631,6 @@
 		<key>TimelineViewController.nib</key>
 		<data>
 		SAojQy1ML+PK6L1uvRhf62DbwdI=
-		</data>
-		<key>TrackSelectionTableViewCell.nib</key>
-		<data>
-		+G07WoyLYyEUojQqmR7MaXjhfiY=
 		</data>
 		<key>TransitionActionView.nib</key>
 		<data>
@@ -801,28 +773,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			NPeWpC1FNLDPceidsmWaVYAKnAX603FT5ZbgNxtWx2g=
-			</data>
-		</dict>
-		<key>AudioBrowserViewController.storyboardc/Cwr-uE-sFK-view-lWM-bB-Bwz.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			rEFgKCEGYWFOxhsN4ePafr+kFLM+A0mQllpBRPfjn1s=
-			</data>
-		</dict>
-		<key>AudioBrowserViewController.storyboardc/Info.plist</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			T92IrlLYBOVfu+vBWLG6sHuTADNVfNGnnejOKmT9GEA=
-			</data>
-		</dict>
-		<key>AudioBrowserViewController.storyboardc/UIViewController-Cwr-uE-sFK.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			DmttJHjaOodkhHYal6FcOAvkSOJQXgIP65Wl4pHGaBU=
+			K3FYWVclPr/XOpugd9bCBLuDJbhZN92X+di7Ed99IQQ=
 			</data>
 		</dict>
 		<key>AudioEditingView.nib</key>
@@ -942,13 +893,6 @@
 			<key>hash2</key>
 			<data>
 			UpYadH3xhdZRCtYIMtfvikA2MO3wxHl0YPvgEtHVnBE=
-			</data>
-		</dict>
-		<key>CategorySelectionTableViewCell.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			zbqkab5XJnkHw0moK1ACrI92/Z0I7kKeMSo+CS/EPGM=
 			</data>
 		</dict>
 		<key>CollectionCell.nib</key>
@@ -1221,7 +1165,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			+jyXMaXo2YRG69Zo7ZYIuTKGMchunNacQXS6xw2G718=
+			yewgbwjUBeIxFyaH5Hk+rcb2OOmEuswYYig4hYJZ8SY=
 			</data>
 		</dict>
 		<key>FullscreenActivityView.nib</key>
@@ -1410,7 +1354,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			FKOD1+mYiMs6O1WjevCo7MAlHL5y212GAYH2rgihYCk=
+			Tr8vkGU+CvkUyG9nn+GYzSr3mg9FUj06AeRy9TogG2k=
 			</data>
 		</dict>
 		<key>Headers/UnifiedVideoEditorSDK.h</key>
@@ -1487,70 +1431,70 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			h2uH4b+8N3dgexd8Z0BV7n2lKlbLTy4Ig5OPGjMj4II=
+			eR8jPiQ6AX8uCTZ9/vt4/F6dwvrrdC1rV8Mc/ZoRd3o=
 			</data>
 		</dict>
 		<key>Modules/UnifiedVideoEditorSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			505ovgkGDiJ1ctlplRshfUysdwYollsPbpK/pJYme/s=
+			rZSqQWxmp2r5Omj7EmXrzUq0J3r+4B3+Qv8A5EbDPW4=
 			</data>
 		</dict>
 		<key>Modules/UnifiedVideoEditorSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Bosq1gabJTx/fBwbU4Ir1dkZRTb4obWKKn/K9PcgeIQ=
+			ryx4OxNg7kBDzYzIkInhOb/kefo2Zm0vsdo5c9clFfM=
 			</data>
 		</dict>
 		<key>Modules/UnifiedVideoEditorSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			505ovgkGDiJ1ctlplRshfUysdwYollsPbpK/pJYme/s=
+			rZSqQWxmp2r5Omj7EmXrzUq0J3r+4B3+Qv8A5EbDPW4=
 			</data>
 		</dict>
 		<key>Modules/UnifiedVideoEditorSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			NKoMdB0KpX+7UX55Mw2qxqH9qOv4+Ml5RiWOFOMdMeE=
+			RzpWJGU5Vyn7XASoOMz7n+M5WQSKKnnWuasbgRhwBjg=
 			</data>
 		</dict>
 		<key>Modules/UnifiedVideoEditorSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			h2uH4b+8N3dgexd8Z0BV7n2lKlbLTy4Ig5OPGjMj4II=
+			eR8jPiQ6AX8uCTZ9/vt4/F6dwvrrdC1rV8Mc/ZoRd3o=
 			</data>
 		</dict>
 		<key>Modules/UnifiedVideoEditorSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			vOmnQ5hVk6mTh7oGLr4xrdwORNwkbgKYgfcGEHgcCKI=
+			KZgQs1Pr3YhQBEb+R/B/vQ5yU8WFoqq27Me08AetYYM=
 			</data>
 		</dict>
 		<key>Modules/UnifiedVideoEditorSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			uadE0uA2L4w0wbR0UKOSUfk//2L9BEVQn1UwCh6fb1A=
+			nKSI4NB+LqbungGx/ucymE2CspAUlKKZ60gcAaSMajk=
 			</data>
 		</dict>
 		<key>Modules/UnifiedVideoEditorSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			vOmnQ5hVk6mTh7oGLr4xrdwORNwkbgKYgfcGEHgcCKI=
+			KZgQs1Pr3YhQBEb+R/B/vQ5yU8WFoqq27Me08AetYYM=
 			</data>
 		</dict>
 		<key>Modules/UnifiedVideoEditorSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ogn0oArtrljdrdKTMP9OpHOHWAo1qPEAejTKjHShmlw=
+			y0QljtvK+8k9xb4PIdJMovppqu6hHBTxdVgy5RfbfYI=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -1693,13 +1637,6 @@
 			pCS2YL8X2dFo2kCQZwaa301ikf+zAx8wZcU/O0f1af4=
 			</data>
 		</dict>
-		<key>PreCategorySelectionTableViewCell.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			G6+VH4lSKyEDat9mI3YR+9RufjPsYTh625rC+SqKV+w=
-			</data>
-		</dict>
 		<key>PredefinedTextStyleCollectionViewCell.nib</key>
 		<dict>
 			<key>hash2</key>
@@ -1791,13 +1728,6 @@
 			I9nGZ2WW8Mk9xEm0HoHWmALeXRzk5h198eRi8j4ollg=
 			</data>
 		</dict>
-		<key>ShowMoreTrackView.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			Ha26+PAh8wXpkfDepPCOV6fy9vOeOrrovx99VlGf/tA=
-			</data>
-		</dict>
 		<key>SoundstripeSearchViewController.storyboardc/Info.plist</key>
 		<dict>
 			<key>hash2</key>
@@ -1887,13 +1817,6 @@
 			<key>hash2</key>
 			<data>
 			DDBip7TkCDEVp4AlbycVTjMhYSpYrZx056QL5twkCRk=
-			</data>
-		</dict>
-		<key>TrackSelectionTableViewCell.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			fdx9DcW3Wu0UKVdJcbrsV5BPGEd6/zQ0/+m/cHIPplM=
 			</data>
 		</dict>
 		<key>TransitionActionView.nib</key>

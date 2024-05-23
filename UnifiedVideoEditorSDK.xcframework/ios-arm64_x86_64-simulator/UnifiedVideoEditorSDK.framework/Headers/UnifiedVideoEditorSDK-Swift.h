@@ -448,16 +448,8 @@ SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK27AudioBrowserConfigApplyable_")
 @end
 
 typedef SWIFT_ENUM(NSInteger, AudioBrowserMusicSource, open) {
-/// enables only Mubert music in AudioBrowser
-  AudioBrowserMusicSourceMubert = 1,
-/// disables Mubert music. Only local music with my files will be available
-  AudioBrowserMusicSourceLocalStorageWithMyFiles = 2,
-/// all sources are enabled
-  AudioBrowserMusicSourceAllSources = 3,
 /// enables Soundstripe music in AudioBrowser
   AudioBrowserMusicSourceSoundstripe = 4,
-/// enables list of audio tracks provided by the customer
-  AudioBrowserMusicSourcePredefinedList = 5,
 /// enables MusicLibrary music in AudioBrowser
   AudioBrowserMusicSourceMusicLibrary = 6,
 };
@@ -623,8 +615,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK18BanubaAudioBrowser")
 /// \param videoDuration the duration of video
 ///
 - (nonnull instancetype)initWithAudioBrowserConfig:(AudioBrowserConfig * _Nullable)audioBrowserConfig audioService:(id <AudioBrowserServiceAdoptable> _Nullable)audioService selectedTrack:(AudioBrowserTrack * _Nullable)selectedTrack isMusicLibraryEnabled:(BOOL)isMusicLibraryEnabled isSoundstripeEnabled:(BOOL)isSoundstripeEnabled token:(NSString * _Nonnull)token isAudioPartSelectionEnabled:(BOOL)isAudioPartSelectionEnabled videoDuration:(double)videoDuration OBJC_DESIGNATED_INITIALIZER;
-+ (void)setMubertKeysWithLicense:(NSString * _Nonnull)license token:(NSString * _Nonnull)token;
-+ (void)setPredefinedList:(NSArray<AudioBrowserTrack *> * _Nonnull)music;
 /// Get reference to audio browser navigation controller
 - (UINavigationController * _Nonnull)getAudioBrowserController SWIFT_WARN_UNUSED_RESULT;
 /// Setting music library configuration
@@ -2301,16 +2291,8 @@ SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK27AudioBrowserConfigApplyable_")
 @end
 
 typedef SWIFT_ENUM(NSInteger, AudioBrowserMusicSource, open) {
-/// enables only Mubert music in AudioBrowser
-  AudioBrowserMusicSourceMubert = 1,
-/// disables Mubert music. Only local music with my files will be available
-  AudioBrowserMusicSourceLocalStorageWithMyFiles = 2,
-/// all sources are enabled
-  AudioBrowserMusicSourceAllSources = 3,
 /// enables Soundstripe music in AudioBrowser
   AudioBrowserMusicSourceSoundstripe = 4,
-/// enables list of audio tracks provided by the customer
-  AudioBrowserMusicSourcePredefinedList = 5,
 /// enables MusicLibrary music in AudioBrowser
   AudioBrowserMusicSourceMusicLibrary = 6,
 };
@@ -2476,8 +2458,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK18BanubaAudioBrowser")
 /// \param videoDuration the duration of video
 ///
 - (nonnull instancetype)initWithAudioBrowserConfig:(AudioBrowserConfig * _Nullable)audioBrowserConfig audioService:(id <AudioBrowserServiceAdoptable> _Nullable)audioService selectedTrack:(AudioBrowserTrack * _Nullable)selectedTrack isMusicLibraryEnabled:(BOOL)isMusicLibraryEnabled isSoundstripeEnabled:(BOOL)isSoundstripeEnabled token:(NSString * _Nonnull)token isAudioPartSelectionEnabled:(BOOL)isAudioPartSelectionEnabled videoDuration:(double)videoDuration OBJC_DESIGNATED_INITIALIZER;
-+ (void)setMubertKeysWithLicense:(NSString * _Nonnull)license token:(NSString * _Nonnull)token;
-+ (void)setPredefinedList:(NSArray<AudioBrowserTrack *> * _Nonnull)music;
 /// Get reference to audio browser navigation controller
 - (UINavigationController * _Nonnull)getAudioBrowserController SWIFT_WARN_UNUSED_RESULT;
 /// Setting music library configuration

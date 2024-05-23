@@ -30,19 +30,7 @@
 		</data>
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/Assets.car</key>
 		<data>
-		FjdgXSJbs8yFNDhaSpNDWaOsSqw=
-		</data>
-		<key>ios-arm64/UnifiedVideoEditorSDK.framework/AudioBrowserViewController.storyboardc/Cwr-uE-sFK-view-lWM-bB-Bwz.nib</key>
-		<data>
-		dmc0ZDp312rnkXG4y7axMK8/6aE=
-		</data>
-		<key>ios-arm64/UnifiedVideoEditorSDK.framework/AudioBrowserViewController.storyboardc/Info.plist</key>
-		<data>
-		KXywql05nueRKfEH7vutQMVFlqQ=
-		</data>
-		<key>ios-arm64/UnifiedVideoEditorSDK.framework/AudioBrowserViewController.storyboardc/UIViewController-Cwr-uE-sFK.nib</key>
-		<data>
-		VCmwggaqysS40KGoYUt+GtnbALk=
+		4GOz9w+y4O4J2yRzMEIlL3Hf8T8=
 		</data>
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/AudioEditingView.nib</key>
 		<data>
@@ -111,10 +99,6 @@
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/CategoryCell.nib</key>
 		<data>
 		+26qmXFBnqSm59WvUJ15mo14sxM=
-		</data>
-		<key>ios-arm64/UnifiedVideoEditorSDK.framework/CategorySelectionTableViewCell.nib</key>
-		<data>
-		AcSbMfO88FajID1Oi9xm5+bC3S0=
 		</data>
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/CollectionCell.nib</key>
 		<data>
@@ -270,7 +254,7 @@
 		</data>
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/FrameworkVersion.plist</key>
 		<data>
-		9ddS+86MkDelJKeWOrN9uZGf7U8=
+		x1QHi3u1+zMGhAlmLxA9YCHPlUY=
 		</data>
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/FullscreenActivityView.nib</key>
 		<data>
@@ -378,7 +362,7 @@
 		</data>
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/Headers/UnifiedVideoEditorSDK-Swift.h</key>
 		<data>
-		oyie8SvpzEeifMKuEK4JCayTXI0=
+		nwer4SbedzQjp/UZ74LZn/ximGc=
 		</data>
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/Headers/UnifiedVideoEditorSDK.h</key>
 		<data>
@@ -390,7 +374,7 @@
 		</data>
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/Info.plist</key>
 		<data>
-		qmt6JhtrTfAsD3PImEdx+3YiFVs=
+		4Q3RF1bO1EwYB7U4j9gL7lLsXD0=
 		</data>
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/InfoView.nib</key>
 		<data>
@@ -426,19 +410,19 @@
 		</data>
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/Modules/UnifiedVideoEditorSDK.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		Btnfg5XMLpvueEgt1YEmLwygegM=
+		ozBKBtQteEdwrVkGmBvxZU9Lf2c=
 		</data>
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/Modules/UnifiedVideoEditorSDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		OdrbyQ1d60Obe9IYGIG7YDwoL4U=
+		QxBknQM2A3L59GxN5mtLFTRsOlA=
 		</data>
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/Modules/UnifiedVideoEditorSDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		N7Y0/3Q1+Whu30OCT2AgsPQl0Vs=
+		RbytodH7GcQ772avXR7riDUdnX0=
 		</data>
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/Modules/UnifiedVideoEditorSDK.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		OdrbyQ1d60Obe9IYGIG7YDwoL4U=
+		QxBknQM2A3L59GxN5mtLFTRsOlA=
 		</data>
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/Modules/module.modulemap</key>
 		<data>
@@ -520,10 +504,6 @@
 		<data>
 		Xouc5wV1IMtR+vh99c5Az2HiH7k=
 		</data>
-		<key>ios-arm64/UnifiedVideoEditorSDK.framework/PreCategorySelectionTableViewCell.nib</key>
-		<data>
-		QPEDkHNSzlkkMIFcH38nM31Q8/Y=
-		</data>
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/PredefinedTextStyleCollectionViewCell.nib</key>
 		<data>
 		HhmJ6PNvXlZkBUeZT7CwxSoT1Co=
@@ -575,10 +555,6 @@
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/SharingScreenViewController.storyboardc/Y6W-OH-hqX-view-5EZ-qb-Rvc.nib</key>
 		<data>
 		crKHdfriDSOM4qemgpa52c/Uqvk=
-		</data>
-		<key>ios-arm64/UnifiedVideoEditorSDK.framework/ShowMoreTrackView.nib</key>
-		<data>
-		ekXnWj83lW1dxoE/ikE8+XDdfAg=
 		</data>
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/SoundstripeSearchViewController.storyboardc/Info.plist</key>
 		<data>
@@ -632,10 +608,6 @@
 		<data>
 		SAojQy1ML+PK6L1uvRhf62DbwdI=
 		</data>
-		<key>ios-arm64/UnifiedVideoEditorSDK.framework/TrackSelectionTableViewCell.nib</key>
-		<data>
-		+G07WoyLYyEUojQqmR7MaXjhfiY=
-		</data>
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/TransitionActionView.nib</key>
 		<data>
 		Xbi/+sVc4wrLpRUry0MunBkM930=
@@ -674,7 +646,7 @@
 		</data>
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/UnifiedVideoEditorSDK</key>
 		<data>
-		hnqWoffuOJLhks9cGHChUfKMuPk=
+		H7jMqPiIRnroqurOQp9Ac3nvOW8=
 		</data>
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/VideoCoverSelectionViewController.nib</key>
 		<data>
@@ -722,7 +694,7 @@
 		</data>
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/_CodeSignature/CodeResources</key>
 		<data>
-		SrRZfLNluBrbFUxbELj+p8pmycg=
+		ja4i79toBaqdddBjCaB+mTUdHao=
 		</data>
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/blank_video.mp4</key>
 		<data>
@@ -738,15 +710,15 @@
 		</data>
 		<key>ios-arm64/dSYMs/UnifiedVideoEditorSDK.framework.dSYM/Contents/Info.plist</key>
 		<data>
-		5vQu8VYhjRLJq+HRbXV3v3BKVjg=
+		+mn5E53K2Q8VIz8PMsuJczC49K0=
 		</data>
 		<key>ios-arm64/dSYMs/UnifiedVideoEditorSDK.framework.dSYM/Contents/Resources/DWARF/UnifiedVideoEditorSDK</key>
 		<data>
-		glYIqKfu+nCUUmzWQL/s6tKH6Yw=
+		zr3LjfjgIjoYVx/8WWOR5/CWYB0=
 		</data>
 		<key>ios-arm64/dSYMs/UnifiedVideoEditorSDK.framework.dSYM/Contents/Resources/Relocations/aarch64/UnifiedVideoEditorSDK.yml</key>
 		<data>
-		EYLYKXNZuQooe8RenPVARpWO/rE=
+		rqWOBy7Uasc/pYSzMlHqXSoiTo8=
 		</data>
 		<key>ios-arm64/dSYMs/UnifiedVideoEditorSDK.framework.dSYM/Contents/Resources/Swift/aarch64/BNBSdkApi.swiftinterface</key>
 		<data>
@@ -778,19 +750,7 @@
 		</data>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/Assets.car</key>
 		<data>
-		FjdgXSJbs8yFNDhaSpNDWaOsSqw=
-		</data>
-		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/AudioBrowserViewController.storyboardc/Cwr-uE-sFK-view-lWM-bB-Bwz.nib</key>
-		<data>
-		dmc0ZDp312rnkXG4y7axMK8/6aE=
-		</data>
-		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/AudioBrowserViewController.storyboardc/Info.plist</key>
-		<data>
-		KXywql05nueRKfEH7vutQMVFlqQ=
-		</data>
-		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/AudioBrowserViewController.storyboardc/UIViewController-Cwr-uE-sFK.nib</key>
-		<data>
-		VCmwggaqysS40KGoYUt+GtnbALk=
+		4GOz9w+y4O4J2yRzMEIlL3Hf8T8=
 		</data>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/AudioEditingView.nib</key>
 		<data>
@@ -859,10 +819,6 @@
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/CategoryCell.nib</key>
 		<data>
 		+26qmXFBnqSm59WvUJ15mo14sxM=
-		</data>
-		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/CategorySelectionTableViewCell.nib</key>
-		<data>
-		AcSbMfO88FajID1Oi9xm5+bC3S0=
 		</data>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/CollectionCell.nib</key>
 		<data>
@@ -1018,7 +974,7 @@
 		</data>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/FrameworkVersion.plist</key>
 		<data>
-		9ddS+86MkDelJKeWOrN9uZGf7U8=
+		x1QHi3u1+zMGhAlmLxA9YCHPlUY=
 		</data>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/FullscreenActivityView.nib</key>
 		<data>
@@ -1126,7 +1082,7 @@
 		</data>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/Headers/UnifiedVideoEditorSDK-Swift.h</key>
 		<data>
-		TSXOw2lFPvjefc9A0zsoAlBm3R4=
+		IjFaUsJ0SXQ5YY2hjzW56e0JgZc=
 		</data>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/Headers/UnifiedVideoEditorSDK.h</key>
 		<data>
@@ -1138,7 +1094,7 @@
 		</data>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/Info.plist</key>
 		<data>
-		YLIxKI+OJKGPOfNpiJDMRLzJqbI=
+		aHprmTY4FHkijnCFvcN/iEpyvsM=
 		</data>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/InfoView.nib</key>
 		<data>
@@ -1174,35 +1130,35 @@
 		</data>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/Modules/UnifiedVideoEditorSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		lWFrHJyjRgRJMlR1673wp4kFojw=
+		LL/PN4qEEKb6v2+yrL6hKgoGT6A=
 		</data>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/Modules/UnifiedVideoEditorSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		RVVYSYDoFebHJKrmJ3F06SpI21Y=
+		X/HD7CfmBaIsUFQd21yM1N42BGg=
 		</data>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/Modules/UnifiedVideoEditorSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		+ehmHPUopoYXaG4vzrWgBPwG7/c=
+		6U4dBB10HYdDy6me5Bh9oTgofAQ=
 		</data>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/Modules/UnifiedVideoEditorSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		RVVYSYDoFebHJKrmJ3F06SpI21Y=
+		X/HD7CfmBaIsUFQd21yM1N42BGg=
 		</data>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/Modules/UnifiedVideoEditorSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		lWFrHJyjRgRJMlR1673wp4kFojw=
+		LL/PN4qEEKb6v2+yrL6hKgoGT6A=
 		</data>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/Modules/UnifiedVideoEditorSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		mVlqv9R0i6c5zlO9eWYKca2Fsvc=
+		eYFU25VlRZ75Wwa9qAcPUxKaZwY=
 		</data>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/Modules/UnifiedVideoEditorSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		Q78thDOcjZfei/X0gWfFUiYRIUg=
+		PoG3nRvExrqSQhAlwrx7cnHVzeg=
 		</data>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/Modules/UnifiedVideoEditorSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		mVlqv9R0i6c5zlO9eWYKca2Fsvc=
+		eYFU25VlRZ75Wwa9qAcPUxKaZwY=
 		</data>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/Modules/module.modulemap</key>
 		<data>
@@ -1284,10 +1240,6 @@
 		<data>
 		Xouc5wV1IMtR+vh99c5Az2HiH7k=
 		</data>
-		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/PreCategorySelectionTableViewCell.nib</key>
-		<data>
-		QPEDkHNSzlkkMIFcH38nM31Q8/Y=
-		</data>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/PredefinedTextStyleCollectionViewCell.nib</key>
 		<data>
 		HhmJ6PNvXlZkBUeZT7CwxSoT1Co=
@@ -1339,10 +1291,6 @@
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/SharingScreenViewController.storyboardc/Y6W-OH-hqX-view-5EZ-qb-Rvc.nib</key>
 		<data>
 		crKHdfriDSOM4qemgpa52c/Uqvk=
-		</data>
-		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/ShowMoreTrackView.nib</key>
-		<data>
-		ekXnWj83lW1dxoE/ikE8+XDdfAg=
 		</data>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/SoundstripeSearchViewController.storyboardc/Info.plist</key>
 		<data>
@@ -1396,10 +1344,6 @@
 		<data>
 		SAojQy1ML+PK6L1uvRhf62DbwdI=
 		</data>
-		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/TrackSelectionTableViewCell.nib</key>
-		<data>
-		+G07WoyLYyEUojQqmR7MaXjhfiY=
-		</data>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/TransitionActionView.nib</key>
 		<data>
 		Xbi/+sVc4wrLpRUry0MunBkM930=
@@ -1438,7 +1382,7 @@
 		</data>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/UnifiedVideoEditorSDK</key>
 		<data>
-		k7yYg6HPbT6MUF0YvIbYOv1sjdw=
+		U/s1Y5AnK2qkHciGVyGVRalBMaQ=
 		</data>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/VideoCoverSelectionViewController.nib</key>
 		<data>
@@ -1486,7 +1430,7 @@
 		</data>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/_CodeSignature/CodeResources</key>
 		<data>
-		60CBNzd3VhKNwNjhWXIiVj3uyDk=
+		g0HegEZhzHG2FVhWSmQU0+gWgZQ=
 		</data>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/blank_video.mp4</key>
 		<data>
@@ -1502,19 +1446,19 @@
 		</data>
 		<key>ios-arm64_x86_64-simulator/dSYMs/UnifiedVideoEditorSDK.framework.dSYM/Contents/Info.plist</key>
 		<data>
-		5vQu8VYhjRLJq+HRbXV3v3BKVjg=
+		+mn5E53K2Q8VIz8PMsuJczC49K0=
 		</data>
 		<key>ios-arm64_x86_64-simulator/dSYMs/UnifiedVideoEditorSDK.framework.dSYM/Contents/Resources/DWARF/UnifiedVideoEditorSDK</key>
 		<data>
-		2TpxUlwyOWzYx09+1+vkA1Qqt4s=
+		sxJXGjmaQmnh5e76ZS3S121xejw=
 		</data>
 		<key>ios-arm64_x86_64-simulator/dSYMs/UnifiedVideoEditorSDK.framework.dSYM/Contents/Resources/Relocations/aarch64/UnifiedVideoEditorSDK.yml</key>
 		<data>
-		NH2fcF4WnRJ/WaXa8tG83i4U6Ec=
+		IJwYa6BoGqGL+FRZzBsGCw0Ehsw=
 		</data>
 		<key>ios-arm64_x86_64-simulator/dSYMs/UnifiedVideoEditorSDK.framework.dSYM/Contents/Resources/Relocations/x86_64/UnifiedVideoEditorSDK.yml</key>
 		<data>
-		f9YCf7KdY5C1I99TvSgPoxvzQP0=
+		Q6p+RWNI37BSv0Go1JQJJA73VbM=
 		</data>
 		<key>ios-arm64_x86_64-simulator/dSYMs/UnifiedVideoEditorSDK.framework.dSYM/Contents/Resources/Swift/aarch64/BNBSdkApi.swiftinterface</key>
 		<data>
@@ -1597,44 +1541,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			FjdgXSJbs8yFNDhaSpNDWaOsSqw=
+			4GOz9w+y4O4J2yRzMEIlL3Hf8T8=
 			</data>
 			<key>hash2</key>
 			<data>
-			NPeWpC1FNLDPceidsmWaVYAKnAX603FT5ZbgNxtWx2g=
-			</data>
-		</dict>
-		<key>ios-arm64/UnifiedVideoEditorSDK.framework/AudioBrowserViewController.storyboardc/Cwr-uE-sFK-view-lWM-bB-Bwz.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			dmc0ZDp312rnkXG4y7axMK8/6aE=
-			</data>
-			<key>hash2</key>
-			<data>
-			rEFgKCEGYWFOxhsN4ePafr+kFLM+A0mQllpBRPfjn1s=
-			</data>
-		</dict>
-		<key>ios-arm64/UnifiedVideoEditorSDK.framework/AudioBrowserViewController.storyboardc/Info.plist</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			KXywql05nueRKfEH7vutQMVFlqQ=
-			</data>
-			<key>hash2</key>
-			<data>
-			T92IrlLYBOVfu+vBWLG6sHuTADNVfNGnnejOKmT9GEA=
-			</data>
-		</dict>
-		<key>ios-arm64/UnifiedVideoEditorSDK.framework/AudioBrowserViewController.storyboardc/UIViewController-Cwr-uE-sFK.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			VCmwggaqysS40KGoYUt+GtnbALk=
-			</data>
-			<key>hash2</key>
-			<data>
-			DmttJHjaOodkhHYal6FcOAvkSOJQXgIP65Wl4pHGaBU=
+			K3FYWVclPr/XOpugd9bCBLuDJbhZN92X+di7Ed99IQQ=
 			</data>
 		</dict>
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/AudioEditingView.nib</key>
@@ -1822,17 +1733,6 @@
 			<key>hash2</key>
 			<data>
 			UpYadH3xhdZRCtYIMtfvikA2MO3wxHl0YPvgEtHVnBE=
-			</data>
-		</dict>
-		<key>ios-arm64/UnifiedVideoEditorSDK.framework/CategorySelectionTableViewCell.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			AcSbMfO88FajID1Oi9xm5+bC3S0=
-			</data>
-			<key>hash2</key>
-			<data>
-			zbqkab5XJnkHw0moK1ACrI92/Z0I7kKeMSo+CS/EPGM=
 			</data>
 		</dict>
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/CollectionCell.nib</key>
@@ -2257,11 +2157,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			9ddS+86MkDelJKeWOrN9uZGf7U8=
+			x1QHi3u1+zMGhAlmLxA9YCHPlUY=
 			</data>
 			<key>hash2</key>
 			<data>
-			+jyXMaXo2YRG69Zo7ZYIuTKGMchunNacQXS6xw2G718=
+			yewgbwjUBeIxFyaH5Hk+rcb2OOmEuswYYig4hYJZ8SY=
 			</data>
 		</dict>
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/FullscreenActivityView.nib</key>
@@ -2554,11 +2454,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			oyie8SvpzEeifMKuEK4JCayTXI0=
+			nwer4SbedzQjp/UZ74LZn/ximGc=
 			</data>
 			<key>hash2</key>
 			<data>
-			n2VcfqiWxKByPZmxgytHVc5em3tYjdFqf9E6MnPh8dE=
+			CmXhL1cvzk6uqsnTkidlhdVH3A7HweUICbJigirC1Wo=
 			</data>
 		</dict>
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/Headers/UnifiedVideoEditorSDK.h</key>
@@ -2587,11 +2487,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			qmt6JhtrTfAsD3PImEdx+3YiFVs=
+			4Q3RF1bO1EwYB7U4j9gL7lLsXD0=
 			</data>
 			<key>hash2</key>
 			<data>
-			eOEdy20vr+lR0rwL6QomT8pHzQd1OLliEpWZZ/rmufI=
+			xaUSxPH72aIiorEyzGWeBwnAdMCL/CYrDVl+VqE5frw=
 			</data>
 		</dict>
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/InfoView.nib</key>
@@ -2686,44 +2586,44 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Btnfg5XMLpvueEgt1YEmLwygegM=
+			ozBKBtQteEdwrVkGmBvxZU9Lf2c=
 			</data>
 			<key>hash2</key>
 			<data>
-			fcvb2h/Kppo8x+KtpGhEZDMXB6SaIBv5WHAzTcn+Rk4=
+			3NfXJOOYLdODdaSLUA3PlhZlaFNRis963hUyvzyE1bQ=
 			</data>
 		</dict>
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/Modules/UnifiedVideoEditorSDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			OdrbyQ1d60Obe9IYGIG7YDwoL4U=
+			QxBknQM2A3L59GxN5mtLFTRsOlA=
 			</data>
 			<key>hash2</key>
 			<data>
-			c9+E2cuNt5wC307epS64LHgOUT8JGkgKYRNhz60Ughg=
+			hImt+WrsBOANH8Jz52YTd/Le3MXkvJ6kJIfchLvX5oE=
 			</data>
 		</dict>
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/Modules/UnifiedVideoEditorSDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			N7Y0/3Q1+Whu30OCT2AgsPQl0Vs=
+			RbytodH7GcQ772avXR7riDUdnX0=
 			</data>
 			<key>hash2</key>
 			<data>
-			VZTi+SkO2zSXdYphVNxpO33X33QP2xOyhHHAU/TjAhA=
+			nOKMaavbITUufwEMLcXaBO6En3mfEOUIVwDEhZJYfeA=
 			</data>
 		</dict>
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/Modules/UnifiedVideoEditorSDK.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			OdrbyQ1d60Obe9IYGIG7YDwoL4U=
+			QxBknQM2A3L59GxN5mtLFTRsOlA=
 			</data>
 			<key>hash2</key>
 			<data>
-			c9+E2cuNt5wC307epS64LHgOUT8JGkgKYRNhz60Ughg=
+			hImt+WrsBOANH8Jz52YTd/Le3MXkvJ6kJIfchLvX5oE=
 			</data>
 		</dict>
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/Modules/module.modulemap</key>
@@ -2946,17 +2846,6 @@
 			pCS2YL8X2dFo2kCQZwaa301ikf+zAx8wZcU/O0f1af4=
 			</data>
 		</dict>
-		<key>ios-arm64/UnifiedVideoEditorSDK.framework/PreCategorySelectionTableViewCell.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			QPEDkHNSzlkkMIFcH38nM31Q8/Y=
-			</data>
-			<key>hash2</key>
-			<data>
-			G6+VH4lSKyEDat9mI3YR+9RufjPsYTh625rC+SqKV+w=
-			</data>
-		</dict>
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/PredefinedTextStyleCollectionViewCell.nib</key>
 		<dict>
 			<key>hash</key>
@@ -3098,17 +2987,6 @@
 			<key>hash2</key>
 			<data>
 			I9nGZ2WW8Mk9xEm0HoHWmALeXRzk5h198eRi8j4ollg=
-			</data>
-		</dict>
-		<key>ios-arm64/UnifiedVideoEditorSDK.framework/ShowMoreTrackView.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			ekXnWj83lW1dxoE/ikE8+XDdfAg=
-			</data>
-			<key>hash2</key>
-			<data>
-			Ha26+PAh8wXpkfDepPCOV6fy9vOeOrrovx99VlGf/tA=
 			</data>
 		</dict>
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/SoundstripeSearchViewController.storyboardc/Info.plist</key>
@@ -3254,17 +3132,6 @@
 			DDBip7TkCDEVp4AlbycVTjMhYSpYrZx056QL5twkCRk=
 			</data>
 		</dict>
-		<key>ios-arm64/UnifiedVideoEditorSDK.framework/TrackSelectionTableViewCell.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			+G07WoyLYyEUojQqmR7MaXjhfiY=
-			</data>
-			<key>hash2</key>
-			<data>
-			fdx9DcW3Wu0UKVdJcbrsV5BPGEd6/zQ0/+m/cHIPplM=
-			</data>
-		</dict>
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/TransitionActionView.nib</key>
 		<dict>
 			<key>hash</key>
@@ -3368,11 +3235,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			hnqWoffuOJLhks9cGHChUfKMuPk=
+			H7jMqPiIRnroqurOQp9Ac3nvOW8=
 			</data>
 			<key>hash2</key>
 			<data>
-			QDM6W0bXO7XSfc2dtwVf08Il095e1oHaDDc3Fupjcxk=
+			81jXYT9HeWbkKk3i3P4wqxZuKxOQSWxO7/y2acGpjkM=
 			</data>
 		</dict>
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/VideoCoverSelectionViewController.nib</key>
@@ -3500,11 +3367,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			SrRZfLNluBrbFUxbELj+p8pmycg=
+			ja4i79toBaqdddBjCaB+mTUdHao=
 			</data>
 			<key>hash2</key>
 			<data>
-			YxbgCABSU5R3al5+IcbtQU54F2sNzx7zD6CCGf5+RGg=
+			JxeMD/iYuw88IsZem7awdSqoA68m/l9hm/iXL8a6vxA=
 			</data>
 		</dict>
 		<key>ios-arm64/UnifiedVideoEditorSDK.framework/blank_video.mp4</key>
@@ -3544,33 +3411,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			5vQu8VYhjRLJq+HRbXV3v3BKVjg=
+			+mn5E53K2Q8VIz8PMsuJczC49K0=
 			</data>
 			<key>hash2</key>
 			<data>
-			AJIjXLm5nxAL7qN/VlnWUAx0Ii43Yk65EcMi66mrzYo=
+			7US/9HCM9M2KXSDCBC0Ap3Ipw/pMM5pbj/puCvjWSP4=
 			</data>
 		</dict>
 		<key>ios-arm64/dSYMs/UnifiedVideoEditorSDK.framework.dSYM/Contents/Resources/DWARF/UnifiedVideoEditorSDK</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			glYIqKfu+nCUUmzWQL/s6tKH6Yw=
+			zr3LjfjgIjoYVx/8WWOR5/CWYB0=
 			</data>
 			<key>hash2</key>
 			<data>
-			j2WTkS4nmpILF/wWMfULhmMpYzoTW3ENYO9MQKVUHns=
+			FAsV2MuUtdSapvHH8QYWZNwKQWNcmgyC7PMX6g81yjo=
 			</data>
 		</dict>
 		<key>ios-arm64/dSYMs/UnifiedVideoEditorSDK.framework.dSYM/Contents/Resources/Relocations/aarch64/UnifiedVideoEditorSDK.yml</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			EYLYKXNZuQooe8RenPVARpWO/rE=
+			rqWOBy7Uasc/pYSzMlHqXSoiTo8=
 			</data>
 			<key>hash2</key>
 			<data>
-			dBexCLevifqDEi3iamNMep7gSjlE85ex8+w0chbrPJQ=
+			2YJ7OCmEjXZG7A030XDJ2PhArdyMlQj9J4ydcisrx+s=
 			</data>
 		</dict>
 		<key>ios-arm64/dSYMs/UnifiedVideoEditorSDK.framework.dSYM/Contents/Resources/Swift/aarch64/BNBSdkApi.swiftinterface</key>
@@ -3654,44 +3521,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			FjdgXSJbs8yFNDhaSpNDWaOsSqw=
+			4GOz9w+y4O4J2yRzMEIlL3Hf8T8=
 			</data>
 			<key>hash2</key>
 			<data>
-			NPeWpC1FNLDPceidsmWaVYAKnAX603FT5ZbgNxtWx2g=
-			</data>
-		</dict>
-		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/AudioBrowserViewController.storyboardc/Cwr-uE-sFK-view-lWM-bB-Bwz.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			dmc0ZDp312rnkXG4y7axMK8/6aE=
-			</data>
-			<key>hash2</key>
-			<data>
-			rEFgKCEGYWFOxhsN4ePafr+kFLM+A0mQllpBRPfjn1s=
-			</data>
-		</dict>
-		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/AudioBrowserViewController.storyboardc/Info.plist</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			KXywql05nueRKfEH7vutQMVFlqQ=
-			</data>
-			<key>hash2</key>
-			<data>
-			T92IrlLYBOVfu+vBWLG6sHuTADNVfNGnnejOKmT9GEA=
-			</data>
-		</dict>
-		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/AudioBrowserViewController.storyboardc/UIViewController-Cwr-uE-sFK.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			VCmwggaqysS40KGoYUt+GtnbALk=
-			</data>
-			<key>hash2</key>
-			<data>
-			DmttJHjaOodkhHYal6FcOAvkSOJQXgIP65Wl4pHGaBU=
+			K3FYWVclPr/XOpugd9bCBLuDJbhZN92X+di7Ed99IQQ=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/AudioEditingView.nib</key>
@@ -3879,17 +3713,6 @@
 			<key>hash2</key>
 			<data>
 			UpYadH3xhdZRCtYIMtfvikA2MO3wxHl0YPvgEtHVnBE=
-			</data>
-		</dict>
-		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/CategorySelectionTableViewCell.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			AcSbMfO88FajID1Oi9xm5+bC3S0=
-			</data>
-			<key>hash2</key>
-			<data>
-			zbqkab5XJnkHw0moK1ACrI92/Z0I7kKeMSo+CS/EPGM=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/CollectionCell.nib</key>
@@ -4314,11 +4137,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			9ddS+86MkDelJKeWOrN9uZGf7U8=
+			x1QHi3u1+zMGhAlmLxA9YCHPlUY=
 			</data>
 			<key>hash2</key>
 			<data>
-			+jyXMaXo2YRG69Zo7ZYIuTKGMchunNacQXS6xw2G718=
+			yewgbwjUBeIxFyaH5Hk+rcb2OOmEuswYYig4hYJZ8SY=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/FullscreenActivityView.nib</key>
@@ -4611,11 +4434,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			TSXOw2lFPvjefc9A0zsoAlBm3R4=
+			IjFaUsJ0SXQ5YY2hjzW56e0JgZc=
 			</data>
 			<key>hash2</key>
 			<data>
-			FKOD1+mYiMs6O1WjevCo7MAlHL5y212GAYH2rgihYCk=
+			Tr8vkGU+CvkUyG9nn+GYzSr3mg9FUj06AeRy9TogG2k=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/Headers/UnifiedVideoEditorSDK.h</key>
@@ -4644,11 +4467,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			YLIxKI+OJKGPOfNpiJDMRLzJqbI=
+			aHprmTY4FHkijnCFvcN/iEpyvsM=
 			</data>
 			<key>hash2</key>
 			<data>
-			r/ausAW4SHzIPPTH1lsMssCuushVRCRgiRu+k7cErlQ=
+			lsNf6aSMzssTkRTolTCUzjDDKZ+r63fP1pgU98fCbDU=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/InfoView.nib</key>
@@ -4743,88 +4566,88 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			lWFrHJyjRgRJMlR1673wp4kFojw=
+			LL/PN4qEEKb6v2+yrL6hKgoGT6A=
 			</data>
 			<key>hash2</key>
 			<data>
-			h2uH4b+8N3dgexd8Z0BV7n2lKlbLTy4Ig5OPGjMj4II=
+			eR8jPiQ6AX8uCTZ9/vt4/F6dwvrrdC1rV8Mc/ZoRd3o=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/Modules/UnifiedVideoEditorSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			RVVYSYDoFebHJKrmJ3F06SpI21Y=
+			X/HD7CfmBaIsUFQd21yM1N42BGg=
 			</data>
 			<key>hash2</key>
 			<data>
-			505ovgkGDiJ1ctlplRshfUysdwYollsPbpK/pJYme/s=
+			rZSqQWxmp2r5Omj7EmXrzUq0J3r+4B3+Qv8A5EbDPW4=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/Modules/UnifiedVideoEditorSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			+ehmHPUopoYXaG4vzrWgBPwG7/c=
+			6U4dBB10HYdDy6me5Bh9oTgofAQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			Bosq1gabJTx/fBwbU4Ir1dkZRTb4obWKKn/K9PcgeIQ=
+			ryx4OxNg7kBDzYzIkInhOb/kefo2Zm0vsdo5c9clFfM=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/Modules/UnifiedVideoEditorSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			RVVYSYDoFebHJKrmJ3F06SpI21Y=
+			X/HD7CfmBaIsUFQd21yM1N42BGg=
 			</data>
 			<key>hash2</key>
 			<data>
-			505ovgkGDiJ1ctlplRshfUysdwYollsPbpK/pJYme/s=
+			rZSqQWxmp2r5Omj7EmXrzUq0J3r+4B3+Qv8A5EbDPW4=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/Modules/UnifiedVideoEditorSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			lWFrHJyjRgRJMlR1673wp4kFojw=
+			LL/PN4qEEKb6v2+yrL6hKgoGT6A=
 			</data>
 			<key>hash2</key>
 			<data>
-			h2uH4b+8N3dgexd8Z0BV7n2lKlbLTy4Ig5OPGjMj4II=
+			eR8jPiQ6AX8uCTZ9/vt4/F6dwvrrdC1rV8Mc/ZoRd3o=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/Modules/UnifiedVideoEditorSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			mVlqv9R0i6c5zlO9eWYKca2Fsvc=
+			eYFU25VlRZ75Wwa9qAcPUxKaZwY=
 			</data>
 			<key>hash2</key>
 			<data>
-			vOmnQ5hVk6mTh7oGLr4xrdwORNwkbgKYgfcGEHgcCKI=
+			KZgQs1Pr3YhQBEb+R/B/vQ5yU8WFoqq27Me08AetYYM=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/Modules/UnifiedVideoEditorSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Q78thDOcjZfei/X0gWfFUiYRIUg=
+			PoG3nRvExrqSQhAlwrx7cnHVzeg=
 			</data>
 			<key>hash2</key>
 			<data>
-			uadE0uA2L4w0wbR0UKOSUfk//2L9BEVQn1UwCh6fb1A=
+			nKSI4NB+LqbungGx/ucymE2CspAUlKKZ60gcAaSMajk=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/Modules/UnifiedVideoEditorSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			mVlqv9R0i6c5zlO9eWYKca2Fsvc=
+			eYFU25VlRZ75Wwa9qAcPUxKaZwY=
 			</data>
 			<key>hash2</key>
 			<data>
-			vOmnQ5hVk6mTh7oGLr4xrdwORNwkbgKYgfcGEHgcCKI=
+			KZgQs1Pr3YhQBEb+R/B/vQ5yU8WFoqq27Me08AetYYM=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/Modules/module.modulemap</key>
@@ -5047,17 +4870,6 @@
 			pCS2YL8X2dFo2kCQZwaa301ikf+zAx8wZcU/O0f1af4=
 			</data>
 		</dict>
-		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/PreCategorySelectionTableViewCell.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			QPEDkHNSzlkkMIFcH38nM31Q8/Y=
-			</data>
-			<key>hash2</key>
-			<data>
-			G6+VH4lSKyEDat9mI3YR+9RufjPsYTh625rC+SqKV+w=
-			</data>
-		</dict>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/PredefinedTextStyleCollectionViewCell.nib</key>
 		<dict>
 			<key>hash</key>
@@ -5199,17 +5011,6 @@
 			<key>hash2</key>
 			<data>
 			I9nGZ2WW8Mk9xEm0HoHWmALeXRzk5h198eRi8j4ollg=
-			</data>
-		</dict>
-		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/ShowMoreTrackView.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			ekXnWj83lW1dxoE/ikE8+XDdfAg=
-			</data>
-			<key>hash2</key>
-			<data>
-			Ha26+PAh8wXpkfDepPCOV6fy9vOeOrrovx99VlGf/tA=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/SoundstripeSearchViewController.storyboardc/Info.plist</key>
@@ -5355,17 +5156,6 @@
 			DDBip7TkCDEVp4AlbycVTjMhYSpYrZx056QL5twkCRk=
 			</data>
 		</dict>
-		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/TrackSelectionTableViewCell.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			+G07WoyLYyEUojQqmR7MaXjhfiY=
-			</data>
-			<key>hash2</key>
-			<data>
-			fdx9DcW3Wu0UKVdJcbrsV5BPGEd6/zQ0/+m/cHIPplM=
-			</data>
-		</dict>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/TransitionActionView.nib</key>
 		<dict>
 			<key>hash</key>
@@ -5469,11 +5259,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			k7yYg6HPbT6MUF0YvIbYOv1sjdw=
+			U/s1Y5AnK2qkHciGVyGVRalBMaQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			npltPC0i3YcRB/u12LKSg853NUtzER8UhHyO5ph7QDo=
+			y03Ev8XuIFcIZjZNW5UGhYtESL6SeYd2aJHtYprs+T4=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/VideoCoverSelectionViewController.nib</key>
@@ -5601,11 +5391,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			60CBNzd3VhKNwNjhWXIiVj3uyDk=
+			g0HegEZhzHG2FVhWSmQU0+gWgZQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			TznqENhqSkPkXcEgaqvTVUfl1G8AZ8JPzU+FjXNQ+fo=
+			5kVe2Jq1PaQ+HLwvBUMN1efLfllxpoLxEWcfx4XDhMw=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/UnifiedVideoEditorSDK.framework/blank_video.mp4</key>
@@ -5645,44 +5435,44 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			5vQu8VYhjRLJq+HRbXV3v3BKVjg=
+			+mn5E53K2Q8VIz8PMsuJczC49K0=
 			</data>
 			<key>hash2</key>
 			<data>
-			AJIjXLm5nxAL7qN/VlnWUAx0Ii43Yk65EcMi66mrzYo=
+			7US/9HCM9M2KXSDCBC0Ap3Ipw/pMM5pbj/puCvjWSP4=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/dSYMs/UnifiedVideoEditorSDK.framework.dSYM/Contents/Resources/DWARF/UnifiedVideoEditorSDK</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			2TpxUlwyOWzYx09+1+vkA1Qqt4s=
+			sxJXGjmaQmnh5e76ZS3S121xejw=
 			</data>
 			<key>hash2</key>
 			<data>
-			Jy/L0vlf35zIsfgGiqMHpmnDJVjfuFu9eQJ64iJsw7Q=
+			C+4beM4uIfyY4YzNlFjGy4rinx8MuEsD8AlvxCyy+Ac=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/dSYMs/UnifiedVideoEditorSDK.framework.dSYM/Contents/Resources/Relocations/aarch64/UnifiedVideoEditorSDK.yml</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			NH2fcF4WnRJ/WaXa8tG83i4U6Ec=
+			IJwYa6BoGqGL+FRZzBsGCw0Ehsw=
 			</data>
 			<key>hash2</key>
 			<data>
-			9Nt47d2RdeS8AhrXFUXemdsmhLGl5nSUOSNwuvGR5Bs=
+			ikp3AxWbjzV1D0GeuRkG27QsDX0WOubbRqSzsECC7jw=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/dSYMs/UnifiedVideoEditorSDK.framework.dSYM/Contents/Resources/Relocations/x86_64/UnifiedVideoEditorSDK.yml</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			f9YCf7KdY5C1I99TvSgPoxvzQP0=
+			Q6p+RWNI37BSv0Go1JQJJA73VbM=
 			</data>
 			<key>hash2</key>
 			<data>
-			kqGbDuNLjlKtPi7+ulvJaRRYE17Pk2n1lWSBVg+ty9U=
+			JFJD34rT4NOzZJv5h8IL7DxjiSdhcI+CLaYVMhTTrs8=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/dSYMs/UnifiedVideoEditorSDK.framework.dSYM/Contents/Resources/Swift/aarch64/BNBSdkApi.swiftinterface</key>

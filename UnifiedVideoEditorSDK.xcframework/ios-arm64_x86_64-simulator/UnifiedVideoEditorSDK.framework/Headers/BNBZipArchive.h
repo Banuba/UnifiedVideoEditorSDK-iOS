@@ -1,32 +1,32 @@
 //
-//  SSZipArchive.h
-//  SSZipArchive
+//  BNBZipArchive.h
+//  BNBZipArchive
 //
 //  Created by Sam Soffes on 7/21/10.
 //  Copyright (c) Sam Soffes 2010-2015. All rights reserved.
 //
 
-#ifndef _SSZIPARCHIVE_H
-#define _SSZIPARCHIVE_H
+#ifndef _BNBZIPARCHIVE_H
+#define _BNBZIPARCHIVE_H
 
 #import <Foundation/Foundation.h>
-#import <UnifiedVideoEditorSDK/SSZipCommon.h>
+#import <UnifiedVideoEditorSDK/BNBZipCommon.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-extern NSString *const SSZipArchiveErrorDomain;
-typedef NS_ENUM(NSInteger, SSZipArchiveErrorCode) {
-    SSZipArchiveErrorCodeFailedOpenZipFile      = -1,
-    SSZipArchiveErrorCodeFailedOpenFileInZip    = -2,
-    SSZipArchiveErrorCodeFileInfoNotLoadable    = -3,
-    SSZipArchiveErrorCodeFileContentNotReadable = -4,
-    SSZipArchiveErrorCodeFailedToWriteFile      = -5,
-    SSZipArchiveErrorCodeInvalidArguments       = -6,
+extern NSString *const BNBZipArchiveErrorDomain;
+typedef NS_ENUM(NSInteger, BNBZipArchiveErrorCode) {
+    BNBZipArchiveErrorCodeFailedOpenZipFile      = -1,
+    BNBZipArchiveErrorCodeFailedOpenFileInZip    = -2,
+    BNBZipArchiveErrorCodeFileInfoNotLoadable    = -3,
+    BNBZipArchiveErrorCodeFileContentNotReadable = -4,
+    BNBZipArchiveErrorCodeFailedToWriteFile      = -5,
+    BNBZipArchiveErrorCodeInvalidArguments       = -6,
 };
 
-@protocol SSZipArchiveDelegate;
-NS_SWIFT_NAME(SSZipArchive)
-@interface SSZipArchive : NSObject
+@protocol BNBZipArchiveDelegate;
+NS_SWIFT_NAME(BNBZipArchive)
+@interface BNBZipArchive : NSObject
 
 // Password check
 + (BOOL)isFilePasswordProtectedAtPath:(NSString *)path;
@@ -37,7 +37,7 @@ NS_SWIFT_NAME(SSZipArchive)
 
 // Unzip
 + (BOOL)unzipFileAtPath:(NSString *)path toDestination:(NSString *)destination;
-+ (BOOL)unzipFileAtPath:(NSString *)path toDestination:(NSString *)destination delegate:(nullable id<SSZipArchiveDelegate>)delegate;
++ (BOOL)unzipFileAtPath:(NSString *)path toDestination:(NSString *)destination delegate:(nullable id<BNBZipArchiveDelegate>)delegate;
 
 + (BOOL)unzipFileAtPath:(NSString *)path
           toDestination:(NSString *)destination
@@ -50,7 +50,7 @@ NS_SWIFT_NAME(SSZipArchive)
               overwrite:(BOOL)overwrite
                password:(nullable NSString *)password
                   error:(NSError * *)error
-               delegate:(nullable id<SSZipArchiveDelegate>)delegate NS_REFINED_FOR_SWIFT;
+               delegate:(nullable id<BNBZipArchiveDelegate>)delegate NS_REFINED_FOR_SWIFT;
 
 + (BOOL)unzipFileAtPath:(NSString *)path
           toDestination:(NSString *)destination
@@ -58,7 +58,7 @@ NS_SWIFT_NAME(SSZipArchive)
               overwrite:(BOOL)overwrite
                password:(nullable NSString *)password
                   error:(NSError * *)error
-               delegate:(nullable id<SSZipArchiveDelegate>)delegate;
+               delegate:(nullable id<BNBZipArchiveDelegate>)delegate;
 
 + (BOOL)unzipFileAtPath:(NSString *)path
           toDestination:(NSString *)destination
@@ -79,7 +79,7 @@ NS_SWIFT_NAME(SSZipArchive)
          nestedZipLevel:(NSInteger)nestedZipLevel
                password:(nullable NSString *)password
                   error:(NSError **)error
-               delegate:(nullable id<SSZipArchiveDelegate>)delegate
+               delegate:(nullable id<BNBZipArchiveDelegate>)delegate
         progressHandler:(void (^_Nullable)(NSString *entry, unz_file_info zipInfo, long entryNumber, long total))progressHandler
       completionHandler:(void (^_Nullable)(NSString *path, BOOL succeeded, NSError * _Nullable error))completionHandler;
 
@@ -129,7 +129,7 @@ NS_SWIFT_NAME(SSZipArchive)
 
 @end
 
-@protocol SSZipArchiveDelegate <NSObject>
+@protocol BNBZipArchiveDelegate <NSObject>
 
 @optional
 
@@ -147,4 +147,4 @@ NS_SWIFT_NAME(SSZipArchive)
 
 NS_ASSUME_NONNULL_END
 
-#endif /* _SSZIPARCHIVE_H */
+#endif /* _BNBZIPARCHIVE_H */

@@ -254,7 +254,7 @@
 		</data>
 		<key>FrameworkVersion.plist</key>
 		<data>
-		x1QHi3u1+zMGhAlmLxA9YCHPlUY=
+		GQrrTLTyGgU3e9XhmD8OLSFUKiw=
 		</data>
 		<key>FullscreenActivityView.nib</key>
 		<data>
@@ -340,6 +340,14 @@
 		<data>
 		ryvpYUg1g58CGsqPFly7mdPstsY=
 		</data>
+		<key>Headers/BNBZipArchive.h</key>
+		<data>
+		8LeO8biyzqBgq/fuW/zFd5nN1Nc=
+		</data>
+		<key>Headers/BNBZipCommon.h</key>
+		<data>
+		7/CRJaZIINox0lKm9xmdHiWQXP0=
+		</data>
 		<key>Headers/OutputSettings.h</key>
 		<data>
 		fcbOGOUmsn80tZCRyWT6ZM/yp0A=
@@ -352,21 +360,13 @@
 		<data>
 		hw40ydW3Ey+3SQiRuCsc/vt+48o=
 		</data>
-		<key>Headers/SSZipArchive.h</key>
-		<data>
-		eT56YGikg7VGzewKCdst3fQrVFI=
-		</data>
-		<key>Headers/SSZipCommon.h</key>
-		<data>
-		GCJZEKmID62r9c8HV206IWHa8Ts=
-		</data>
 		<key>Headers/UnifiedVideoEditorSDK-Swift.h</key>
 		<data>
 		nwer4SbedzQjp/UZ74LZn/ximGc=
 		</data>
 		<key>Headers/UnifiedVideoEditorSDK.h</key>
 		<data>
-		0GA0d44aKbZlD/rvMwa+eNo9iTE=
+		mEEfBlSssLLsF+5H/DV+WLeYJP0=
 		</data>
 		<key>Headers/VisualClipListener.h</key>
 		<data>
@@ -374,7 +374,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		4Q3RF1bO1EwYB7U4j9gL7lLsXD0=
+		KHN+Y5ARHALalXhqrQHuJ1NJknY=
 		</data>
 		<key>InfoView.nib</key>
 		<data>
@@ -699,10 +699,6 @@
 		<key>default.metallib</key>
 		<data>
 		DxigyNtGimdVmjZPOQWnBKqZbOw=
-		</data>
-		<key>version.txt</key>
-		<data>
-		taqzrjvfA7sGj75PtlsiVjmRs94=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -1145,7 +1141,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			yewgbwjUBeIxFyaH5Hk+rcb2OOmEuswYYig4hYJZ8SY=
+			CmNVukCg1tFFzamcvJNOwLRV3OJcVBtDhX0ANw3hBJs=
 			</data>
 		</dict>
 		<key>FullscreenActivityView.nib</key>
@@ -1295,6 +1291,20 @@
 			Z6iLlV41RoR1M3/JU2DOueTFNzzXjERRRV+8/nZ3EAo=
 			</data>
 		</dict>
+		<key>Headers/BNBZipArchive.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			CvIuDipfatabCHPuaSyqkOTAc33cfw6yu4b6ZwkXnmc=
+			</data>
+		</dict>
+		<key>Headers/BNBZipCommon.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			zIgs/wvqxFXkIu21Sjh8bHp/rLhsB9cMYgwnecgBZ+g=
+			</data>
+		</dict>
 		<key>Headers/OutputSettings.h</key>
 		<dict>
 			<key>hash2</key>
@@ -1316,20 +1326,6 @@
 			DDEaZWuaxgsCquSVOIcecD3fC1qEDpGsUzqmCp2bBbc=
 			</data>
 		</dict>
-		<key>Headers/SSZipArchive.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			HtITeshWfmmU6XXpfFPLWIw+ggDdYQW1trX62Wxz8Vg=
-			</data>
-		</dict>
-		<key>Headers/SSZipCommon.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			odGRHXoAxl6RCtuCEyO9dPCeHx3W6GhM/YlvjPJlxsA=
-			</data>
-		</dict>
 		<key>Headers/UnifiedVideoEditorSDK-Swift.h</key>
 		<dict>
 			<key>hash2</key>
@@ -1341,7 +1337,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Ls/kv1WoZPkArNtKKwjfG79MqZhz4MaCtn0WnDv0LI8=
+			55t1uyUI5UGQZdb9QuE5FAmzHx103pVdVahBcsgXhZU=
 			</data>
 		</dict>
 		<key>Headers/VisualClipListener.h</key>
@@ -1916,13 +1912,6 @@
 			<key>hash2</key>
 			<data>
 			A//qUiO8NKykBVULSPTrbigQ0oBTcxBOSeDv9cs6iJA=
-			</data>
-		</dict>
-		<key>version.txt</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			B7FwLds3HwOQT5yHh1oImPjxCnyOJmMgVh8DNaW9JQ8=
 			</data>
 		</dict>
 	</dict>

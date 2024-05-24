@@ -1,5 +1,5 @@
-#ifndef SSZipCommon
-#define SSZipCommon
+#ifndef BNBZipCommon
+#define BNBZipCommon
 
 // typedefs moved from mz_compat.h to here for public access
 

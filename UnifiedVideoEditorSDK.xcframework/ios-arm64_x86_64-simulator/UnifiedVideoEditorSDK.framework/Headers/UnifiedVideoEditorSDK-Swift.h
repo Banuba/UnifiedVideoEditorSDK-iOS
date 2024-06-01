@@ -278,15 +278,11 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
 @import AVFAudio;
-@import AVFoundation;
-@import BNBSdkCore;
 @import CoreFoundation;
 @import CoreMedia;
 @import CoreVideo;
-@import Dispatch;
 @import Foundation;
 @import ObjectiveC;
-@import Photos;
 @import UIKit;
 #endif
 
@@ -325,9 +321,6 @@ SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK8AREffect_")
 
 
 
-
-
-
 @class NSCoder;
 
 SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK21ActivityIndicatorView")
@@ -344,29 +337,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK22AlbumItemConfiguration")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-@class UIImage;
-@class PHAssetCollection;
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK10AlbumModel_")
-@protocol AlbumModel
-/// Album name
-@property (nonatomic, copy) NSString * _Nullable name;
-/// Album preview
-@property (nonatomic, strong) UIImage * _Nullable preview;
-/// Assosiated asset collection with album
-@property (nonatomic, readonly, strong) PHAssetCollection * _Nonnull assetCollection;
-@end
-
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK14AlbumViewModel")
-@interface AlbumViewModel : NSObject <AlbumModel>
-@property (nonatomic, readonly, strong) PHAssetCollection * _Nonnull assetCollection;
-@property (nonatomic, copy) NSString * _Nullable name;
-@property (nonatomic, strong) UIImage * _Nullable preview;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
 
 /// The Albums configuration
 SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK19AlbumsConfiguration")
@@ -377,22 +347,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK19AlbumsConfiguration")
 
 
 @class NSBundle;
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK20AlbumsViewController")
-@interface AlbumsViewController : UIViewController
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK28AlbumsViewControllerDelegate_")
-@protocol AlbumsViewControllerDelegate
-/// Tells delegate object about selection the new album
-- (void)albumsViewController:(AlbumsViewController * _Nonnull)controller didSelect:(id <AlbumModel> _Nonnull)album;
-/// Tells delegate object about close action
-- (void)albumsViewControllerDidClose:(AlbumsViewController * _Nonnull)controller;
-@end
-
 
 SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK19AlertViewController")
 @interface AlertViewController : UIViewController
@@ -435,70 +389,6 @@ SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK24AppStateObserverDelegate_")
 - (void)applicationDidEnterBackgroundNotification:(AppStateObserver * _Nonnull)appStateObserver;
 @end
 
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK18AudioBrowserConfig")
-@interface AudioBrowserConfig : NSObject
-- (nonnull instancetype)init;
-@end
-
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK27AudioBrowserConfigApplyable_")
-@protocol AudioBrowserConfigApplyable
-@property (nonatomic, strong) AudioBrowserConfig * _Nonnull config;
-@end
-
-typedef SWIFT_ENUM(NSInteger, AudioBrowserMusicSource, open) {
-/// enables Soundstripe music in AudioBrowser
-  AudioBrowserMusicSourceSoundstripe = 4,
-/// enables MusicLibrary music in AudioBrowser
-  AudioBrowserMusicSourceMusicLibrary = 6,
-};
-
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK26AudioBrowserPlayerDelegate_")
-@protocol AudioBrowserPlayerDelegate
-- (void)playerPlaysFrameAtTime:(NSTimeInterval)time;
-- (void)didEndPlaying;
-@end
-
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK28AudioBrowserServiceAdoptable_")
-@protocol AudioBrowserServiceAdoptable
-- (void)play;
-- (void)playWithPlayProgressHandler:(void (^ _Nonnull)(float))playProgressHandler;
-- (void)playIn:(CMTimeRange)range playProgressHandler:(void (^ _Nullable)(float))playProgressHandler;
-- (void)pause;
-- (void)resume;
-- (BOOL)loadWithTrackUrl:(NSURL * _Nonnull)trackUrl error:(NSError * _Nullable * _Nullable)error;
-- (void)unload;
-- (void)autoRepeatWithRepeat:(BOOL)repeat;
-- (void)seekToStart;
-- (void)seekToTime:(NSTimeInterval)time;
-@property (nonatomic, strong) id <AudioBrowserPlayerDelegate> _Nullable audioBrowserServiceDelegate;
-@end
-
-@class NSUUID;
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK17AudioBrowserTrack")
-@interface AudioBrowserTrack : NSObject
-/// AudioBrowserTrack constructor
-/// \param uuid setup track uuid string
-///
-/// \param name setup track name
-///
-/// \param url track url
-///
-- (nonnull instancetype)initWithUuid:(NSUUID * _Nonnull)uuid name:(NSString * _Nonnull)name additionalName:(NSString * _Nullable)additionalName url:(NSURL * _Nullable)url coverURL:(NSURL * _Nullable)coverURL OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK26AudioBrowserTrackApplyable_")
-@protocol AudioBrowserTrackApplyable
-@property (nonatomic, strong) AudioBrowserTrack * _Nonnull track;
-@end
-
 @class UIScrollView;
 
 SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK22AudioPartSelectionView")
@@ -536,8 +426,6 @@ SWIFT_CLASS_NAMED("BNBAnalyticsManager")
 
 
 
-
-
 /// The background configuration.
 SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK23BackgroundConfiguration")
 @interface BackgroundConfiguration : NSObject
@@ -547,6 +435,7 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK23BackgroundConfiguration")
 
 
 @class NSError;
+@class UIImage;
 @class UIApplication;
 
 /// Use this class to access Banuba effects from the cloud.
@@ -591,318 +480,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK20BanubaAsyncOperation")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class UINavigationController;
-@class MusicLibraryConfiguration;
-
-/// Audio browser main entity and entry point.
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK18BanubaAudioBrowser")
-@interface BanubaAudioBrowser : NSObject
-/// BanubaAudioBrowser constructor
-/// \param audioBrowserConfig contains all necessary configurations for the audio browser
-///
-/// \param slideInTransitioningDelegate bottom sheet transition
-///
-/// \param audioService service used to interact with audio files
-///
-/// \param selectedTrack selected track
-///
-/// \param isMusicLibraryEnabled is music library enabled
-///
-/// \param isSoundstripeEnabled is soundstripe enabled
-///
-/// \param isAudioPartSelectionEnabled is audio part selection enabled
-///
-/// \param videoDuration the duration of video
-///
-- (nonnull instancetype)initWithAudioBrowserConfig:(AudioBrowserConfig * _Nullable)audioBrowserConfig audioService:(id <AudioBrowserServiceAdoptable> _Nullable)audioService selectedTrack:(AudioBrowserTrack * _Nullable)selectedTrack isMusicLibraryEnabled:(BOOL)isMusicLibraryEnabled isSoundstripeEnabled:(BOOL)isSoundstripeEnabled token:(NSString * _Nonnull)token isAudioPartSelectionEnabled:(BOOL)isAudioPartSelectionEnabled videoDuration:(double)videoDuration OBJC_DESIGNATED_INITIALIZER;
-/// Get reference to audio browser navigation controller
-- (UINavigationController * _Nonnull)getAudioBrowserController SWIFT_WARN_UNUSED_RESULT;
-/// Setting music library configuration
-+ (void)setMusicLibraryConfiguration:(MusicLibraryConfiguration * _Nonnull)configuration;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-@class PIPSwitchLayoutSetting;
-@class PIPPlayerLayoutSetting;
-@class PIPCameraLayoutSetting;
-@protocol SDKInputServicingDelegate;
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK18BanubaCameraModule")
-@interface BanubaCameraModule : NSObject
-@property (nonatomic) BOOL isPIPSessionAlreadySetup;
-@property (nonatomic) BOOL isPIPSession;
-@property (nonatomic, copy) NSURL * _Nullable pipVideoURL;
-@property (nonatomic, strong) PIPSwitchLayoutSetting * _Nullable pipSwitchSetting;
-@property (nonatomic, strong) PIPPlayerLayoutSetting * _Nullable pipPlayerSetting;
-@property (nonatomic, strong) PIPCameraLayoutSetting * _Nullable pipCameraSetting;
-/// Setup the camera if needed
-@property (nonatomic) BOOL isCameraEnabled;
-@property (nonatomic) BOOL isLoaded;
-@property (nonatomic) BOOL allowProcessing;
-@property (nonatomic, strong) id <SDKInputServicingDelegate> _Nullable inputDelegate;
-+ (void)initializeWithSdkToken:(NSString * _Nonnull)sdkToken videoSize:(CGSize)videoSize videoPreset:(AVCaptureSessionPreset _Nonnull)videoPreset useHEVCCodecIfPossibleForRecorder:(BOOL)useHEVCCodecIfPossibleForRecorder arCloudPath:(NSString * _Nullable)arCloudPath;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-@interface BanubaCameraModule (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <BNBEffectEventListener>
-- (void)onEffectEvent:(NSString * _Nonnull)name params:(NSDictionary<NSString *, NSString *> * _Nonnull)params;
-@end
-
-
-@class ExternalAudioConfiguration;
-@class NSValue;
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK18SDKOutputServicing_")
-@protocol SDKOutputServicing
-@property (nonatomic, readonly) BOOL isRecording;
-@property (nonatomic, readonly) BOOL isEnoughDiskSpaceForRecording;
-- (void)startVideoCapturingWithFileURL:(NSURL * _Nullable)fileURL startTimeForVideoTexture:(double)startTimeForVideoTexture externalAudioConfiguration:(ExternalAudioConfiguration * _Nullable)externalAudioConfiguration progress:(void (^ _Nonnull)(CMTime))progress didStart:(void (^ _Nullable)(void))didStart shouldSkipFrame:(BOOL (^ _Nullable)(void))shouldSkipFrame periodicProgressTimeInterval:(NSTimeInterval)periodicProgressTimeInterval boundaryTimes:(NSArray<NSValue *> * _Nonnull)boundaryTimes boundaryHandler:(void (^ _Nonnull)(CMTime))boundaryHandler totalDuration:(NSTimeInterval)totalDuration itemDuration:(NSTimeInterval)itemDuration completion:(void (^ _Nonnull)(BOOL, NSError * _Nullable))completion;
-- (void)stopVideoCapturingWithCancel:(BOOL)cancel;
-@end
-
-
-@interface BanubaCameraModule (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <SDKOutputServicing>
-@property (nonatomic, readonly) BOOL isRecording;
-@property (nonatomic, readonly) BOOL isEnoughDiskSpaceForRecording;
-- (void)startVideoCapturingWithFileURL:(NSURL * _Nullable)fileURL startTimeForVideoTexture:(double)startTimeForVideoTexture externalAudioConfiguration:(ExternalAudioConfiguration * _Nullable)externalAudioConfiguration progress:(void (^ _Nonnull)(CMTime))progress didStart:(void (^ _Nullable)(void))didStart shouldSkipFrame:(BOOL (^ _Nullable)(void))shouldSkipFrame periodicProgressTimeInterval:(NSTimeInterval)periodicProgressTimeInterval boundaryTimes:(NSArray<NSValue *> * _Nonnull)boundaryTimes boundaryHandler:(void (^ _Nonnull)(CMTime))boundaryHandler totalDuration:(NSTimeInterval)totalDuration itemDuration:(NSTimeInterval)itemDuration completion:(void (^ _Nonnull)(BOOL, NSError * _Nullable))completion;
-- (void)stopVideoCapturingWithCancel:(BOOL)cancel;
-@end
-
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK23SDKBeautyEffectManaging_")
-@protocol SDKBeautyEffectManaging
-@property (nonatomic) BOOL isBeautificationEnabled;
-@property (nonatomic, readonly) BOOL supportsIntensity;
-@property (nonatomic) double intensity;
-- (BOOL)toggleBeautification SWIFT_WARN_UNUSED_RESULT;
-- (void)resetIntensity;
-@end
-
-
-@interface BanubaCameraModule (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <SDKBeautyEffectManaging>
-@property (nonatomic) BOOL isBeautificationEnabled;
-@property (nonatomic, readonly) BOOL supportsIntensity;
-@property (nonatomic) double intensity;
-- (BOOL)toggleBeautification SWIFT_WARN_UNUSED_RESULT;
-- (void)resetIntensity;
-@end
-
-@class UIColor;
-@class AVURLAsset;
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK26SDKEffectsTextureServicing_")
-@protocol SDKEffectsTextureServicing
-- (void)effectAddImageTextureWithImage:(UIImage * _Nonnull)image backgroundColor:(UIColor * _Nonnull)backgroundColor;
-- (void)setupDefaultImageTexture;
-- (void)stopVideoTextureIfNeeded;
-- (void)effectAddVideoTextureWithAsset:(AVURLAsset * _Nonnull)asset backgroundColor:(UIColor * _Nonnull)backgroundColor;
-- (void)effectReloadTexturePreviewWithStartTime:(NSTimeInterval)startTime endTime:(NSTimeInterval)endTime itemDuration:(NSTimeInterval)itemDuration;
-- (void)unloadEffectTexture;
-@end
-
-
-@interface BanubaCameraModule (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <SDKEffectsTextureServicing>
-- (void)setupDefaultImageTexture;
-- (void)effectAddImageTextureWithImage:(UIImage * _Nonnull)image backgroundColor:(UIColor * _Nonnull)backgroundColor;
-- (void)effectAddVideoTextureWithAsset:(AVURLAsset * _Nonnull)asset backgroundColor:(UIColor * _Nonnull)backgroundColor;
-- (void)stopVideoTextureIfNeeded;
-- (void)effectReloadTexturePreviewWithStartTime:(NSTimeInterval)startTime endTime:(NSTimeInterval)endTime itemDuration:(NSTimeInterval)itemDuration;
-- (void)unloadEffectTexture;
-@end
-
-enum CameraModuleSessionType : NSInteger;
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK17SDKInputServicing_")
-@protocol SDKInputServicing
-@property (nonatomic, readonly) BOOL isFrontCamera;
-@property (nonatomic, readonly) float zoomFactor;
-@property (nonatomic, readonly) enum CameraModuleSessionType currentCameraSessionType;
-@property (nonatomic, strong) id <SDKInputServicingDelegate> _Nullable inputDelegate;
-- (void)focusAt:(CGPoint)point useContinuousDetection:(BOOL)useContinuousDetection;
-- (float)setZoomFactor:(float)zoomFactor SWIFT_WARN_UNUSED_RESULT;
-- (void)toggleCameraWithCompletion:(void (^ _Nonnull)(void))completion;
-- (void)startCamera;
-- (void)startAudioCapturing;
-- (void)stopAudioCapturing;
-- (void)setCameraSessionType:(enum CameraModuleSessionType)type;
-- (AVCaptureTorchMode)setTorchWithMode:(AVCaptureTorchMode)mode;
-- (AVCaptureTorchMode)toggleTorch SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface BanubaCameraModule (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <SDKInputServicing>
-@property (nonatomic, readonly) float zoomFactor;
-@property (nonatomic, readonly) BOOL isFrontCamera;
-@property (nonatomic, readonly) enum CameraModuleSessionType currentCameraSessionType;
-- (void)focusAt:(CGPoint)point useContinuousDetection:(BOOL)useContinuousDetection;
-- (float)setZoomFactor:(float)zoomFactor SWIFT_WARN_UNUSED_RESULT;
-- (void)toggleCameraWithCompletion:(void (^ _Nonnull)(void))completion;
-- (void)startCamera;
-- (void)startAudioCapturing;
-- (void)stopAudioCapturing;
-- (void)setCameraSessionType:(enum CameraModuleSessionType)type;
-- (AVCaptureTorchMode)setTorchWithMode:(AVCaptureTorchMode)mode SWIFT_WARN_UNUSED_RESULT;
-- (AVCaptureTorchMode)toggleTorch SWIFT_WARN_UNUSED_RESULT;
-@end
-
-@protocol RenderEffect;
-@protocol EffectSubtypeModificationsEventListener;
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK19SDKEffectsServicing_")
-@protocol SDKEffectsServicing <SDKEffectsTextureServicing>
-@property (nonatomic, readonly) BOOL isMaskLoaded;
-- (void)loadMaskWithName:(NSString * _Nonnull)name synchronous:(BOOL)synchronous;
-- (void)enableBlur;
-- (void)effectDidBeginApplying;
-- (void)effectDidEndApplying;
-- (void)effectDidResetApplying;
-- (void)effectDidChangeState;
-- (void)unloadMask;
-- (void)removeAllFilters;
-- (void)applyFilter:(id <RenderEffect> _Nonnull)filter;
-- (void)removeFilter:(id <RenderEffect> _Nonnull)filter;
-- (void)setEffectSubtypeModificationsEventListener:(id <EffectSubtypeModificationsEventListener> _Nonnull)listener;
-- (NSArray<NSString *> * _Nonnull)effectsPathsWithIncludeBeautyEffect:(BOOL)includeBeautyEffect SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface BanubaCameraModule (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <SDKEffectsServicing>
-- (void)enableBlur;
-@property (nonatomic, readonly) BOOL isMaskLoaded;
-- (void)loadMaskWithName:(NSString * _Nonnull)name synchronous:(BOOL)synchronous;
-- (void)unloadMask;
-- (void)removeAllFilters;
-- (void)applyFilter:(id <RenderEffect> _Nonnull)filter;
-- (void)removeFilter:(id <RenderEffect> _Nonnull)filter;
-- (void)setEffectSubtypeModificationsEventListener:(id <EffectSubtypeModificationsEventListener> _Nonnull)listener;
-- (NSArray<NSString *> * _Nonnull)effectsPathsWithIncludeBeautyEffect:(BOOL)includeBeautyEffect SWIFT_WARN_UNUSED_RESULT;
-- (void)effectDidBeginApplying;
-- (void)effectDidEndApplying;
-- (void)effectDidResetApplying;
-- (void)effectDidChangeState;
-@end
-
-
-@interface BanubaCameraModule (SWIFT_EXTENSION(UnifiedVideoEditorSDK))
-- (void)seekPIPPlayerTo:(NSTimeInterval)time;
-- (void)startPIPPlayer;
-- (void)stopPIPPlayer;
-- (void)setPIPPlayerVolume:(float)volume;
-- (void)setupPIPSessionWithVideoURL:(NSURL * _Nonnull)url playerSetting:(PIPPlayerLayoutSetting * _Nonnull)playerSetting cameraSetting:(PIPCameraLayoutSetting * _Nonnull)cameraSetting switchSetting:(PIPSwitchLayoutSetting * _Nonnull)switchSetting;
-- (void)startPIPSessionIfNeededWithSetting:(PIPPlayerLayoutSetting * _Nonnull)setting completion:(void (^ _Nullable)(void))completion;
-- (void)applyPIPCameraSettingIfNeeded:(PIPCameraLayoutSetting * _Nonnull)setting restoreSession:(BOOL)restoreSession;
-- (void)applyPIPPlayerSettingIfNeeded:(PIPPlayerLayoutSetting * _Nonnull)setting restoreSession:(BOOL)restoreSession;
-- (void)applyPIPSwitchSettingIfNeeded:(PIPSwitchLayoutSetting * _Nonnull)setting restoreSession:(BOOL)restoreSession;
-@end
-
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK15SDKPIPServicing_")
-@protocol SDKPIPServicing
-@property (nonatomic) BOOL isPIPSessionAlreadySetup;
-@property (nonatomic) BOOL isPIPSession;
-@property (nonatomic, readonly) BOOL isPIPPlayerReadyToProvideData;
-@property (nonatomic, copy) NSURL * _Nullable pipVideoURL;
-@property (nonatomic, strong) PIPSwitchLayoutSetting * _Nullable pipSwitchSetting;
-@property (nonatomic, strong) PIPPlayerLayoutSetting * _Nullable pipPlayerSetting;
-@property (nonatomic, strong) PIPCameraLayoutSetting * _Nullable pipCameraSetting;
-- (void)seekPIPPlayerTo:(NSTimeInterval)time;
-- (void)startPIPPlayer;
-- (void)stopPIPPlayer;
-- (void)setupPIPSessionWithVideoURL:(NSURL * _Nonnull)url playerSetting:(PIPPlayerLayoutSetting * _Nonnull)playerSetting cameraSetting:(PIPCameraLayoutSetting * _Nonnull)cameraSetting switchSetting:(PIPSwitchLayoutSetting * _Nonnull)switchSetting;
-- (void)startPIPSessionIfNeededWithSetting:(PIPPlayerLayoutSetting * _Nonnull)setting completion:(void (^ _Nullable)(void))completion;
-- (void)applyPIPCameraSettingIfNeeded:(PIPCameraLayoutSetting * _Nonnull)setting restoreSession:(BOOL)restoreSession;
-- (void)applyPIPPlayerSettingIfNeeded:(PIPPlayerLayoutSetting * _Nonnull)setting restoreSession:(BOOL)restoreSession;
-- (void)applyPIPSwitchSettingIfNeeded:(PIPSwitchLayoutSetting * _Nonnull)setting restoreSession:(BOOL)restoreSession;
-- (void)setPIPPlayerVolume:(float)volume;
-@end
-
-@class NSAttributedString;
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK12CameraModule_")
-@protocol CameraModule <SDKBeautyEffectManaging, SDKEffectsServicing, SDKInputServicing, SDKOutputServicing, SDKPIPServicing>
-@property (nonatomic, readonly) BOOL isLoaded;
-@property (nonatomic) BOOL allowProcessing;
-@property (nonatomic) BOOL autoStart;
-@property (nonatomic) BOOL isCameraEnabled;
-@property (nonatomic, readonly, strong) dispatch_queue_t _Nullable renderQueue;
-- (void)setup;
-- (void)setMaxFacesWithFacesCount:(int32_t)facesCount;
-- (void)destroy;
-- (void)startWithCompletion:(void (^ _Nonnull)(void))completion;
-- (void)stopWithCompletion:(void (^ _Nullable)(void))completion;
-- (void)setRenderTargetWithView:(UIView * _Nonnull)view;
-- (void)removeRenderTarget;
-- (void)takeSnapshotWithHandler:(void (^ _Nonnull)(UIImage * _Nullable))handler;
-- (UIView * _Nonnull)getRendererView SWIFT_WARN_UNUSED_RESULT;
-- (void)startRenderLoop;
-- (void)stopRenderLoop;
-- (void)addFPSListener:(void (^ _Nullable)(NSAttributedString * _Nonnull))listener;
-@end
-
-
-@interface BanubaCameraModule (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <CameraModule>
-@property (nonatomic, readonly, strong) dispatch_queue_t _Nullable renderQueue;
-@property (nonatomic) BOOL autoStart;
-@property (nonatomic, readonly) BOOL isPIPPlayerReadyToProvideData;
-- (void)addFPSListener:(void (^ _Nullable)(NSAttributedString * _Nonnull))listener;
-- (void)setMaxFacesWithFacesCount:(int32_t)facesCount;
-- (void)setup;
-- (void)destroy;
-- (void)takeSnapshotWithHandler:(void (^ _Nonnull)(UIImage * _Nullable))handler;
-- (void)startWithCompletion:(void (^ _Nonnull)(void))completion;
-- (void)stopWithCompletion:(void (^ _Nullable)(void))completion;
-- (void)setRenderTargetWithView:(UIView * _Nonnull)view;
-- (void)removeRenderTarget;
-- (UIView * _Nonnull)getRendererView SWIFT_WARN_UNUSED_RESULT;
-- (void)startRenderLoop;
-- (void)stopRenderLoop;
-@end
-
-enum GalleryItemType : NSInteger;
-@class AVPlayerItem;
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK11GalleryItem_")
-@protocol GalleryItem <NSObject>
-/// Video representation url asset
-@property (nonatomic, readonly, strong) AVURLAsset * _Nullable urlAsset;
-/// Preview for gallery item
-@property (nonatomic, strong) UIImage * _Nullable preview;
-/// GalleryItem duration
-@property (nonatomic, readonly) NSTimeInterval duration;
-/// Type can be video, photo or unknown
-@property (nonatomic, readonly) enum GalleryItemType type;
-/// Requests preview for displaying in gallery list
-- (void)requestPreviewWithSize:(CGSize)size synchronously:(BOOL)synchronously handler:(void (^ _Nonnull)(UIImage * _Nullable))handler;
-/// Requests photo with desired size
-- (void)requestPhotoWithSize:(CGSize)size progressHandler:(BOOL (^ _Nullable)(double))progressHandler handler:(void (^ _Nonnull)(UIImage * _Nullable, NSError * _Nullable))handler;
-/// Requests video url asset
-- (void)requestAVURLAssetWithProgressHandler:(BOOL (^ _Nullable)(double))progressHandler handler:(void (^ _Nonnull)(AVURLAsset * _Nullable, NSError * _Nullable))handler;
-/// Requests video player item
-- (void)requestAVPlayerItemWithProgressHandler:(BOOL (^ _Nullable)(double))progressHandler handler:(void (^ _Nonnull)(AVPlayerItem * _Nullable, NSError * _Nullable))handler;
-@end
-
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK17BanubaGalleryItem")
-@interface BanubaGalleryItem : NSObject <GalleryItem>
-@property (nonatomic, strong) UIImage * _Nullable preview;
-@property (nonatomic, readonly) NSTimeInterval duration;
-@property (nonatomic, readonly, strong) AVURLAsset * _Nullable urlAsset;
-@property (nonatomic, readonly) enum GalleryItemType type;
-- (void)requestAVURLAssetWithProgressHandler:(BOOL (^ _Nullable)(double))progressHandler handler:(void (^ _Nonnull)(AVURLAsset * _Nullable, NSError * _Nullable))handler;
-- (void)requestAVPlayerItemWithProgressHandler:(BOOL (^ _Nullable)(double))progressHandler handler:(void (^ _Nonnull)(AVPlayerItem * _Nullable, NSError * _Nullable))handler;
-- (void)requestPreviewWithSize:(CGSize)size synchronously:(BOOL)synchronously handler:(void (^ _Nonnull)(UIImage * _Nullable))handler;
-- (void)requestPhotoWithSize:(CGSize)size progressHandler:(BOOL (^ _Nullable)(double))progressHandler handler:(void (^ _Nonnull)(UIImage * _Nullable, NSError * _Nullable))handler;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-@interface BanubaGalleryItem (SWIFT_EXTENSION(UnifiedVideoEditorSDK))
-- (BOOL)isEqual:(id _Nullable)object SWIFT_WARN_UNUSED_RESULT;
-@end
-
 
 SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK32BaseTrackSelectionViewController")
 @interface BaseTrackSelectionViewController : UINavigationController
@@ -942,14 +519,6 @@ SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK12RenderEffect_")
 - (void)applyWithPixelBuffer:(CVPixelBufferRef _Nonnull)pixelBuffer;
 @end
 
-
-typedef SWIFT_ENUM(NSInteger, CameraModuleSessionType, open) {
-  CameraModuleSessionTypeFrontVideo = 0,
-  CameraModuleSessionTypeBackVideo = 1,
-  CameraModuleSessionTypeFrontPhoto = 2,
-  CameraModuleSessionTypeBackPhoto = 3,
-};
-
 @class CALayer;
 
 /// Simple circular progress view
@@ -967,16 +536,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK32CompositionTimelineConfiguration")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
-
-
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK13CountdownView")
-@interface CountdownView : UIView
-- (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
-- (void)drawRect:(CGRect)rect;
-@end
-
 
 
 
@@ -1010,48 +569,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK11EffectModel")
 
 
 
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK39EffectSubtypeModificationsEventListener_")
-@protocol EffectSubtypeModificationsEventListener
-- (void)didChangeEffectSubtype:(NSString * _Nonnull)subtypeName;
-- (void)didInitiateEffectSubtype:(NSString * _Nonnull)subtypeName;
-@end
-
-
-/// Default exposure animation view
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK21ExposureAnimationView")
-@interface ExposureAnimationView : UIView
-- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
-- (void)drawRect:(CGRect)rect;
-@end
-
-
-/// Setups adding external audio asset to result asset as audio track
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK26ExternalAudioConfiguration")
-@interface ExternalAudioConfiguration : NSObject
-/// Audio asset url
-@property (nonatomic, readonly, copy) NSURL * _Nonnull url;
-/// Offset inside audio asset
-@property (nonatomic, readonly) NSTimeInterval offset;
-/// Preferred audio track volume
-@property (nonatomic, readonly) float preferredVolume;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK27FeedbackAlertViewController")
-@interface FeedbackAlertViewController : UIViewController
-- (void)viewWillAppear:(BOOL)animated;
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-
-
-
 @class UIButton;
 
 SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK22FullscreenActivityView")
@@ -1072,83 +589,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK20GalleryConfiguration")
 
 
 
-typedef SWIFT_ENUM(NSInteger, GalleryItemType, open) {
-  GalleryItemTypePhoto = 0,
-  GalleryItemTypeVideo = 1,
-  GalleryItemTypeUnknown = 2,
-};
-
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK14GalleryManager")
-@interface GalleryManager : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-@class PHChange;
-
-@interface GalleryManager (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <PHPhotoLibraryChangeObserver>
-- (void)photoLibraryDidChange:(PHChange * _Nonnull)changeInstance;
-@end
-
-
-typedef SWIFT_ENUM(NSInteger, GalleryMediaType, open) {
-  GalleryMediaTypeVideo = 0,
-  GalleryMediaTypePhoto = 1,
-};
-
-
-/// Setups gallery selection behaviour
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK25GallerySelectionBehaviour")
-@interface GallerySelectionBehaviour : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK21GalleryViewController")
-@interface GalleryViewController : UIViewController
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK28GalleryViewControllerFactory_")
-@protocol GalleryViewControllerFactory <NSObject>
-/// Creates GalleryViewController
-- (GalleryViewController * _Nonnull)makeGalleryViewControllerWithConfiguration:(GalleryConfiguration * _Nonnull)configuration albumsConfiguration:(AlbumsConfiguration * _Nonnull)albumsConfiguration selectionBehaviour:(GallerySelectionBehaviour * _Nonnull)selectionBehaviour SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK28GalleryViewControllerBuilder")
-@interface GalleryViewControllerBuilder : NSObject <GalleryViewControllerFactory>
-- (GalleryViewController * _Nonnull)makeGalleryViewControllerWithConfiguration:(GalleryConfiguration * _Nonnull)configuration albumsConfiguration:(AlbumsConfiguration * _Nonnull)albumsConfiguration selectionBehaviour:(GallerySelectionBehaviour * _Nonnull)selectionBehaviour SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-@class ProgressHandler;
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK29GalleryViewControllerDelegate_")
-@protocol GalleryViewControllerDelegate
-/// Tells delegate object about starting asynchronous operations at the gallery.
-/// BanubaVideoEditorSDK showing full-screen spinner by this event. It can help to prevent unnecessary actions from a user.
-- (void)galleryViewController:(GalleryViewController * _Nonnull)controller didStartExportWith:(ProgressHandler * _Nonnull)progressHandler;
-/// Tells delegate object about finishing asynchronous operations at the gallery
-- (void)galleryViewController:(GalleryViewController * _Nonnull)controller didEndExportWith:(NSError * _Nullable)error hideProgressViewCompletion:(void (^ _Nonnull)(void))hideProgressViewCompletion;
-/// Tells delegate object about the closing gallery.
-- (void)galleryViewControllerDidClose:(GalleryViewController * _Nonnull)controller;
-/// Tells delegate object about completion picking gallery items.
-- (void)galleryViewControllerDone:(GalleryViewController * _Nonnull)controller withGalleryItems:(NSArray<id <GalleryItem>> * _Nonnull)items;
-/// Tells delegate object about completion picking gallery items for AutoCut feature
-- (void)galleryViewControllerDoneForAutoCut:(GalleryViewController * _Nonnull)controller withGalleryItems:(NSArray<id <GalleryItem>> * _Nonnull)items;
-/// Tells delegate object that he should present message.
-/// In BanubaVideoEditorSDK it presents popup message.
-- (void)galleryViewController:(GalleryViewController * _Nonnull)controller presentMessage:(NSString * _Nonnull)message;
-@end
-
-
-
 SWIFT_CLASS("_TtCC21UnifiedVideoEditorSDK35SmallActivityIndicatorConfiguration12GradientType")
 @interface GradientType : NSObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
@@ -1163,6 +603,7 @@ SWIFT_CLASS("_TtCC21UnifiedVideoEditorSDK35SmallActivityIndicatorConfiguration12
 + (GradientType * _Nonnull)image:(id <ImageConfigurationProtocol> _Nonnull)image SWIFT_WARN_UNUSED_RESULT;
 @end
 
+@class UIColor;
 
 /// The image configuration
 SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK26ImageConfigurationProtocol_")
@@ -1206,12 +647,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK7License")
 @property (nonatomic, readonly) BOOL supportsAnalytics;
 @property (nonatomic, readonly) BOOL videoEditorSupportsFaceAR;
 @property (nonatomic, readonly) BOOL hasFaceARFeatures;
-@property (nonatomic, readonly) BOOL supportsPiP;
-@property (nonatomic, readonly) BOOL supportsMusicLibrary;
-@property (nonatomic, readonly) BOOL supportsSoundstripe;
-@property (nonatomic, readonly) BOOL supportsBgSeparation;
-@property (nonatomic, readonly) BOOL supportsCaptions;
-@property (nonatomic, readonly) BOOL supportsAutoCut;
 @property (nonatomic, readonly, copy) NSArray<NSNumber *> * _Nonnull postProcessingEffects;
 @property (nonatomic, readonly, copy) NSString * _Nullable arCloudURL;
 @property (nonatomic, readonly, strong) TimeBomb * _Nullable timeBomb;
@@ -1227,109 +662,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK7License")
 @end
 
 
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK25MaskPostprocessingService")
-@interface MaskPostprocessingService : NSObject
-/// MaskPostprocessingService constructor
-/// \param renderSize setup render size
-///
-- (nonnull instancetype)initWithRenderSize:(CGSize)renderSize OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK27SDKMaskPostprocessServicing_")
-@protocol SDKMaskPostprocessServicing
-- (void)processVideoFrame:(CVPixelBufferRef _Nonnull)from to:(CVPixelBufferRef _Nonnull)to time:(CMTime)time;
-- (void)surfaceCreatedWith:(CGSize)size;
-- (void)setEffectSize:(CGSize)size;
-- (void)loadEffectWithPath:(NSString * _Nonnull)path;
-@end
-
-
-@interface MaskPostprocessingService (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <SDKMaskPostprocessServicing>
-- (void)processVideoFrame:(CVPixelBufferRef _Nonnull)from to:(CVPixelBufferRef _Nonnull)to time:(CMTime)time;
-- (void)surfaceCreatedWith:(CGSize)size;
-- (void)setEffectSize:(CGSize)size;
-- (void)loadEffectWithPath:(NSString * _Nonnull)path;
-@end
-
-
-/// Configures music library endpoints adn etc.
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK25MusicLibraryConfiguration")
-@interface MusicLibraryConfiguration : NSObject
-/// Music library authentication header name
-@property (nonatomic, readonly, copy) NSString * _Nonnull authHeaderName;
-/// Music library authentication header value
-@property (nonatomic, readonly, copy) NSString * _Nonnull authHeaderValue;
-/// Music library home screen url
-@property (nonatomic, readonly, copy) NSString * _Nonnull homeURL;
-/// Music library recent tracks url
-@property (nonatomic, readonly, copy) NSString * _Nonnull recentsURL;
-/// Music library favorite tracks url
-@property (nonatomic, readonly, copy) NSString * _Nonnull favoritesURL;
-/// Music library add favorite track url
-@property (nonatomic, readonly, copy) NSString * _Nonnull addFavoriteURL;
-/// Music library remove favorite track url
-@property (nonatomic, readonly, copy) NSString * _Nonnull removeFavoriteURL;
-/// Music library all tracks url
-@property (nonatomic, readonly, copy) NSString * _Nonnull tracksURL;
-/// Music library search tracks url
-@property (nonatomic, readonly, copy) NSString * _Nonnull searchTracksURL;
-/// Music library genres url
-@property (nonatomic, readonly, copy) NSString * _Nonnull genresURL;
-/// Music library collections url
-@property (nonatomic, readonly, copy) NSString * _Nonnull collectionsURL;
-/// Music library genre tracks url
-@property (nonatomic, readonly, copy) NSString * _Nonnull genreTracksURL;
-/// Music library collection tracks url
-@property (nonatomic, readonly, copy) NSString * _Nonnull collectionTracksURL;
-/// Music library tracks page size
-/// Default is 20
-@property (nonatomic, readonly) NSInteger tracksPerPage;
-/// Music library info view no matches icon
-@property (nonatomic, readonly, strong) ImageConfiguration * _Nullable noMatchesIcon;
-/// Music library info view attention icon
-@property (nonatomic, readonly, strong) ImageConfiguration * _Nullable attentionIcon;
-/// MusicLibraryConfiguration constructor
-/// \param authHeaderName music library authentication header name
-///
-/// \param authHeaderValue music library authentication header value
-///
-/// \param homeURL home url used for music library home screen
-///
-/// \param recentsURL url used for all recent music library tracks
-///
-/// \param favoritesURL url used for all favorite music library tracks
-///
-/// \param addFavoriteURL url used to add music library track to favorites
-///
-/// \param removeFavoriteURL url used to remove music library track from favorites
-///
-/// \param tracksURL tracks url used for all music library tracks
-///
-/// \param searchTracksURL url used to search tracks by title
-///
-/// \param genresURL genres url used for music library genres
-///
-/// \param collectionsURL collections url used for music library collections
-///
-/// \param genreTracksURL genre tracks url used for music library selected genre tracks
-///
-/// \param collectionTracksURL collection tracks url used for music library selected collection tracks
-///
-/// \param noMatchesIcon image configuration for no matches info view
-///
-/// \param attentionIcon image configuration for attention info view
-///
-- (nonnull instancetype)initWithAuthHeaderName:(NSString * _Nonnull)authHeaderName authHeaderValue:(NSString * _Nonnull)authHeaderValue homeURL:(NSString * _Nonnull)homeURL recentsURL:(NSString * _Nonnull)recentsURL favoritesURL:(NSString * _Nonnull)favoritesURL addFavoriteURL:(NSString * _Nonnull)addFavoriteURL removeFavoriteURL:(NSString * _Nonnull)removeFavoriteURL tracksURL:(NSString * _Nonnull)tracksURL searchTracksURL:(NSString * _Nonnull)searchTracksURL genresURL:(NSString * _Nonnull)genresURL collectionsURL:(NSString * _Nonnull)collectionsURL genreTracksURL:(NSString * _Nonnull)genreTracksURL collectionTracksURL:(NSString * _Nonnull)collectionTracksURL tracksPerPage:(NSInteger)tracksPerPage noMatchesIcon:(ImageConfiguration * _Nullable)noMatchesIcon attentionIcon:(ImageConfiguration * _Nullable)attentionIcon OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-
-
 
 
 
@@ -1339,130 +671,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK7NibView")
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
-
-
-enum PIPCameraLayoutSettings : NSInteger;
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK22PIPCameraLayoutSetting")
-@interface PIPCameraLayoutSetting : NSObject
-@property (nonatomic, readonly) enum PIPCameraLayoutSettings setting;
-- (nonnull instancetype)initWithSetting:(enum PIPCameraLayoutSettings)setting OBJC_DESIGNATED_INITIALIZER;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIPCameraLayoutSetting * _Nonnull round;)
-+ (PIPCameraLayoutSetting * _Nonnull)round SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIPCameraLayoutSetting * _Nonnull square;)
-+ (PIPCameraLayoutSetting * _Nonnull)square SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIPCameraLayoutSetting * _Nonnull original;)
-+ (PIPCameraLayoutSetting * _Nonnull)original SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIPCameraLayoutSetting * _Nonnull centered;)
-+ (PIPCameraLayoutSetting * _Nonnull)centered SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-typedef SWIFT_ENUM(NSInteger, PIPCameraLayoutSettings, open) {
-  PIPCameraLayoutSettingsRound = 0,
-  PIPCameraLayoutSettingsSquare = 1,
-  PIPCameraLayoutSettingsOriginal = 2,
-  PIPCameraLayoutSettingsCentered = 3,
-};
-
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK14PIPShapeDrawer")
-@interface PIPShapeDrawer : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK9PIPPlayer")
-@interface PIPPlayer : PIPShapeDrawer
-- (void)observeValueForKeyPath:(NSString * _Nullable)keyPath ofObject:(id _Nullable)object change:(NSDictionary<NSKeyValueChangeKey, id> * _Nullable)change context:(void * _Nullable)context;
-@end
-
-enum PIPPlayerLayoutSettings : NSInteger;
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK22PIPPlayerLayoutSetting")
-@interface PIPPlayerLayoutSetting : NSObject
-@property (nonatomic, readonly) enum PIPPlayerLayoutSettings setting;
-- (nonnull instancetype)initWithSetting:(enum PIPPlayerLayoutSettings)setting OBJC_DESIGNATED_INITIALIZER;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIPPlayerLayoutSetting * _Nonnull floating;)
-+ (PIPPlayerLayoutSetting * _Nonnull)floating SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIPPlayerLayoutSetting * _Nonnull topBottom;)
-+ (PIPPlayerLayoutSetting * _Nonnull)topBottom SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIPPlayerLayoutSetting * _Nonnull react;)
-+ (PIPPlayerLayoutSetting * _Nonnull)react SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIPPlayerLayoutSetting * _Nonnull leftRight;)
-+ (PIPPlayerLayoutSetting * _Nonnull)leftRight SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-typedef SWIFT_ENUM(NSInteger, PIPPlayerLayoutSettings, open) {
-  PIPPlayerLayoutSettingsFloating = 0,
-  PIPPlayerLayoutSettingsTopBottom = 1,
-  PIPPlayerLayoutSettingsReact = 2,
-  PIPPlayerLayoutSettingsLeftRight = 3,
-};
-
-typedef SWIFT_ENUM(NSInteger, PIPShapeAdapter, open) {
-  PIPShapeAdapterNone = 0,
-  PIPShapeAdapterOval = 1,
-  PIPShapeAdapterCircle = 2,
-  PIPShapeAdapterRoundRect = 3,
-  PIPShapeAdapterRoundSquare = 4,
-};
-
-
-
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK19PIPShapeTypeAdapter")
-@interface PIPShapeTypeAdapter : NSObject
-@property (nonatomic, readonly) enum PIPShapeAdapter setting;
-@property (nonatomic, readonly) CGFloat radius;
-- (nonnull instancetype)initWithSetting:(enum PIPShapeAdapter)setting radius:(CGFloat)radius OBJC_DESIGNATED_INITIALIZER;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIPShapeTypeAdapter * _Nonnull none;)
-+ (PIPShapeTypeAdapter * _Nonnull)none SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIPShapeTypeAdapter * _Nonnull oval;)
-+ (PIPShapeTypeAdapter * _Nonnull)oval SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIPShapeTypeAdapter * _Nonnull circle;)
-+ (PIPShapeTypeAdapter * _Nonnull)circle SWIFT_WARN_UNUSED_RESULT;
-+ (PIPShapeTypeAdapter * _Nonnull)roundRectWithRadius:(CGFloat)radius SWIFT_WARN_UNUSED_RESULT;
-+ (PIPShapeTypeAdapter * _Nonnull)roundSquareWithRadius:(CGFloat)radius SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-enum PIPSwitchLayoutSettings : NSInteger;
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK22PIPSwitchLayoutSetting")
-@interface PIPSwitchLayoutSetting : NSObject
-@property (nonatomic, readonly) enum PIPSwitchLayoutSettings setting;
-- (nonnull instancetype)initWithSetting:(enum PIPSwitchLayoutSettings)setting OBJC_DESIGNATED_INITIALIZER;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIPSwitchLayoutSetting * _Nonnull switchVerticallyUP;)
-+ (PIPSwitchLayoutSetting * _Nonnull)switchVerticallyUP SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIPSwitchLayoutSetting * _Nonnull switchVerticallyDown;)
-+ (PIPSwitchLayoutSetting * _Nonnull)switchVerticallyDown SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIPSwitchLayoutSetting * _Nonnull switchHorizontalRight;)
-+ (PIPSwitchLayoutSetting * _Nonnull)switchHorizontalRight SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIPSwitchLayoutSetting * _Nonnull switchHorizontalLeft;)
-+ (PIPSwitchLayoutSetting * _Nonnull)switchHorizontalLeft SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIPSwitchLayoutSetting * _Nonnull switchCameraPip;)
-+ (PIPSwitchLayoutSetting * _Nonnull)switchCameraPip SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIPSwitchLayoutSetting * _Nonnull switchVideoPip;)
-+ (PIPSwitchLayoutSetting * _Nonnull)switchVideoPip SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-typedef SWIFT_ENUM(NSInteger, PIPSwitchLayoutSettings, open) {
-  PIPSwitchLayoutSettingsSwitchVerticallyUP = 0,
-  PIPSwitchLayoutSettingsSwitchVerticallyDown = 1,
-  PIPSwitchLayoutSettingsSwitchHorizontalRight = 2,
-  PIPSwitchLayoutSettingsSwitchHorizontalLeft = 3,
-  PIPSwitchLayoutSettingsSwitchCameraPiP = 4,
-  PIPSwitchLayoutSettingsSwitchVideoPiP = 5,
-};
 
 
 /// UIImageView playable preview.
@@ -1497,13 +705,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK26PopoverAlertViewController")
 
 
 
-/// Gallery exporting progress handler object
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK15ProgressHandler")
-@interface ProgressHandler : NSObject
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
 SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK22ProgressViewController")
 @interface ProgressViewController : UIViewController
 - (void)viewDidLoad;
@@ -1517,58 +718,11 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK22ProgressViewController")
 
 
 
-typedef SWIFT_ENUM(NSInteger, RenderBehaviorAdapter, open) {
-  RenderBehaviorAdapterFullScreen = 0,
-  RenderBehaviorAdapterVerticalSplitUp = 1,
-  RenderBehaviorAdapterVerticalSplitDown = 2,
-  RenderBehaviorAdapterHorizontalSplitLeft = 3,
-  RenderBehaviorAdapterHorizontalSplitRight = 4,
-  RenderBehaviorAdapterPip = 5,
-};
-
-
-
-
-
-
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK25SDKInputServicingDelegate_")
-@protocol SDKInputServicingDelegate
-- (void)willOutputWithPixelBuffer:(CVPixelBufferRef _Nonnull)pixelBuffer;
-@end
 
 
 SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK9SDKLogger")
 @interface SDKLogger : NSObject
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-
-
-SWIFT_CLASS_NAMED("SessionDelegate")
-@interface KFSessionDelegate : NSObject
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-@class NSURLSession;
-@class NSURLSessionDataTask;
-@class NSURLResponse;
-@class NSData;
-@class NSURLSessionTask;
-@class NSURLAuthenticationChallenge;
-@class NSURLCredential;
-@class NSHTTPURLResponse;
-@class NSURLRequest;
-
-@interface KFSessionDelegate (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <NSURLSessionDataDelegate>
-- (void)URLSession:(NSURLSession * _Nonnull)session dataTask:(NSURLSessionDataTask * _Nonnull)dataTask didReceiveResponse:(NSURLResponse * _Nonnull)response completionHandler:(void (^ _Nonnull)(NSURLSessionResponseDisposition))completionHandler;
-- (void)URLSession:(NSURLSession * _Nonnull)session dataTask:(NSURLSessionDataTask * _Nonnull)dataTask didReceiveData:(NSData * _Nonnull)data;
-- (void)URLSession:(NSURLSession * _Nonnull)session task:(NSURLSessionTask * _Nonnull)task didCompleteWithError:(NSError * _Nullable)error;
-- (void)URLSession:(NSURLSession * _Nonnull)session didReceiveChallenge:(NSURLAuthenticationChallenge * _Nonnull)challenge completionHandler:(void (^ _Nonnull)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler;
-- (void)URLSession:(NSURLSession * _Nonnull)session task:(NSURLSessionTask * _Nonnull)task didReceiveChallenge:(NSURLAuthenticationChallenge * _Nonnull)challenge completionHandler:(void (^ _Nonnull)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler;
-- (void)URLSession:(NSURLSession * _Nonnull)session task:(NSURLSessionTask * _Nonnull)task willPerformHTTPRedirection:(NSHTTPURLResponse * _Nonnull)response newRequest:(NSURLRequest * _Nonnull)request completionHandler:(void (^ _Nonnull)(NSURLRequest * _Nullable))completionHandler;
 @end
 
 @class UIPresentationController;
@@ -1607,7 +761,6 @@ SWIFT_CLASS("_TtCC21UnifiedVideoEditorSDK35SmallActivityIndicatorConfiguration26
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
-
 
 
 
@@ -1698,15 +851,7 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK25TrimTimeLineConfiguration")
 
 
 
-
-
-
-
-
-
-
-
-
+@class NSData;
 
 @interface UIImage (SWIFT_EXTENSION(UnifiedVideoEditorSDK))
 /// This method doesn’t use copying data, since it can heavily affect performance and memory usage
@@ -1718,11 +863,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK25TrimTimeLineConfiguration")
 - (nullable instancetype)initWithBgraDataNoCopy:(NSData * _Nonnull)bgraDataNoCopy width:(NSInteger)width height:(NSInteger)height;
 - (CVPixelBufferRef _Nullable)makeBgraPixelBuffer SWIFT_WARN_UNUSED_RESULT;
 @end
-
-
-
-
-
 
 
 
@@ -1802,6 +942,13 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK34VideoTimeLineCollectionViewHandler")
 @end
 
 
+
+@interface VideoTimeLineCollectionViewHandler (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <TimeLineDataSourceDelegate>
+- (void)timelineDataSource:(id <TimeLineDataSource> _Nonnull)timelineDataSource didPreloadPreview:(UIImage * _Nonnull)preview;
+- (void)timelineDataSource:(id <TimeLineDataSource> _Nonnull)timelineDataSource didLoadImage:(UIImage * _Nonnull)image at:(NSInteger)index;
+- (void)timelineDataSourceDidFinishThumbnailFetch:(id <TimeLineDataSource> _Nonnull)timelineDataSource;
+@end
+
 @class UICollectionView;
 @class UICollectionViewLayout;
 @class NSIndexPath;
@@ -1810,13 +957,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK34VideoTimeLineCollectionViewHandler")
 - (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 - (CGFloat)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (CGFloat)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface VideoTimeLineCollectionViewHandler (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <TimeLineDataSourceDelegate>
-- (void)timelineDataSource:(id <TimeLineDataSource> _Nonnull)timelineDataSource didPreloadPreview:(UIImage * _Nonnull)preview;
-- (void)timelineDataSource:(id <TimeLineDataSource> _Nonnull)timelineDataSource didLoadImage:(UIImage * _Nonnull)image at:(NSInteger)index;
-- (void)timelineDataSourceDidFinishThumbnailFetch:(id <TimeLineDataSource> _Nonnull)timelineDataSource;
 @end
 
 @class UICollectionViewCell;
@@ -2121,15 +1261,11 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
 @import AVFAudio;
-@import AVFoundation;
-@import BNBSdkCore;
 @import CoreFoundation;
 @import CoreMedia;
 @import CoreVideo;
-@import Dispatch;
 @import Foundation;
 @import ObjectiveC;
-@import Photos;
 @import UIKit;
 #endif
 
@@ -2168,9 +1304,6 @@ SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK8AREffect_")
 
 
 
-
-
-
 @class NSCoder;
 
 SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK21ActivityIndicatorView")
@@ -2187,29 +1320,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK22AlbumItemConfiguration")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-@class UIImage;
-@class PHAssetCollection;
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK10AlbumModel_")
-@protocol AlbumModel
-/// Album name
-@property (nonatomic, copy) NSString * _Nullable name;
-/// Album preview
-@property (nonatomic, strong) UIImage * _Nullable preview;
-/// Assosiated asset collection with album
-@property (nonatomic, readonly, strong) PHAssetCollection * _Nonnull assetCollection;
-@end
-
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK14AlbumViewModel")
-@interface AlbumViewModel : NSObject <AlbumModel>
-@property (nonatomic, readonly, strong) PHAssetCollection * _Nonnull assetCollection;
-@property (nonatomic, copy) NSString * _Nullable name;
-@property (nonatomic, strong) UIImage * _Nullable preview;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
 
 /// The Albums configuration
 SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK19AlbumsConfiguration")
@@ -2220,22 +1330,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK19AlbumsConfiguration")
 
 
 @class NSBundle;
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK20AlbumsViewController")
-@interface AlbumsViewController : UIViewController
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK28AlbumsViewControllerDelegate_")
-@protocol AlbumsViewControllerDelegate
-/// Tells delegate object about selection the new album
-- (void)albumsViewController:(AlbumsViewController * _Nonnull)controller didSelect:(id <AlbumModel> _Nonnull)album;
-/// Tells delegate object about close action
-- (void)albumsViewControllerDidClose:(AlbumsViewController * _Nonnull)controller;
-@end
-
 
 SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK19AlertViewController")
 @interface AlertViewController : UIViewController
@@ -2278,70 +1372,6 @@ SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK24AppStateObserverDelegate_")
 - (void)applicationDidEnterBackgroundNotification:(AppStateObserver * _Nonnull)appStateObserver;
 @end
 
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK18AudioBrowserConfig")
-@interface AudioBrowserConfig : NSObject
-- (nonnull instancetype)init;
-@end
-
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK27AudioBrowserConfigApplyable_")
-@protocol AudioBrowserConfigApplyable
-@property (nonatomic, strong) AudioBrowserConfig * _Nonnull config;
-@end
-
-typedef SWIFT_ENUM(NSInteger, AudioBrowserMusicSource, open) {
-/// enables Soundstripe music in AudioBrowser
-  AudioBrowserMusicSourceSoundstripe = 4,
-/// enables MusicLibrary music in AudioBrowser
-  AudioBrowserMusicSourceMusicLibrary = 6,
-};
-
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK26AudioBrowserPlayerDelegate_")
-@protocol AudioBrowserPlayerDelegate
-- (void)playerPlaysFrameAtTime:(NSTimeInterval)time;
-- (void)didEndPlaying;
-@end
-
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK28AudioBrowserServiceAdoptable_")
-@protocol AudioBrowserServiceAdoptable
-- (void)play;
-- (void)playWithPlayProgressHandler:(void (^ _Nonnull)(float))playProgressHandler;
-- (void)playIn:(CMTimeRange)range playProgressHandler:(void (^ _Nullable)(float))playProgressHandler;
-- (void)pause;
-- (void)resume;
-- (BOOL)loadWithTrackUrl:(NSURL * _Nonnull)trackUrl error:(NSError * _Nullable * _Nullable)error;
-- (void)unload;
-- (void)autoRepeatWithRepeat:(BOOL)repeat;
-- (void)seekToStart;
-- (void)seekToTime:(NSTimeInterval)time;
-@property (nonatomic, strong) id <AudioBrowserPlayerDelegate> _Nullable audioBrowserServiceDelegate;
-@end
-
-@class NSUUID;
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK17AudioBrowserTrack")
-@interface AudioBrowserTrack : NSObject
-/// AudioBrowserTrack constructor
-/// \param uuid setup track uuid string
-///
-/// \param name setup track name
-///
-/// \param url track url
-///
-- (nonnull instancetype)initWithUuid:(NSUUID * _Nonnull)uuid name:(NSString * _Nonnull)name additionalName:(NSString * _Nullable)additionalName url:(NSURL * _Nullable)url coverURL:(NSURL * _Nullable)coverURL OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK26AudioBrowserTrackApplyable_")
-@protocol AudioBrowserTrackApplyable
-@property (nonatomic, strong) AudioBrowserTrack * _Nonnull track;
-@end
-
 @class UIScrollView;
 
 SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK22AudioPartSelectionView")
@@ -2379,8 +1409,6 @@ SWIFT_CLASS_NAMED("BNBAnalyticsManager")
 
 
 
-
-
 /// The background configuration.
 SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK23BackgroundConfiguration")
 @interface BackgroundConfiguration : NSObject
@@ -2390,6 +1418,7 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK23BackgroundConfiguration")
 
 
 @class NSError;
+@class UIImage;
 @class UIApplication;
 
 /// Use this class to access Banuba effects from the cloud.
@@ -2434,318 +1463,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK20BanubaAsyncOperation")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class UINavigationController;
-@class MusicLibraryConfiguration;
-
-/// Audio browser main entity and entry point.
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK18BanubaAudioBrowser")
-@interface BanubaAudioBrowser : NSObject
-/// BanubaAudioBrowser constructor
-/// \param audioBrowserConfig contains all necessary configurations for the audio browser
-///
-/// \param slideInTransitioningDelegate bottom sheet transition
-///
-/// \param audioService service used to interact with audio files
-///
-/// \param selectedTrack selected track
-///
-/// \param isMusicLibraryEnabled is music library enabled
-///
-/// \param isSoundstripeEnabled is soundstripe enabled
-///
-/// \param isAudioPartSelectionEnabled is audio part selection enabled
-///
-/// \param videoDuration the duration of video
-///
-- (nonnull instancetype)initWithAudioBrowserConfig:(AudioBrowserConfig * _Nullable)audioBrowserConfig audioService:(id <AudioBrowserServiceAdoptable> _Nullable)audioService selectedTrack:(AudioBrowserTrack * _Nullable)selectedTrack isMusicLibraryEnabled:(BOOL)isMusicLibraryEnabled isSoundstripeEnabled:(BOOL)isSoundstripeEnabled token:(NSString * _Nonnull)token isAudioPartSelectionEnabled:(BOOL)isAudioPartSelectionEnabled videoDuration:(double)videoDuration OBJC_DESIGNATED_INITIALIZER;
-/// Get reference to audio browser navigation controller
-- (UINavigationController * _Nonnull)getAudioBrowserController SWIFT_WARN_UNUSED_RESULT;
-/// Setting music library configuration
-+ (void)setMusicLibraryConfiguration:(MusicLibraryConfiguration * _Nonnull)configuration;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-@class PIPSwitchLayoutSetting;
-@class PIPPlayerLayoutSetting;
-@class PIPCameraLayoutSetting;
-@protocol SDKInputServicingDelegate;
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK18BanubaCameraModule")
-@interface BanubaCameraModule : NSObject
-@property (nonatomic) BOOL isPIPSessionAlreadySetup;
-@property (nonatomic) BOOL isPIPSession;
-@property (nonatomic, copy) NSURL * _Nullable pipVideoURL;
-@property (nonatomic, strong) PIPSwitchLayoutSetting * _Nullable pipSwitchSetting;
-@property (nonatomic, strong) PIPPlayerLayoutSetting * _Nullable pipPlayerSetting;
-@property (nonatomic, strong) PIPCameraLayoutSetting * _Nullable pipCameraSetting;
-/// Setup the camera if needed
-@property (nonatomic) BOOL isCameraEnabled;
-@property (nonatomic) BOOL isLoaded;
-@property (nonatomic) BOOL allowProcessing;
-@property (nonatomic, strong) id <SDKInputServicingDelegate> _Nullable inputDelegate;
-+ (void)initializeWithSdkToken:(NSString * _Nonnull)sdkToken videoSize:(CGSize)videoSize videoPreset:(AVCaptureSessionPreset _Nonnull)videoPreset useHEVCCodecIfPossibleForRecorder:(BOOL)useHEVCCodecIfPossibleForRecorder arCloudPath:(NSString * _Nullable)arCloudPath;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-@interface BanubaCameraModule (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <BNBEffectEventListener>
-- (void)onEffectEvent:(NSString * _Nonnull)name params:(NSDictionary<NSString *, NSString *> * _Nonnull)params;
-@end
-
-
-@class ExternalAudioConfiguration;
-@class NSValue;
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK18SDKOutputServicing_")
-@protocol SDKOutputServicing
-@property (nonatomic, readonly) BOOL isRecording;
-@property (nonatomic, readonly) BOOL isEnoughDiskSpaceForRecording;
-- (void)startVideoCapturingWithFileURL:(NSURL * _Nullable)fileURL startTimeForVideoTexture:(double)startTimeForVideoTexture externalAudioConfiguration:(ExternalAudioConfiguration * _Nullable)externalAudioConfiguration progress:(void (^ _Nonnull)(CMTime))progress didStart:(void (^ _Nullable)(void))didStart shouldSkipFrame:(BOOL (^ _Nullable)(void))shouldSkipFrame periodicProgressTimeInterval:(NSTimeInterval)periodicProgressTimeInterval boundaryTimes:(NSArray<NSValue *> * _Nonnull)boundaryTimes boundaryHandler:(void (^ _Nonnull)(CMTime))boundaryHandler totalDuration:(NSTimeInterval)totalDuration itemDuration:(NSTimeInterval)itemDuration completion:(void (^ _Nonnull)(BOOL, NSError * _Nullable))completion;
-- (void)stopVideoCapturingWithCancel:(BOOL)cancel;
-@end
-
-
-@interface BanubaCameraModule (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <SDKOutputServicing>
-@property (nonatomic, readonly) BOOL isRecording;
-@property (nonatomic, readonly) BOOL isEnoughDiskSpaceForRecording;
-- (void)startVideoCapturingWithFileURL:(NSURL * _Nullable)fileURL startTimeForVideoTexture:(double)startTimeForVideoTexture externalAudioConfiguration:(ExternalAudioConfiguration * _Nullable)externalAudioConfiguration progress:(void (^ _Nonnull)(CMTime))progress didStart:(void (^ _Nullable)(void))didStart shouldSkipFrame:(BOOL (^ _Nullable)(void))shouldSkipFrame periodicProgressTimeInterval:(NSTimeInterval)periodicProgressTimeInterval boundaryTimes:(NSArray<NSValue *> * _Nonnull)boundaryTimes boundaryHandler:(void (^ _Nonnull)(CMTime))boundaryHandler totalDuration:(NSTimeInterval)totalDuration itemDuration:(NSTimeInterval)itemDuration completion:(void (^ _Nonnull)(BOOL, NSError * _Nullable))completion;
-- (void)stopVideoCapturingWithCancel:(BOOL)cancel;
-@end
-
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK23SDKBeautyEffectManaging_")
-@protocol SDKBeautyEffectManaging
-@property (nonatomic) BOOL isBeautificationEnabled;
-@property (nonatomic, readonly) BOOL supportsIntensity;
-@property (nonatomic) double intensity;
-- (BOOL)toggleBeautification SWIFT_WARN_UNUSED_RESULT;
-- (void)resetIntensity;
-@end
-
-
-@interface BanubaCameraModule (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <SDKBeautyEffectManaging>
-@property (nonatomic) BOOL isBeautificationEnabled;
-@property (nonatomic, readonly) BOOL supportsIntensity;
-@property (nonatomic) double intensity;
-- (BOOL)toggleBeautification SWIFT_WARN_UNUSED_RESULT;
-- (void)resetIntensity;
-@end
-
-@class UIColor;
-@class AVURLAsset;
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK26SDKEffectsTextureServicing_")
-@protocol SDKEffectsTextureServicing
-- (void)effectAddImageTextureWithImage:(UIImage * _Nonnull)image backgroundColor:(UIColor * _Nonnull)backgroundColor;
-- (void)setupDefaultImageTexture;
-- (void)stopVideoTextureIfNeeded;
-- (void)effectAddVideoTextureWithAsset:(AVURLAsset * _Nonnull)asset backgroundColor:(UIColor * _Nonnull)backgroundColor;
-- (void)effectReloadTexturePreviewWithStartTime:(NSTimeInterval)startTime endTime:(NSTimeInterval)endTime itemDuration:(NSTimeInterval)itemDuration;
-- (void)unloadEffectTexture;
-@end
-
-
-@interface BanubaCameraModule (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <SDKEffectsTextureServicing>
-- (void)setupDefaultImageTexture;
-- (void)effectAddImageTextureWithImage:(UIImage * _Nonnull)image backgroundColor:(UIColor * _Nonnull)backgroundColor;
-- (void)effectAddVideoTextureWithAsset:(AVURLAsset * _Nonnull)asset backgroundColor:(UIColor * _Nonnull)backgroundColor;
-- (void)stopVideoTextureIfNeeded;
-- (void)effectReloadTexturePreviewWithStartTime:(NSTimeInterval)startTime endTime:(NSTimeInterval)endTime itemDuration:(NSTimeInterval)itemDuration;
-- (void)unloadEffectTexture;
-@end
-
-enum CameraModuleSessionType : NSInteger;
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK17SDKInputServicing_")
-@protocol SDKInputServicing
-@property (nonatomic, readonly) BOOL isFrontCamera;
-@property (nonatomic, readonly) float zoomFactor;
-@property (nonatomic, readonly) enum CameraModuleSessionType currentCameraSessionType;
-@property (nonatomic, strong) id <SDKInputServicingDelegate> _Nullable inputDelegate;
-- (void)focusAt:(CGPoint)point useContinuousDetection:(BOOL)useContinuousDetection;
-- (float)setZoomFactor:(float)zoomFactor SWIFT_WARN_UNUSED_RESULT;
-- (void)toggleCameraWithCompletion:(void (^ _Nonnull)(void))completion;
-- (void)startCamera;
-- (void)startAudioCapturing;
-- (void)stopAudioCapturing;
-- (void)setCameraSessionType:(enum CameraModuleSessionType)type;
-- (AVCaptureTorchMode)setTorchWithMode:(AVCaptureTorchMode)mode;
-- (AVCaptureTorchMode)toggleTorch SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface BanubaCameraModule (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <SDKInputServicing>
-@property (nonatomic, readonly) float zoomFactor;
-@property (nonatomic, readonly) BOOL isFrontCamera;
-@property (nonatomic, readonly) enum CameraModuleSessionType currentCameraSessionType;
-- (void)focusAt:(CGPoint)point useContinuousDetection:(BOOL)useContinuousDetection;
-- (float)setZoomFactor:(float)zoomFactor SWIFT_WARN_UNUSED_RESULT;
-- (void)toggleCameraWithCompletion:(void (^ _Nonnull)(void))completion;
-- (void)startCamera;
-- (void)startAudioCapturing;
-- (void)stopAudioCapturing;
-- (void)setCameraSessionType:(enum CameraModuleSessionType)type;
-- (AVCaptureTorchMode)setTorchWithMode:(AVCaptureTorchMode)mode SWIFT_WARN_UNUSED_RESULT;
-- (AVCaptureTorchMode)toggleTorch SWIFT_WARN_UNUSED_RESULT;
-@end
-
-@protocol RenderEffect;
-@protocol EffectSubtypeModificationsEventListener;
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK19SDKEffectsServicing_")
-@protocol SDKEffectsServicing <SDKEffectsTextureServicing>
-@property (nonatomic, readonly) BOOL isMaskLoaded;
-- (void)loadMaskWithName:(NSString * _Nonnull)name synchronous:(BOOL)synchronous;
-- (void)enableBlur;
-- (void)effectDidBeginApplying;
-- (void)effectDidEndApplying;
-- (void)effectDidResetApplying;
-- (void)effectDidChangeState;
-- (void)unloadMask;
-- (void)removeAllFilters;
-- (void)applyFilter:(id <RenderEffect> _Nonnull)filter;
-- (void)removeFilter:(id <RenderEffect> _Nonnull)filter;
-- (void)setEffectSubtypeModificationsEventListener:(id <EffectSubtypeModificationsEventListener> _Nonnull)listener;
-- (NSArray<NSString *> * _Nonnull)effectsPathsWithIncludeBeautyEffect:(BOOL)includeBeautyEffect SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface BanubaCameraModule (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <SDKEffectsServicing>
-- (void)enableBlur;
-@property (nonatomic, readonly) BOOL isMaskLoaded;
-- (void)loadMaskWithName:(NSString * _Nonnull)name synchronous:(BOOL)synchronous;
-- (void)unloadMask;
-- (void)removeAllFilters;
-- (void)applyFilter:(id <RenderEffect> _Nonnull)filter;
-- (void)removeFilter:(id <RenderEffect> _Nonnull)filter;
-- (void)setEffectSubtypeModificationsEventListener:(id <EffectSubtypeModificationsEventListener> _Nonnull)listener;
-- (NSArray<NSString *> * _Nonnull)effectsPathsWithIncludeBeautyEffect:(BOOL)includeBeautyEffect SWIFT_WARN_UNUSED_RESULT;
-- (void)effectDidBeginApplying;
-- (void)effectDidEndApplying;
-- (void)effectDidResetApplying;
-- (void)effectDidChangeState;
-@end
-
-
-@interface BanubaCameraModule (SWIFT_EXTENSION(UnifiedVideoEditorSDK))
-- (void)seekPIPPlayerTo:(NSTimeInterval)time;
-- (void)startPIPPlayer;
-- (void)stopPIPPlayer;
-- (void)setPIPPlayerVolume:(float)volume;
-- (void)setupPIPSessionWithVideoURL:(NSURL * _Nonnull)url playerSetting:(PIPPlayerLayoutSetting * _Nonnull)playerSetting cameraSetting:(PIPCameraLayoutSetting * _Nonnull)cameraSetting switchSetting:(PIPSwitchLayoutSetting * _Nonnull)switchSetting;
-- (void)startPIPSessionIfNeededWithSetting:(PIPPlayerLayoutSetting * _Nonnull)setting completion:(void (^ _Nullable)(void))completion;
-- (void)applyPIPCameraSettingIfNeeded:(PIPCameraLayoutSetting * _Nonnull)setting restoreSession:(BOOL)restoreSession;
-- (void)applyPIPPlayerSettingIfNeeded:(PIPPlayerLayoutSetting * _Nonnull)setting restoreSession:(BOOL)restoreSession;
-- (void)applyPIPSwitchSettingIfNeeded:(PIPSwitchLayoutSetting * _Nonnull)setting restoreSession:(BOOL)restoreSession;
-@end
-
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK15SDKPIPServicing_")
-@protocol SDKPIPServicing
-@property (nonatomic) BOOL isPIPSessionAlreadySetup;
-@property (nonatomic) BOOL isPIPSession;
-@property (nonatomic, readonly) BOOL isPIPPlayerReadyToProvideData;
-@property (nonatomic, copy) NSURL * _Nullable pipVideoURL;
-@property (nonatomic, strong) PIPSwitchLayoutSetting * _Nullable pipSwitchSetting;
-@property (nonatomic, strong) PIPPlayerLayoutSetting * _Nullable pipPlayerSetting;
-@property (nonatomic, strong) PIPCameraLayoutSetting * _Nullable pipCameraSetting;
-- (void)seekPIPPlayerTo:(NSTimeInterval)time;
-- (void)startPIPPlayer;
-- (void)stopPIPPlayer;
-- (void)setupPIPSessionWithVideoURL:(NSURL * _Nonnull)url playerSetting:(PIPPlayerLayoutSetting * _Nonnull)playerSetting cameraSetting:(PIPCameraLayoutSetting * _Nonnull)cameraSetting switchSetting:(PIPSwitchLayoutSetting * _Nonnull)switchSetting;
-- (void)startPIPSessionIfNeededWithSetting:(PIPPlayerLayoutSetting * _Nonnull)setting completion:(void (^ _Nullable)(void))completion;
-- (void)applyPIPCameraSettingIfNeeded:(PIPCameraLayoutSetting * _Nonnull)setting restoreSession:(BOOL)restoreSession;
-- (void)applyPIPPlayerSettingIfNeeded:(PIPPlayerLayoutSetting * _Nonnull)setting restoreSession:(BOOL)restoreSession;
-- (void)applyPIPSwitchSettingIfNeeded:(PIPSwitchLayoutSetting * _Nonnull)setting restoreSession:(BOOL)restoreSession;
-- (void)setPIPPlayerVolume:(float)volume;
-@end
-
-@class NSAttributedString;
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK12CameraModule_")
-@protocol CameraModule <SDKBeautyEffectManaging, SDKEffectsServicing, SDKInputServicing, SDKOutputServicing, SDKPIPServicing>
-@property (nonatomic, readonly) BOOL isLoaded;
-@property (nonatomic) BOOL allowProcessing;
-@property (nonatomic) BOOL autoStart;
-@property (nonatomic) BOOL isCameraEnabled;
-@property (nonatomic, readonly, strong) dispatch_queue_t _Nullable renderQueue;
-- (void)setup;
-- (void)setMaxFacesWithFacesCount:(int32_t)facesCount;
-- (void)destroy;
-- (void)startWithCompletion:(void (^ _Nonnull)(void))completion;
-- (void)stopWithCompletion:(void (^ _Nullable)(void))completion;
-- (void)setRenderTargetWithView:(UIView * _Nonnull)view;
-- (void)removeRenderTarget;
-- (void)takeSnapshotWithHandler:(void (^ _Nonnull)(UIImage * _Nullable))handler;
-- (UIView * _Nonnull)getRendererView SWIFT_WARN_UNUSED_RESULT;
-- (void)startRenderLoop;
-- (void)stopRenderLoop;
-- (void)addFPSListener:(void (^ _Nullable)(NSAttributedString * _Nonnull))listener;
-@end
-
-
-@interface BanubaCameraModule (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <CameraModule>
-@property (nonatomic, readonly, strong) dispatch_queue_t _Nullable renderQueue;
-@property (nonatomic) BOOL autoStart;
-@property (nonatomic, readonly) BOOL isPIPPlayerReadyToProvideData;
-- (void)addFPSListener:(void (^ _Nullable)(NSAttributedString * _Nonnull))listener;
-- (void)setMaxFacesWithFacesCount:(int32_t)facesCount;
-- (void)setup;
-- (void)destroy;
-- (void)takeSnapshotWithHandler:(void (^ _Nonnull)(UIImage * _Nullable))handler;
-- (void)startWithCompletion:(void (^ _Nonnull)(void))completion;
-- (void)stopWithCompletion:(void (^ _Nullable)(void))completion;
-- (void)setRenderTargetWithView:(UIView * _Nonnull)view;
-- (void)removeRenderTarget;
-- (UIView * _Nonnull)getRendererView SWIFT_WARN_UNUSED_RESULT;
-- (void)startRenderLoop;
-- (void)stopRenderLoop;
-@end
-
-enum GalleryItemType : NSInteger;
-@class AVPlayerItem;
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK11GalleryItem_")
-@protocol GalleryItem <NSObject>
-/// Video representation url asset
-@property (nonatomic, readonly, strong) AVURLAsset * _Nullable urlAsset;
-/// Preview for gallery item
-@property (nonatomic, strong) UIImage * _Nullable preview;
-/// GalleryItem duration
-@property (nonatomic, readonly) NSTimeInterval duration;
-/// Type can be video, photo or unknown
-@property (nonatomic, readonly) enum GalleryItemType type;
-/// Requests preview for displaying in gallery list
-- (void)requestPreviewWithSize:(CGSize)size synchronously:(BOOL)synchronously handler:(void (^ _Nonnull)(UIImage * _Nullable))handler;
-/// Requests photo with desired size
-- (void)requestPhotoWithSize:(CGSize)size progressHandler:(BOOL (^ _Nullable)(double))progressHandler handler:(void (^ _Nonnull)(UIImage * _Nullable, NSError * _Nullable))handler;
-/// Requests video url asset
-- (void)requestAVURLAssetWithProgressHandler:(BOOL (^ _Nullable)(double))progressHandler handler:(void (^ _Nonnull)(AVURLAsset * _Nullable, NSError * _Nullable))handler;
-/// Requests video player item
-- (void)requestAVPlayerItemWithProgressHandler:(BOOL (^ _Nullable)(double))progressHandler handler:(void (^ _Nonnull)(AVPlayerItem * _Nullable, NSError * _Nullable))handler;
-@end
-
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK17BanubaGalleryItem")
-@interface BanubaGalleryItem : NSObject <GalleryItem>
-@property (nonatomic, strong) UIImage * _Nullable preview;
-@property (nonatomic, readonly) NSTimeInterval duration;
-@property (nonatomic, readonly, strong) AVURLAsset * _Nullable urlAsset;
-@property (nonatomic, readonly) enum GalleryItemType type;
-- (void)requestAVURLAssetWithProgressHandler:(BOOL (^ _Nullable)(double))progressHandler handler:(void (^ _Nonnull)(AVURLAsset * _Nullable, NSError * _Nullable))handler;
-- (void)requestAVPlayerItemWithProgressHandler:(BOOL (^ _Nullable)(double))progressHandler handler:(void (^ _Nonnull)(AVPlayerItem * _Nullable, NSError * _Nullable))handler;
-- (void)requestPreviewWithSize:(CGSize)size synchronously:(BOOL)synchronously handler:(void (^ _Nonnull)(UIImage * _Nullable))handler;
-- (void)requestPhotoWithSize:(CGSize)size progressHandler:(BOOL (^ _Nullable)(double))progressHandler handler:(void (^ _Nonnull)(UIImage * _Nullable, NSError * _Nullable))handler;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-@interface BanubaGalleryItem (SWIFT_EXTENSION(UnifiedVideoEditorSDK))
-- (BOOL)isEqual:(id _Nullable)object SWIFT_WARN_UNUSED_RESULT;
-@end
-
 
 SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK32BaseTrackSelectionViewController")
 @interface BaseTrackSelectionViewController : UINavigationController
@@ -2785,14 +1502,6 @@ SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK12RenderEffect_")
 - (void)applyWithPixelBuffer:(CVPixelBufferRef _Nonnull)pixelBuffer;
 @end
 
-
-typedef SWIFT_ENUM(NSInteger, CameraModuleSessionType, open) {
-  CameraModuleSessionTypeFrontVideo = 0,
-  CameraModuleSessionTypeBackVideo = 1,
-  CameraModuleSessionTypeFrontPhoto = 2,
-  CameraModuleSessionTypeBackPhoto = 3,
-};
-
 @class CALayer;
 
 /// Simple circular progress view
@@ -2810,16 +1519,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK32CompositionTimelineConfiguration")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
-
-
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK13CountdownView")
-@interface CountdownView : UIView
-- (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
-- (void)drawRect:(CGRect)rect;
-@end
-
 
 
 
@@ -2853,48 +1552,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK11EffectModel")
 
 
 
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK39EffectSubtypeModificationsEventListener_")
-@protocol EffectSubtypeModificationsEventListener
-- (void)didChangeEffectSubtype:(NSString * _Nonnull)subtypeName;
-- (void)didInitiateEffectSubtype:(NSString * _Nonnull)subtypeName;
-@end
-
-
-/// Default exposure animation view
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK21ExposureAnimationView")
-@interface ExposureAnimationView : UIView
-- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
-- (void)drawRect:(CGRect)rect;
-@end
-
-
-/// Setups adding external audio asset to result asset as audio track
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK26ExternalAudioConfiguration")
-@interface ExternalAudioConfiguration : NSObject
-/// Audio asset url
-@property (nonatomic, readonly, copy) NSURL * _Nonnull url;
-/// Offset inside audio asset
-@property (nonatomic, readonly) NSTimeInterval offset;
-/// Preferred audio track volume
-@property (nonatomic, readonly) float preferredVolume;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK27FeedbackAlertViewController")
-@interface FeedbackAlertViewController : UIViewController
-- (void)viewWillAppear:(BOOL)animated;
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-
-
-
 @class UIButton;
 
 SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK22FullscreenActivityView")
@@ -2915,83 +1572,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK20GalleryConfiguration")
 
 
 
-typedef SWIFT_ENUM(NSInteger, GalleryItemType, open) {
-  GalleryItemTypePhoto = 0,
-  GalleryItemTypeVideo = 1,
-  GalleryItemTypeUnknown = 2,
-};
-
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK14GalleryManager")
-@interface GalleryManager : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-@class PHChange;
-
-@interface GalleryManager (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <PHPhotoLibraryChangeObserver>
-- (void)photoLibraryDidChange:(PHChange * _Nonnull)changeInstance;
-@end
-
-
-typedef SWIFT_ENUM(NSInteger, GalleryMediaType, open) {
-  GalleryMediaTypeVideo = 0,
-  GalleryMediaTypePhoto = 1,
-};
-
-
-/// Setups gallery selection behaviour
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK25GallerySelectionBehaviour")
-@interface GallerySelectionBehaviour : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK21GalleryViewController")
-@interface GalleryViewController : UIViewController
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK28GalleryViewControllerFactory_")
-@protocol GalleryViewControllerFactory <NSObject>
-/// Creates GalleryViewController
-- (GalleryViewController * _Nonnull)makeGalleryViewControllerWithConfiguration:(GalleryConfiguration * _Nonnull)configuration albumsConfiguration:(AlbumsConfiguration * _Nonnull)albumsConfiguration selectionBehaviour:(GallerySelectionBehaviour * _Nonnull)selectionBehaviour SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK28GalleryViewControllerBuilder")
-@interface GalleryViewControllerBuilder : NSObject <GalleryViewControllerFactory>
-- (GalleryViewController * _Nonnull)makeGalleryViewControllerWithConfiguration:(GalleryConfiguration * _Nonnull)configuration albumsConfiguration:(AlbumsConfiguration * _Nonnull)albumsConfiguration selectionBehaviour:(GallerySelectionBehaviour * _Nonnull)selectionBehaviour SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-@class ProgressHandler;
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK29GalleryViewControllerDelegate_")
-@protocol GalleryViewControllerDelegate
-/// Tells delegate object about starting asynchronous operations at the gallery.
-/// BanubaVideoEditorSDK showing full-screen spinner by this event. It can help to prevent unnecessary actions from a user.
-- (void)galleryViewController:(GalleryViewController * _Nonnull)controller didStartExportWith:(ProgressHandler * _Nonnull)progressHandler;
-/// Tells delegate object about finishing asynchronous operations at the gallery
-- (void)galleryViewController:(GalleryViewController * _Nonnull)controller didEndExportWith:(NSError * _Nullable)error hideProgressViewCompletion:(void (^ _Nonnull)(void))hideProgressViewCompletion;
-/// Tells delegate object about the closing gallery.
-- (void)galleryViewControllerDidClose:(GalleryViewController * _Nonnull)controller;
-/// Tells delegate object about completion picking gallery items.
-- (void)galleryViewControllerDone:(GalleryViewController * _Nonnull)controller withGalleryItems:(NSArray<id <GalleryItem>> * _Nonnull)items;
-/// Tells delegate object about completion picking gallery items for AutoCut feature
-- (void)galleryViewControllerDoneForAutoCut:(GalleryViewController * _Nonnull)controller withGalleryItems:(NSArray<id <GalleryItem>> * _Nonnull)items;
-/// Tells delegate object that he should present message.
-/// In BanubaVideoEditorSDK it presents popup message.
-- (void)galleryViewController:(GalleryViewController * _Nonnull)controller presentMessage:(NSString * _Nonnull)message;
-@end
-
-
-
 SWIFT_CLASS("_TtCC21UnifiedVideoEditorSDK35SmallActivityIndicatorConfiguration12GradientType")
 @interface GradientType : NSObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
@@ -3006,6 +1586,7 @@ SWIFT_CLASS("_TtCC21UnifiedVideoEditorSDK35SmallActivityIndicatorConfiguration12
 + (GradientType * _Nonnull)image:(id <ImageConfigurationProtocol> _Nonnull)image SWIFT_WARN_UNUSED_RESULT;
 @end
 
+@class UIColor;
 
 /// The image configuration
 SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK26ImageConfigurationProtocol_")
@@ -3049,12 +1630,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK7License")
 @property (nonatomic, readonly) BOOL supportsAnalytics;
 @property (nonatomic, readonly) BOOL videoEditorSupportsFaceAR;
 @property (nonatomic, readonly) BOOL hasFaceARFeatures;
-@property (nonatomic, readonly) BOOL supportsPiP;
-@property (nonatomic, readonly) BOOL supportsMusicLibrary;
-@property (nonatomic, readonly) BOOL supportsSoundstripe;
-@property (nonatomic, readonly) BOOL supportsBgSeparation;
-@property (nonatomic, readonly) BOOL supportsCaptions;
-@property (nonatomic, readonly) BOOL supportsAutoCut;
 @property (nonatomic, readonly, copy) NSArray<NSNumber *> * _Nonnull postProcessingEffects;
 @property (nonatomic, readonly, copy) NSString * _Nullable arCloudURL;
 @property (nonatomic, readonly, strong) TimeBomb * _Nullable timeBomb;
@@ -3070,109 +1645,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK7License")
 @end
 
 
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK25MaskPostprocessingService")
-@interface MaskPostprocessingService : NSObject
-/// MaskPostprocessingService constructor
-/// \param renderSize setup render size
-///
-- (nonnull instancetype)initWithRenderSize:(CGSize)renderSize OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK27SDKMaskPostprocessServicing_")
-@protocol SDKMaskPostprocessServicing
-- (void)processVideoFrame:(CVPixelBufferRef _Nonnull)from to:(CVPixelBufferRef _Nonnull)to time:(CMTime)time;
-- (void)surfaceCreatedWith:(CGSize)size;
-- (void)setEffectSize:(CGSize)size;
-- (void)loadEffectWithPath:(NSString * _Nonnull)path;
-@end
-
-
-@interface MaskPostprocessingService (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <SDKMaskPostprocessServicing>
-- (void)processVideoFrame:(CVPixelBufferRef _Nonnull)from to:(CVPixelBufferRef _Nonnull)to time:(CMTime)time;
-- (void)surfaceCreatedWith:(CGSize)size;
-- (void)setEffectSize:(CGSize)size;
-- (void)loadEffectWithPath:(NSString * _Nonnull)path;
-@end
-
-
-/// Configures music library endpoints adn etc.
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK25MusicLibraryConfiguration")
-@interface MusicLibraryConfiguration : NSObject
-/// Music library authentication header name
-@property (nonatomic, readonly, copy) NSString * _Nonnull authHeaderName;
-/// Music library authentication header value
-@property (nonatomic, readonly, copy) NSString * _Nonnull authHeaderValue;
-/// Music library home screen url
-@property (nonatomic, readonly, copy) NSString * _Nonnull homeURL;
-/// Music library recent tracks url
-@property (nonatomic, readonly, copy) NSString * _Nonnull recentsURL;
-/// Music library favorite tracks url
-@property (nonatomic, readonly, copy) NSString * _Nonnull favoritesURL;
-/// Music library add favorite track url
-@property (nonatomic, readonly, copy) NSString * _Nonnull addFavoriteURL;
-/// Music library remove favorite track url
-@property (nonatomic, readonly, copy) NSString * _Nonnull removeFavoriteURL;
-/// Music library all tracks url
-@property (nonatomic, readonly, copy) NSString * _Nonnull tracksURL;
-/// Music library search tracks url
-@property (nonatomic, readonly, copy) NSString * _Nonnull searchTracksURL;
-/// Music library genres url
-@property (nonatomic, readonly, copy) NSString * _Nonnull genresURL;
-/// Music library collections url
-@property (nonatomic, readonly, copy) NSString * _Nonnull collectionsURL;
-/// Music library genre tracks url
-@property (nonatomic, readonly, copy) NSString * _Nonnull genreTracksURL;
-/// Music library collection tracks url
-@property (nonatomic, readonly, copy) NSString * _Nonnull collectionTracksURL;
-/// Music library tracks page size
-/// Default is 20
-@property (nonatomic, readonly) NSInteger tracksPerPage;
-/// Music library info view no matches icon
-@property (nonatomic, readonly, strong) ImageConfiguration * _Nullable noMatchesIcon;
-/// Music library info view attention icon
-@property (nonatomic, readonly, strong) ImageConfiguration * _Nullable attentionIcon;
-/// MusicLibraryConfiguration constructor
-/// \param authHeaderName music library authentication header name
-///
-/// \param authHeaderValue music library authentication header value
-///
-/// \param homeURL home url used for music library home screen
-///
-/// \param recentsURL url used for all recent music library tracks
-///
-/// \param favoritesURL url used for all favorite music library tracks
-///
-/// \param addFavoriteURL url used to add music library track to favorites
-///
-/// \param removeFavoriteURL url used to remove music library track from favorites
-///
-/// \param tracksURL tracks url used for all music library tracks
-///
-/// \param searchTracksURL url used to search tracks by title
-///
-/// \param genresURL genres url used for music library genres
-///
-/// \param collectionsURL collections url used for music library collections
-///
-/// \param genreTracksURL genre tracks url used for music library selected genre tracks
-///
-/// \param collectionTracksURL collection tracks url used for music library selected collection tracks
-///
-/// \param noMatchesIcon image configuration for no matches info view
-///
-/// \param attentionIcon image configuration for attention info view
-///
-- (nonnull instancetype)initWithAuthHeaderName:(NSString * _Nonnull)authHeaderName authHeaderValue:(NSString * _Nonnull)authHeaderValue homeURL:(NSString * _Nonnull)homeURL recentsURL:(NSString * _Nonnull)recentsURL favoritesURL:(NSString * _Nonnull)favoritesURL addFavoriteURL:(NSString * _Nonnull)addFavoriteURL removeFavoriteURL:(NSString * _Nonnull)removeFavoriteURL tracksURL:(NSString * _Nonnull)tracksURL searchTracksURL:(NSString * _Nonnull)searchTracksURL genresURL:(NSString * _Nonnull)genresURL collectionsURL:(NSString * _Nonnull)collectionsURL genreTracksURL:(NSString * _Nonnull)genreTracksURL collectionTracksURL:(NSString * _Nonnull)collectionTracksURL tracksPerPage:(NSInteger)tracksPerPage noMatchesIcon:(ImageConfiguration * _Nullable)noMatchesIcon attentionIcon:(ImageConfiguration * _Nullable)attentionIcon OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-
-
 
 
 
@@ -3182,130 +1654,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK7NibView")
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
-
-
-enum PIPCameraLayoutSettings : NSInteger;
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK22PIPCameraLayoutSetting")
-@interface PIPCameraLayoutSetting : NSObject
-@property (nonatomic, readonly) enum PIPCameraLayoutSettings setting;
-- (nonnull instancetype)initWithSetting:(enum PIPCameraLayoutSettings)setting OBJC_DESIGNATED_INITIALIZER;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIPCameraLayoutSetting * _Nonnull round;)
-+ (PIPCameraLayoutSetting * _Nonnull)round SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIPCameraLayoutSetting * _Nonnull square;)
-+ (PIPCameraLayoutSetting * _Nonnull)square SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIPCameraLayoutSetting * _Nonnull original;)
-+ (PIPCameraLayoutSetting * _Nonnull)original SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIPCameraLayoutSetting * _Nonnull centered;)
-+ (PIPCameraLayoutSetting * _Nonnull)centered SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-typedef SWIFT_ENUM(NSInteger, PIPCameraLayoutSettings, open) {
-  PIPCameraLayoutSettingsRound = 0,
-  PIPCameraLayoutSettingsSquare = 1,
-  PIPCameraLayoutSettingsOriginal = 2,
-  PIPCameraLayoutSettingsCentered = 3,
-};
-
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK14PIPShapeDrawer")
-@interface PIPShapeDrawer : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK9PIPPlayer")
-@interface PIPPlayer : PIPShapeDrawer
-- (void)observeValueForKeyPath:(NSString * _Nullable)keyPath ofObject:(id _Nullable)object change:(NSDictionary<NSKeyValueChangeKey, id> * _Nullable)change context:(void * _Nullable)context;
-@end
-
-enum PIPPlayerLayoutSettings : NSInteger;
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK22PIPPlayerLayoutSetting")
-@interface PIPPlayerLayoutSetting : NSObject
-@property (nonatomic, readonly) enum PIPPlayerLayoutSettings setting;
-- (nonnull instancetype)initWithSetting:(enum PIPPlayerLayoutSettings)setting OBJC_DESIGNATED_INITIALIZER;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIPPlayerLayoutSetting * _Nonnull floating;)
-+ (PIPPlayerLayoutSetting * _Nonnull)floating SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIPPlayerLayoutSetting * _Nonnull topBottom;)
-+ (PIPPlayerLayoutSetting * _Nonnull)topBottom SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIPPlayerLayoutSetting * _Nonnull react;)
-+ (PIPPlayerLayoutSetting * _Nonnull)react SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIPPlayerLayoutSetting * _Nonnull leftRight;)
-+ (PIPPlayerLayoutSetting * _Nonnull)leftRight SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-typedef SWIFT_ENUM(NSInteger, PIPPlayerLayoutSettings, open) {
-  PIPPlayerLayoutSettingsFloating = 0,
-  PIPPlayerLayoutSettingsTopBottom = 1,
-  PIPPlayerLayoutSettingsReact = 2,
-  PIPPlayerLayoutSettingsLeftRight = 3,
-};
-
-typedef SWIFT_ENUM(NSInteger, PIPShapeAdapter, open) {
-  PIPShapeAdapterNone = 0,
-  PIPShapeAdapterOval = 1,
-  PIPShapeAdapterCircle = 2,
-  PIPShapeAdapterRoundRect = 3,
-  PIPShapeAdapterRoundSquare = 4,
-};
-
-
-
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK19PIPShapeTypeAdapter")
-@interface PIPShapeTypeAdapter : NSObject
-@property (nonatomic, readonly) enum PIPShapeAdapter setting;
-@property (nonatomic, readonly) CGFloat radius;
-- (nonnull instancetype)initWithSetting:(enum PIPShapeAdapter)setting radius:(CGFloat)radius OBJC_DESIGNATED_INITIALIZER;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIPShapeTypeAdapter * _Nonnull none;)
-+ (PIPShapeTypeAdapter * _Nonnull)none SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIPShapeTypeAdapter * _Nonnull oval;)
-+ (PIPShapeTypeAdapter * _Nonnull)oval SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIPShapeTypeAdapter * _Nonnull circle;)
-+ (PIPShapeTypeAdapter * _Nonnull)circle SWIFT_WARN_UNUSED_RESULT;
-+ (PIPShapeTypeAdapter * _Nonnull)roundRectWithRadius:(CGFloat)radius SWIFT_WARN_UNUSED_RESULT;
-+ (PIPShapeTypeAdapter * _Nonnull)roundSquareWithRadius:(CGFloat)radius SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-enum PIPSwitchLayoutSettings : NSInteger;
-
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK22PIPSwitchLayoutSetting")
-@interface PIPSwitchLayoutSetting : NSObject
-@property (nonatomic, readonly) enum PIPSwitchLayoutSettings setting;
-- (nonnull instancetype)initWithSetting:(enum PIPSwitchLayoutSettings)setting OBJC_DESIGNATED_INITIALIZER;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIPSwitchLayoutSetting * _Nonnull switchVerticallyUP;)
-+ (PIPSwitchLayoutSetting * _Nonnull)switchVerticallyUP SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIPSwitchLayoutSetting * _Nonnull switchVerticallyDown;)
-+ (PIPSwitchLayoutSetting * _Nonnull)switchVerticallyDown SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIPSwitchLayoutSetting * _Nonnull switchHorizontalRight;)
-+ (PIPSwitchLayoutSetting * _Nonnull)switchHorizontalRight SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIPSwitchLayoutSetting * _Nonnull switchHorizontalLeft;)
-+ (PIPSwitchLayoutSetting * _Nonnull)switchHorizontalLeft SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIPSwitchLayoutSetting * _Nonnull switchCameraPip;)
-+ (PIPSwitchLayoutSetting * _Nonnull)switchCameraPip SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PIPSwitchLayoutSetting * _Nonnull switchVideoPip;)
-+ (PIPSwitchLayoutSetting * _Nonnull)switchVideoPip SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-typedef SWIFT_ENUM(NSInteger, PIPSwitchLayoutSettings, open) {
-  PIPSwitchLayoutSettingsSwitchVerticallyUP = 0,
-  PIPSwitchLayoutSettingsSwitchVerticallyDown = 1,
-  PIPSwitchLayoutSettingsSwitchHorizontalRight = 2,
-  PIPSwitchLayoutSettingsSwitchHorizontalLeft = 3,
-  PIPSwitchLayoutSettingsSwitchCameraPiP = 4,
-  PIPSwitchLayoutSettingsSwitchVideoPiP = 5,
-};
 
 
 /// UIImageView playable preview.
@@ -3340,13 +1688,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK26PopoverAlertViewController")
 
 
 
-/// Gallery exporting progress handler object
-SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK15ProgressHandler")
-@interface ProgressHandler : NSObject
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
 SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK22ProgressViewController")
 @interface ProgressViewController : UIViewController
 - (void)viewDidLoad;
@@ -3360,58 +1701,11 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK22ProgressViewController")
 
 
 
-typedef SWIFT_ENUM(NSInteger, RenderBehaviorAdapter, open) {
-  RenderBehaviorAdapterFullScreen = 0,
-  RenderBehaviorAdapterVerticalSplitUp = 1,
-  RenderBehaviorAdapterVerticalSplitDown = 2,
-  RenderBehaviorAdapterHorizontalSplitLeft = 3,
-  RenderBehaviorAdapterHorizontalSplitRight = 4,
-  RenderBehaviorAdapterPip = 5,
-};
-
-
-
-
-
-
-
-SWIFT_PROTOCOL("_TtP21UnifiedVideoEditorSDK25SDKInputServicingDelegate_")
-@protocol SDKInputServicingDelegate
-- (void)willOutputWithPixelBuffer:(CVPixelBufferRef _Nonnull)pixelBuffer;
-@end
 
 
 SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK9SDKLogger")
 @interface SDKLogger : NSObject
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-
-
-SWIFT_CLASS_NAMED("SessionDelegate")
-@interface KFSessionDelegate : NSObject
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-@class NSURLSession;
-@class NSURLSessionDataTask;
-@class NSURLResponse;
-@class NSData;
-@class NSURLSessionTask;
-@class NSURLAuthenticationChallenge;
-@class NSURLCredential;
-@class NSHTTPURLResponse;
-@class NSURLRequest;
-
-@interface KFSessionDelegate (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <NSURLSessionDataDelegate>
-- (void)URLSession:(NSURLSession * _Nonnull)session dataTask:(NSURLSessionDataTask * _Nonnull)dataTask didReceiveResponse:(NSURLResponse * _Nonnull)response completionHandler:(void (^ _Nonnull)(NSURLSessionResponseDisposition))completionHandler;
-- (void)URLSession:(NSURLSession * _Nonnull)session dataTask:(NSURLSessionDataTask * _Nonnull)dataTask didReceiveData:(NSData * _Nonnull)data;
-- (void)URLSession:(NSURLSession * _Nonnull)session task:(NSURLSessionTask * _Nonnull)task didCompleteWithError:(NSError * _Nullable)error;
-- (void)URLSession:(NSURLSession * _Nonnull)session didReceiveChallenge:(NSURLAuthenticationChallenge * _Nonnull)challenge completionHandler:(void (^ _Nonnull)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler;
-- (void)URLSession:(NSURLSession * _Nonnull)session task:(NSURLSessionTask * _Nonnull)task didReceiveChallenge:(NSURLAuthenticationChallenge * _Nonnull)challenge completionHandler:(void (^ _Nonnull)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler;
-- (void)URLSession:(NSURLSession * _Nonnull)session task:(NSURLSessionTask * _Nonnull)task willPerformHTTPRedirection:(NSHTTPURLResponse * _Nonnull)response newRequest:(NSURLRequest * _Nonnull)request completionHandler:(void (^ _Nonnull)(NSURLRequest * _Nullable))completionHandler;
 @end
 
 @class UIPresentationController;
@@ -3450,7 +1744,6 @@ SWIFT_CLASS("_TtCC21UnifiedVideoEditorSDK35SmallActivityIndicatorConfiguration26
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
-
 
 
 
@@ -3541,15 +1834,7 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK25TrimTimeLineConfiguration")
 
 
 
-
-
-
-
-
-
-
-
-
+@class NSData;
 
 @interface UIImage (SWIFT_EXTENSION(UnifiedVideoEditorSDK))
 /// This method doesn’t use copying data, since it can heavily affect performance and memory usage
@@ -3561,11 +1846,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK25TrimTimeLineConfiguration")
 - (nullable instancetype)initWithBgraDataNoCopy:(NSData * _Nonnull)bgraDataNoCopy width:(NSInteger)width height:(NSInteger)height;
 - (CVPixelBufferRef _Nullable)makeBgraPixelBuffer SWIFT_WARN_UNUSED_RESULT;
 @end
-
-
-
-
-
 
 
 
@@ -3645,6 +1925,13 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK34VideoTimeLineCollectionViewHandler")
 @end
 
 
+
+@interface VideoTimeLineCollectionViewHandler (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <TimeLineDataSourceDelegate>
+- (void)timelineDataSource:(id <TimeLineDataSource> _Nonnull)timelineDataSource didPreloadPreview:(UIImage * _Nonnull)preview;
+- (void)timelineDataSource:(id <TimeLineDataSource> _Nonnull)timelineDataSource didLoadImage:(UIImage * _Nonnull)image at:(NSInteger)index;
+- (void)timelineDataSourceDidFinishThumbnailFetch:(id <TimeLineDataSource> _Nonnull)timelineDataSource;
+@end
+
 @class UICollectionView;
 @class UICollectionViewLayout;
 @class NSIndexPath;
@@ -3653,13 +1940,6 @@ SWIFT_CLASS("_TtC21UnifiedVideoEditorSDK34VideoTimeLineCollectionViewHandler")
 - (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 - (CGFloat)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (CGFloat)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface VideoTimeLineCollectionViewHandler (SWIFT_EXTENSION(UnifiedVideoEditorSDK)) <TimeLineDataSourceDelegate>
-- (void)timelineDataSource:(id <TimeLineDataSource> _Nonnull)timelineDataSource didPreloadPreview:(UIImage * _Nonnull)preview;
-- (void)timelineDataSource:(id <TimeLineDataSource> _Nonnull)timelineDataSource didLoadImage:(UIImage * _Nonnull)image at:(NSInteger)index;
-- (void)timelineDataSourceDidFinishThumbnailFetch:(id <TimeLineDataSource> _Nonnull)timelineDataSource;
 @end
 
 @class UICollectionViewCell;

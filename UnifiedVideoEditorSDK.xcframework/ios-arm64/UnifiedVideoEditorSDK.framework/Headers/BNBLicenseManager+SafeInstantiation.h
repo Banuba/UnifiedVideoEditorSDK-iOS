@@ -6,11 +6,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <BNBLicenseUtils/XBNBLicenseManager.h>
+#import <BNBSdkCore/BNBLicenseManager.h>
 
-@interface XBNBLicenseManager (SafeInstantiation)
+@interface BNBLicenseManager (SafeInstantiation)
 
 /// BNBLicenseManager throws NSException, if malformed token is passed. This initializer wrapper helps to mitigate this side effect.
-+ (nullable XBNBLicenseManager *)createSafely:(nonnull NSString *)clientToken;
++ (nullable BNBLicenseManager *)createSafely:(nonnull NSString *)clientToken;
 
 @end

@@ -7,8 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
-#import <AVFoundation/AVFoundation.h>
 
 //! Project version number for BanubaVideoEditorSDK.
 FOUNDATION_EXPORT double BanubaVideoEditorSDKVersionNumber;
@@ -16,10 +14,11 @@ FOUNDATION_EXPORT double BanubaVideoEditorSDKVersionNumber;
 //! Project version string for BanubaVideoEditorSDK.
 FOUNDATION_EXPORT const unsigned char BanubaVideoEditorSDKVersionString[];
 
+#import <UnifiedVideoEditorSDK/VisualClipListener.h>
 #import <UnifiedVideoEditorSDK/BNBValuesAnimator.h>
 #import <UnifiedVideoEditorSDK/AssetHelper.h>
 #import <UnifiedVideoEditorSDK/BNBAsyncOperation.h>
 #import <UnifiedVideoEditorSDK/BNBZipCommon.h>
 #import <UnifiedVideoEditorSDK/BNBZipArchive.h>
 #import <UnifiedVideoEditorSDK/BNBLicenseManager+SafeInstantiation.h>
-#import <UnifiedVideoEditorSDK/OutputSettings.h>
+#import <UnifiedVideoEditorSDK/SBVideoWriter.h>

@@ -254,7 +254,7 @@
 		</data>
 		<key>FrameworkVersion.plist</key>
 		<data>
-		kVaQ4PG4x3kq3svOiXd4K6OKt0w=
+		43LkN0m6ZxENkF6Gcwe2+1UHruU=
 		</data>
 		<key>FullscreenActivityView.nib</key>
 		<data>
@@ -374,7 +374,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		C1raOBoeQdZYjbiMdeoRG+KWHVE=
+		nSL7kMtgLpgYSLizLGQFUejtbC8=
 		</data>
 		<key>InfoView.nib</key>
 		<data>
@@ -410,7 +410,7 @@
 		</data>
 		<key>Modules/UnifiedVideoEditorSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		sV74OBMLmyTIgsNf9w4IsyDtrRQ=
+		8SOWbx1w96lxepQLbBkBrXJM+L0=
 		</data>
 		<key>Modules/UnifiedVideoEditorSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -430,7 +430,7 @@
 		</data>
 		<key>Modules/UnifiedVideoEditorSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		sV74OBMLmyTIgsNf9w4IsyDtrRQ=
+		8SOWbx1w96lxepQLbBkBrXJM+L0=
 		</data>
 		<key>Modules/UnifiedVideoEditorSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -1161,7 +1161,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			+EZPchnAf0rdRrev2sqUSSYxXxycO8LflghtF6dA6bI=
+			e++E6siwdm1Jk6h9zjfeGHYahKek1xk/ewirs+a/LHk=
 			</data>
 		</dict>
 		<key>FullscreenActivityView.nib</key>
@@ -1427,7 +1427,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			61uIyL9K35Eyy6zIrVnsNbZU0hP503gm/ISw9vqhTGg=
+			EuFW94caMs3okFVMZeZ4OlNw6YUyuVtG5sw/kCPXUYw=
 			</data>
 		</dict>
 		<key>Modules/UnifiedVideoEditorSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
@@ -1462,7 +1462,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			61uIyL9K35Eyy6zIrVnsNbZU0hP503gm/ISw9vqhTGg=
+			EuFW94caMs3okFVMZeZ4OlNw6YUyuVtG5sw/kCPXUYw=
 			</data>
 		</dict>
 		<key>Modules/UnifiedVideoEditorSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
